@@ -14,4 +14,6 @@ public class Client {
     @GenericGenerator(strategy = "native", name = "native")
     private long id;
 
+    private String firstName;
+
 }
