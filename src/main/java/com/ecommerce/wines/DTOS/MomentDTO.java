@@ -29,7 +29,6 @@ public class MomentDTO {
     }
 
 
-
     public long getId() {
         return id;
     }
