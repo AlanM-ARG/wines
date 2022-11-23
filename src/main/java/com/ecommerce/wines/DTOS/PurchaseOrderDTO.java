@@ -1,6 +1,7 @@
 package com.ecommerce.wines.DTOS;
 
 import com.ecommerce.wines.models.Client;
+import com.ecommerce.wines.models.PaymentMethod;
 import com.ecommerce.wines.models.Product;
 import com.ecommerce.wines.models.PurchaseOrder;
 
@@ -17,7 +18,7 @@ public class PurchaseOrderDTO {
 
     private LocalDateTime localDateTime;
 
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     private Set<Product> products;
 
@@ -61,11 +62,11 @@ public class PurchaseOrderDTO {
         this.localDateTime = localDateTime;
     }
 
-    public String getPaymentMethod() {
+    public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

@@ -27,12 +27,12 @@ public class PurchaseOrder {
 
     private LocalDateTime localDateTime;
 
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(Client client, double mount, LocalDateTime localDateTime, String paymentMethod) {
+    public PurchaseOrder(Client client, double mount, LocalDateTime localDateTime, PaymentMethod paymentMethod) {
         this.client = client;
         this.mount = mount;
         this.localDateTime = localDateTime;
@@ -73,11 +73,11 @@ public class PurchaseOrder {
         this.localDateTime = localDateTime;
     }
 
-    public String getPaymentMethod() {
+    public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

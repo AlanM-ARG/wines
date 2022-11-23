@@ -28,17 +28,17 @@ public class Product {
 
     private String img;
 
-    private String variety;
+    private Variety variety;
 
     private String tastingNote;
 
-    private int temperature;
+    private String temperature;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="purchaseOrder_id")
     private PurchaseOrder purchaseOrder;
 
-    public Product(String category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, int temperature) {
+    public Product(String category, String name, String description, int stock, double price, double discount, String img, Variety variety, String tastingNote, String temperature) {
         this.category = category;
         this.name = name;
         this.description = description;
@@ -111,11 +111,11 @@ public class Product {
         this.img = img;
     }
 
-    public String getVariety() {
+    public Variety getVariety() {
         return variety;
     }
 
-    public void setVariety(String variety) {
+    public void setVariety(Variety variety) {
         this.variety = variety;
     }
 
@@ -127,11 +127,11 @@ public class Product {
         this.tastingNote = tastingNote;
     }
 
-    public int getTemperature() {
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
 
