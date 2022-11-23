@@ -4,6 +4,7 @@ import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.models.PaymentMethod;
 import com.ecommerce.wines.models.Product;
 import com.ecommerce.wines.models.PurchaseOrder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -38,6 +39,7 @@ public class PurchaseOrderDTO {
         return id;
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }
