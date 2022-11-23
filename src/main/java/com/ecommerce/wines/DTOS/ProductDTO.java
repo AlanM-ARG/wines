@@ -1,13 +1,13 @@
 package com.ecommerce.wines.DTOS;
 
+import com.ecommerce.wines.models.Category;
 import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.models.Variety;
 
 public class ProductDTO {
 
     private long id;
 
-    private String category;
+    private Category category;
 
     private String name;
 
@@ -21,7 +21,7 @@ public class ProductDTO {
 
     private String img;
 
-    private Variety variety;
+    private String variety;
 
     private String tastingNote;
 
@@ -49,11 +49,11 @@ public class ProductDTO {
         return id;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -105,11 +105,11 @@ public class ProductDTO {
         this.img = img;
     }
 
-    public Variety getVariety() {
+    public String getVariety() {
         return variety;
     }
 
-    public void setVariety(Variety variety) {
+    public void setVariety(String variety) {
         this.variety = variety;
     }
 

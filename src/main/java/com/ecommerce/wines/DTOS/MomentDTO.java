@@ -2,6 +2,7 @@ package com.ecommerce.wines.DTOS;
 
 import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.models.Moment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class MomentDTO {
 
@@ -57,6 +58,7 @@ public class MomentDTO {
         this.description = description;
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }

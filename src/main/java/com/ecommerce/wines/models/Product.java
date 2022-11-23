@@ -14,7 +14,7 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    private String category;
+    private Category category;
 
     private String name;
 
@@ -28,7 +28,7 @@ public class Product {
 
     private String img;
 
-    private Variety variety;
+    private String variety;
 
     private String tastingNote;
 
@@ -38,7 +38,7 @@ public class Product {
     @JoinColumn(name="purchaseOrder_id")
     private PurchaseOrder purchaseOrder;
 
-    public Product(String category, String name, String description, int stock, double price, double discount, String img, Variety variety, String tastingNote, String temperature) {
+    public Product(Category category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, String temperature) {
         this.category = category;
         this.name = name;
         this.description = description;
@@ -55,11 +55,11 @@ public class Product {
         return id;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -111,11 +111,11 @@ public class Product {
         this.img = img;
     }
 
-    public Variety getVariety() {
+    public String getVariety() {
         return variety;
     }
 
-    public void setVariety(Variety variety) {
+    public void setVariety(String variety) {
         this.variety = variety;
     }
 
