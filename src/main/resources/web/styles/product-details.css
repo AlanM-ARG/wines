@@ -4,3 +4,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.bg-wine{
+    background-color: #E4E1DB;
+}
+
+.header-logo{
+    height: 3rem;
+}
