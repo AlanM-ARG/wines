@@ -3,7 +3,6 @@ package com.ecommerce.wines.models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 

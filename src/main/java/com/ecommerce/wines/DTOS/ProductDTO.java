@@ -1,6 +1,7 @@
 package com.ecommerce.wines.DTOS;
 
 import com.ecommerce.wines.models.Product;
+import com.ecommerce.wines.models.Variety;
 
 public class ProductDTO {
 
@@ -20,11 +21,11 @@ public class ProductDTO {
 
     private String img;
 
-    private String variety;
+    private Variety variety;
 
     private String tastingNote;
 
-    private int temperature;
+    private String temperature;
 
     public ProductDTO() {
     }
@@ -104,11 +105,11 @@ public class ProductDTO {
         this.img = img;
     }
 
-    public String getVariety() {
+    public Variety getVariety() {
         return variety;
     }
 
-    public void setVariety(String variety) {
+    public void setVariety(Variety variety) {
         this.variety = variety;
     }
 
@@ -120,11 +121,11 @@ public class ProductDTO {
         this.tastingNote = tastingNote;
     }
 
-    public int getTemperature() {
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
 }
