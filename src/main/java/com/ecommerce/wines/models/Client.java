@@ -1,5 +1,6 @@
 package com.ecommerce.wines.models;
 
+import com.ecommerce.wines.repositories.MomentRepository;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -94,6 +95,11 @@ public class Client {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void addMoment(Moment moment) {
+        moment.setClient(this);
+        moments.add(moment);
     }
 
     @Override
