@@ -36,4 +36,9 @@ public class ClientServiceImplement implements ClientService {
     public void saveClient(Client client) {
         clientRepository.save(client);
     }
+
+    @Override
+    public void deleteClient(Client client) {
+        clientRepository.delete(client);
+    }
 }

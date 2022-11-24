@@ -24,9 +24,10 @@ public class ProductServiceImplement implements ProductService {
     }
 
     @Override
-    public ProductDTO getProductDTO(String name) {
-        return new ProductDTO(productRepository.findByName(name));
+    public ProductDTO getProductDTO(long id) {
+        return new ProductDTO(productRepository.findById(id));
     }
+
 
     @Override
     public void saveProduct(Product product) {
