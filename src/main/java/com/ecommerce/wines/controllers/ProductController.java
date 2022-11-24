@@ -24,9 +24,10 @@ public class ProductController {
         return productService.getProductsDTO();
     }
 
-    @GetMapping("/product")
-    public ProductDTO getProductDTO(@RequestParam String name) {
-        return productService.getProductDTO(name);
+
+    @RequestMapping("/product/{id}")
+    public ProductDTO getProductDTO(@PathVariable Long id) {
+        return productService.getProductDTO(id);
     }
 
 
@@ -43,9 +44,30 @@ public class ProductController {
             @RequestParam String tastingNote,
             @RequestParam String temperature ){
 
-        if(name.isEmpty() || description.isEmpty() || img.isEmpty() || variety.isEmpty() || tastingNote.isEmpty() || temperature.isEmpty()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        if(name.isEmpty()){
+            return new ResponseEntity<>("Missing name", HttpStatus.FORBIDDEN);
         }
+
+        if(description.isEmpty()){
+            return new ResponseEntity<>("Missing description", HttpStatus.FORBIDDEN);
+        }
+
+        if(img.isEmpty()){
+            return new ResponseEntity<>("Missing img", HttpStatus.FORBIDDEN);
+        }
+
+        if(variety.isEmpty()){
+            return new ResponseEntity<>("Missing variety", HttpStatus.FORBIDDEN);
+        }
+
+        if(tastingNote.isEmpty()){
+            return new ResponseEntity<>("Missing tasting note", HttpStatus.FORBIDDEN);
+        }
+
+        if(temperature.isEmpty()){
+            return new ResponseEntity<>("Missing temperature", HttpStatus.FORBIDDEN);
+        }
+
 
         Product product = new Product(category, name, description, stock,price , discount, img, variety, tastingNote,temperature);
         productService.saveProduct(product);
@@ -59,9 +81,6 @@ public class ProductController {
             return new ResponseEntity<>("name is missing",HttpStatus.FORBIDDEN);
         }
 
-        if(productService.getProductDTO(name) == null){
-            return new ResponseEntity<>("product does not exist",HttpStatus.FORBIDDEN);
-        }
 
         productService.changeStock(stock, name);
         return new ResponseEntity<>("Stock changed", HttpStatus.CREATED);

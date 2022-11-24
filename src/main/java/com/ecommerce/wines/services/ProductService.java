@@ -9,7 +9,7 @@ public interface ProductService {
 
     public List<ProductDTO> getProductsDTO();
 
-    public ProductDTO getProductDTO(String name);
+    public ProductDTO getProductDTO(long id);
 
     public void saveProduct(Product product);
 
