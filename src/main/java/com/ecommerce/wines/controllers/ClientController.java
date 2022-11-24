@@ -17,16 +17,13 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-
     @GetMapping("/clients")
     public List<ClientDTO> getClientsDTO() {
-
         return clientService.getClientsDTO();
     }
 
     @GetMapping("/clients/{id}")
     public ClientDTO getClientDTO(@PathVariable Long id) {
-
         return clientService.getClientDTO(id);
     }
 

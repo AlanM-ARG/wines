@@ -1,8 +1,6 @@
 package com.ecommerce.wines;
 
 import com.ecommerce.wines.models.Category;
-import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.Moment;
 import com.ecommerce.wines.models.Product;
 import com.ecommerce.wines.repositories.ClientRepository;
 import com.ecommerce.wines.repositories.MomentRepository;
@@ -38,12 +36,12 @@ public class WinesApplication {
 					"Immediate transport to the winery where the grapes are subjected to temperature control. Table selection bunch by bunch. Fermentation at " +
 					"controlled temperature.", 10, 10.63, 1.0, "https://i.ibb.co/X4XrbQS/gaudila-2017.png", "100% Albariño ",
 					"Straw yellow color, clean and very bright. Elegance and character, shows aromas of fresh fruit, Citrus, intensely floral with " +
-					"good complexity, mineral, herbal notes.", "10-12 °C");
+							"good complexity, mineral, herbal notes.", "10-12 °C");
 			Product product3 = new Product(Category.red, "Gaudila sobre lías", "The grapes are destemmed upon entering the winery and macerated " +
 					"cold pre-fermentation of the must with the skins at a temperature 6ºC for 6 hours for greater extraction of aromatic precursors and " +
 					"fermentation at a low temperature of 13ºC.", 10, 12.4, 1.0, "https://i.ibb.co/MMVr5rx/gaudila-2013.png", "100% Albariño",
 					"Intense straw yellow, high aromatic intensity, with notes of very ripe fruit pear, peach, memory of aging on very clean lees. " +
-					"wide entry into mouth and enveloping, fatty and with volume, with an excellent mid palate, long and fruity aftertaste.", "10-12 °C");
+							"wide entry into mouth and enveloping, fatty and with volume, with an excellent mid palate, long and fruity aftertaste.", "10-12 °C");
 			Product product4 = new Product(Category.white, "Pájaro loco Godello", "The mixture of grapes is macerated at cold temperatures before " +
 					"being gently pressed by the method of bleeding. Then its must is taken to tanks stainless steel, where it is fermented for 2 weeks at cold " +
 					"temperatures, with the use of natural yeasts.", 10, 13.7, 1.0, "https://i.ibb.co/M9t9XRs/pajaro-blanco.png",
@@ -102,7 +100,7 @@ public class WinesApplication {
 			Product product20 = new Product(Category.white, "Conti Ducco Blanc de Blancs", "The complexity of the French oak, the long refinements with selected yeasts, the purity of the Chardonnay... create a perfect " +
 					"blend: the 2015 that is stripped bare, with a very elegant new shape.", 10, 25.84, 1.0, "https://i.ibb.co/GnxjrTK/Conti-Ducco-Blanc.png", "100% Chardonnay",
 					"Of a bright yellow color. Fine and persistent wine. An aroma of candied citrus, light hints of yeast given by the long refining, and a flavor in the mouth, the white-fleshed " +
-					"fruit joins the toasted and vanilla notes of the part in the barrel.", "6-8 °C");
+							"fruit joins the toasted and vanilla notes of the part in the barrel.", "6-8 °C");
 			Product product21 = new Product(Category.rose, "Conti Ducco Rosé", "It is the perfect fusion between femininity and structure, delicacy and complexity, elegance and persistence that best expresses all " +
 					"the poetry of Pinot Noir, now Millesimato.", 10, 32.25, 1.0, "https://i.ibb.co/1r17wTg/Conti-Ducco-Rose.png", "100% Pinot Nero", "An antique rose quartz color. Fine, abundant and persistent wine. " +
 					"A complex, very intense, fruity aroma and a fine, elegant and persistent taste.", "6-8 °C");
@@ -113,7 +111,7 @@ public class WinesApplication {
 			Product product23 = new Product(Category.white, "Conti Ducco Brut", "Produced in limited quantities, the high-quality wine project comes from a single vineyard of approximately" +
 					" 1.5 hectares, with yields per hectare of 50 quintals and a total production of 4,000 bottles.", 10, 31.23, 1.0, "https://i.ibb.co/tztsVkM/ducco-brut.png", "100% Chardonnay",
 					"Of a bright straw yellow color. Fine and persistent wine. The fresh and floral aroma of Chardonnay joins the " +
-					" notes given by the light touch of madora, the taste with a good acid structure favors a structured and elegant body.", "10-12 °C");
+							" notes given by the light touch of madora, the taste with a good acid structure favors a structured and elegant body.", "10-12 °C");
 
 			productRepository.save(product1);
 			productRepository.save(product2);

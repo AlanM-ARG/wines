@@ -2,6 +2,8 @@ package com.ecommerce.wines.DTOS;
 
 import com.ecommerce.wines.models.Category;
 import com.ecommerce.wines.models.Product;
+import com.ecommerce.wines.models.PurchaseOrder;
+
 
 public class ProductDTO {
 
@@ -27,10 +29,15 @@ public class ProductDTO {
 
     private String temperature;
 
+    private PurchaseOrder purchaseOrder;
+
     public ProductDTO() {
     }
 
+
+
     public ProductDTO(Product product) {
+        this.id = product.getId();
         this.category = product.getCategory();
         this.name = product.getName();
         this.description = product.getDescription();
@@ -41,9 +48,8 @@ public class ProductDTO {
         this.variety = product.getVariety();
         this.tastingNote = product.getTastingNote();
         this.temperature = product.getTemperature();
+        this.purchaseOrder = product.getPurchaseOrder();
     }
-
-
 
     public long getId() {
         return id;
@@ -127,5 +133,31 @@ public class ProductDTO {
 
     public void setTemperature(String temperature) {
         this.temperature = temperature;
+    }
+
+    public PurchaseOrder getPurchaseOrder() {
+        return purchaseOrder;
+    }
+
+    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+        this.purchaseOrder = purchaseOrder;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "id=" + id +
+                ", category=" + category +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", stock=" + stock +
+                ", price=" + price +
+                ", discount=" + discount +
+                ", img='" + img + '\'' +
+                ", variety='" + variety + '\'' +
+                ", tastingNote='" + tastingNote + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", purchaseOrder=" + purchaseOrder +
+                '}';
     }
 }
