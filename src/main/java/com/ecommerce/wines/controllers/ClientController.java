@@ -6,6 +6,7 @@ import com.ecommerce.wines.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class ClientController {
         return clientService.getClientDTO(id);
     }
 
-    @PostMapping("/client/create")
+    @PostMapping("/clients/create")
     public ResponseEntity<?> createClient(
             @RequestParam String firstName,
             @RequestParam String lastName,
@@ -63,13 +64,19 @@ public class ClientController {
         return new ResponseEntity<>("Client created", HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/client/delete")
+    @DeleteMapping("/clients/delete")
     public ResponseEntity<String> deleteClient(@RequestParam String email){
 
         Client client = clientService.clientFindByEmail(email);
         clientService.deleteClient(client);
 
         return new ResponseEntity<>("Delete client",HttpStatus.CREATED);
+
+    }
+
+    @RequestMapping("/clients/current")
+    public ClientDTO getAuthenticationClient(Authentication authentication){
+        return  new ClientDTO(clientService.clientFindByEmail(authentication.getName()));
 
     }
 
