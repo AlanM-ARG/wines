@@ -92,6 +92,11 @@ public class Client {
         this.image = image;
     }
 
+    public void addMoment(Moment moment) {
+        moment.setClient(this);
+        moments.add(moment);
+    }
+
     @Override
     public String toString() {
         return "Client{" +
