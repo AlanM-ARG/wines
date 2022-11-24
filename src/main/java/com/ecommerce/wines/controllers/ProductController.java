@@ -25,13 +25,13 @@ public class ProductController {
     }
 
 
-    @RequestMapping("/product/{id}")
+    @RequestMapping("/products/{id}")
     public ProductDTO getProductDTO(@PathVariable Long id) {
         return productService.getProductDTO(id);
     }
 
 
-    @PostMapping("/product/create")
+    @PostMapping("/products/create")
     public ResponseEntity<?> createProduct(
             @RequestParam Category category,
             @RequestParam String name,
@@ -74,7 +74,7 @@ public class ProductController {
         return new ResponseEntity<>("Create", HttpStatus.CREATED);
     }
 
-    @PatchMapping("/product/stock")
+    @PatchMapping("/products/stock")
     ResponseEntity<?> changeStock(@RequestParam int stock, @RequestParam String name){
 
         if(name.isEmpty()){
@@ -88,7 +88,7 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("/product/delete")
+    @DeleteMapping("/products/delete")
     ResponseEntity<String> deleteProduct(@RequestParam String name){
         Product product = productService.findByName(name);
         productService.deleteProduct(product);

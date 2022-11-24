@@ -5,10 +5,12 @@ import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.models.PaymentMethod;
 import com.ecommerce.wines.models.Product;
 import com.ecommerce.wines.models.PurchaseOrder;
+import com.ecommerce.wines.services.ClientService;
 import com.ecommerce.wines.services.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -23,6 +25,9 @@ public class PurchaseOrderController {
     @Autowired
     PurchaseOrderService purchaseOrderService;
 
+    @Autowired
+    ClientService clientService;
+
     @GetMapping("/purchaseOrder")
     public List<PurchaseOrderDTO> getPurchaseOrder(){
         return purchaseOrderService.getPurchaseOrder();
@@ -30,12 +35,13 @@ public class PurchaseOrderController {
 
 
     @PostMapping("/purchaseOrder/create")
-    public ResponseEntity<?> createPurchaseOrder(@RequestParam Client client,
+    public ResponseEntity<?> createPurchaseOrder(Authentication authentication,
                                                  @RequestParam double mount,
                                                  @RequestParam LocalDateTime date,
                                                  @RequestParam PaymentMethod method){
 
-        PurchaseOrder purchaseOrder = new PurchaseOrder(client, mount, date, method);
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        PurchaseOrder purchaseOrder = new PurchaseOrder(clientCurrent, mount, date, method);
         purchaseOrderService.savePurchaseOrder(purchaseOrder);
 
         return new ResponseEntity<>("Purchase order create", HttpStatus.CREATED);
