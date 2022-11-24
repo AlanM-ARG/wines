@@ -1,6 +1,7 @@
 package com.ecommerce.wines.services.Implement;
 
 import com.ecommerce.wines.DTOS.ClientDTO;
+import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.repositories.ClientRepository;
 import com.ecommerce.wines.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,15 @@ public class ClientServiceImplement implements ClientService {
     @Override
     public ClientDTO getClientDTO(Long id) {
         return clientRepository.findById(id).map(client -> new ClientDTO(client)).orElse(null);
+    }
+
+    @Override
+    public Client clientFindByEmail(String email) {
+        return clientRepository.findByEmail(email);
+    }
+
+    @Override
+    public void saveClient(Client client) {
+        clientRepository.save(client);
     }
 }

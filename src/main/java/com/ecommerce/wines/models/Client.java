@@ -1,11 +1,15 @@
 package com.ecommerce.wines.models;
+
+import com.ecommerce.wines.repositories.MomentRepository;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Client {
+
     @Id
     @GeneratedValue
     @GenericGenerator(name="native", strategy = "native")
@@ -18,6 +22,7 @@ public class Client {
     private String email;
 
     private  String password;
+
 
     @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
     Set<PurchaseOrder> purchaseOrders = new HashSet<>();
@@ -90,6 +95,11 @@ public class Client {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void addMoment(Moment moment) {
+        moment.setClient(this);
+        moments.add(moment);
     }
 
     @Override

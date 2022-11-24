@@ -32,6 +32,12 @@ public class Moment {
         this.client = client;
     }
 
+    public Moment(String img, String title, String description) {
+        this.img = img;
+        this.title = title;
+        this.description = description;
+    }
+
     public long getId() {
         return id;
     }
