@@ -25,8 +25,7 @@ public class Moment {
     public Moment() {
     }
 
-    public Moment(long id, String img, String title, String description, Client client) {
-        this.id = id;
+    public Moment(String img, String title, String description, Client client) {
         this.img = img;
         this.title = title;
         this.description = description;

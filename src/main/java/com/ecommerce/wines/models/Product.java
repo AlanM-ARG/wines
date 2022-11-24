@@ -38,6 +38,9 @@ public class Product {
     @JoinColumn(name="purchaseOrder_id")
     private PurchaseOrder purchaseOrder;
 
+    public Product() {
+    }
+
     public Product(Category category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, String temperature) {
         this.category = category;
         this.name = name;
@@ -49,6 +52,10 @@ public class Product {
         this.variety = variety;
         this.tastingNote = tastingNote;
         this.temperature = temperature;
+    }
+
+    public PurchaseOrder getPurchaseOrder() {
+        return purchaseOrder;
     }
 
     public long getId() {
