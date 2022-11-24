@@ -11,6 +11,7 @@ let app = createApp({
            password: '',
            firstName: '',
            lastName: '',
+           url: ''
             
 
         }
@@ -21,6 +22,14 @@ let app = createApp({
 
     },
     methods:{
+
+    login(){
+        axios.post(axios.post('/api/login',`email=${this.email}&password=${this.password}`).then(response => window.location.href = "http://localhost:8080/web/index.html").catch((error)=>  console.log(error)))
+    },
+    register(){
+        axios.post('/api/clients',`firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`).then(response => this.signIn()).catch((error)=> this.errorRegister = true)
+    }
+
        
         
         

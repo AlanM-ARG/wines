@@ -213,11 +213,70 @@ button{
         display: flex;
         justify-content: center;
     }
+    /* Squares */
+    .square{
+        width: 50%;
+        height: 33.3%;
+        background-color: rgb(242, 213, 86);
+        transition: 1s;
+        transform: translate(0px, 0, 0px);
+        
+    }
+    .rectangle{
+        width: 50%;
+        height: 66.6!important;
+        
+    }
+    .square-1{
+        
+        border-right: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        background-image: url(https://images.squarespace-cdn.com/content/v1/5333c4eae4b0ecb20d5b5ce0/1551219286542-8A40BQ28N46SAAFFVFI9/Bennett+Lane-42+copy.jpg?format=1500w);
+        background-size: cover;
+    }
+    .square-2{
+       
+        border-bottom: 1px solid #000000;
+        background-image: url(https://cdn.sanity.io/images/tduq6a61/production/fa13285a37c6d16ce8ba569d9789f033d6fd6b2a-1980x1320.jpg?w=800&q=80&fit=max&auto=format);
+        background-position: 50% 50%;
+        background-size: cover;
+    }
+    .square-3{
+        background-image: url(https://cdn.sanity.io/images/tduq6a61/production/70fe0090b7e20a5965177d73fa13d7025877113a-912x904.png?w=1000&fit=max&auto=format);
+        background-size: cover;
+        background-position: 0%;
+        border-right: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+    }
+    .square-4{
+        height: 66.6%;
+        background-image: url(https://i.ibb.co/MMVr5rx/gaudila-2013.png);
+        background-position: 0% 85%;
+        background-size: cover;
+    }
+    .square-5{
+        background-image: url(https://cdn.sanity.io/images/tduq6a61/production/6827d7123fa0a3fa67395ec3ba5cc0be7900992c-1281x1920.jpg?rect=28,197,1253,1422&w=1000&fit=max&auto=format);
+        background-size: cover;
+        background-position: 0%;
+        border-right: 1px solid #000000;
+    }
+
+    /* Hover */
+    /* .square:hover{
+        transform:  translate3d(0px, 0, 0px) ;
+        transform: rotateY(32deg);
+    } */
+    
+    
+    
 }
 @media screen and (min-width : 1920px){
 
     .bgYellow{
         height: 75.5vh!important;
+    }
+    .square{
+        height: 33.4%;
     }
 
 }
