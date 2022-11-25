@@ -3,6 +3,7 @@ package com.ecommerce.wines.controllers;
 import com.ecommerce.wines.DTOS.ClientDTO;
 import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.services.ClientService;
+import com.ecommerce.wines.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -18,6 +22,9 @@ public class ClientController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    EmailService emailService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -62,10 +69,31 @@ public class ClientController {
             return new ResponseEntity<>("Missing image", HttpStatus.FORBIDDEN);
         }
 
-        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),img, true);
+        String token = UUID.randomUUID().toString();
+
+        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),img,token,false);
+
         clientService.saveClient(client);
 
+        String link = "http://localhost:8080/api/clients/confirm/" + token;
+
+        emailService.sendEmail(client.getEmail(), "Confirm you Email", "Click on the following link to confirm your account " + link);
+
         return new ResponseEntity<>("Client created", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/api/clients/confirm/{token}")
+    public ResponseEntity<?> confirmClient (@PathVariable String token, HttpServletResponse response) throws IOException {
+
+        Client client = clientService.findByToken(token);
+
+        client.setActive(true);
+
+        clientService.saveClient(client);
+
+        response.sendRedirect("/web/pages/login-register.html?confirmed");
+
+        return new ResponseEntity<>("confirmed", HttpStatus.OK);
     }
 
     @DeleteMapping("/clients/delete")

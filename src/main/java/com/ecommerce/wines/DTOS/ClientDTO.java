@@ -22,6 +22,8 @@ public class ClientDTO {
 
     private String image;
 
+    private String token;
+
     private boolean active;
 
     private Set<PurchaseOrder> purchaseOrders;
@@ -41,11 +43,7 @@ public class ClientDTO {
         this.active = client.isActive();
         this.purchaseOrders = client.getPurchaseOrders();
         this.moments = client.getMoments();
-    }
-
-
-    public Set<Moment> getMoments() {
-        return moments;
+        this.token = client.getToken();
     }
 
     public long getId() {
@@ -56,40 +54,24 @@ public class ClientDTO {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public String getToken() {
+        return token;
     }
 
     public boolean isActive() {
@@ -100,7 +82,7 @@ public class ClientDTO {
         return purchaseOrders;
     }
 
-    public void setPurchaseOrders(Set<PurchaseOrder> purchaseOrders) {
-        this.purchaseOrders = purchaseOrders;
+    public Set<Moment> getMoments() {
+        return moments;
     }
 }

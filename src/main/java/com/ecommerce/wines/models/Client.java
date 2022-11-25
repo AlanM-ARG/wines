@@ -27,18 +27,21 @@ public class Client {
 
     private String image;
 
+    private String token;
+
     private boolean active;
 
 
     public Client() {
     }
 
-    public Client(String firstName, String lastName, String email, String password, String image, boolean active) {
+    public Client(String firstName, String lastName, String email, String password, String image, String token, boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.image = image;
+        this.token = token;
         this.active = active;
     }
 
@@ -74,6 +77,10 @@ public class Client {
         return moments;
     }
 
+    public String getToken() {
+        return token;
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -99,9 +106,15 @@ public class Client {
         this.image = image;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public void setActive(boolean active) {
         this.active = active;
     }
+
+
 
     public void addMoment(Moment moment) {
         moment.setClient(this);

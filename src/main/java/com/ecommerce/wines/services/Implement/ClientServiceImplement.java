@@ -41,4 +41,9 @@ public class ClientServiceImplement implements ClientService {
     public void deleteClient(Client client) {
         clientRepository.delete(client);
     }
+
+    @Override
+    public Client findByToken(String token) {
+        return clientRepository.findByToken(token);
+    }
 }
