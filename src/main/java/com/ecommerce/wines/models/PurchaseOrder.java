@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Entity
 public class PurchaseOrder {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")

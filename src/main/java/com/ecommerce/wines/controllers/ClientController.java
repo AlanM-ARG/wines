@@ -1,12 +1,14 @@
 package com.ecommerce.wines.controllers;
 
 import com.ecommerce.wines.DTOS.ClientDTO;
+import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,18 +19,94 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/clients")
     public List<ClientDTO> getClientsDTO() {
-
         return clientService.getClientsDTO();
     }
 
     @GetMapping("/clients/{id}")
     public ClientDTO getClientDTO(@PathVariable Long id) {
-
         return clientService.getClientDTO(id);
     }
+
+    @PostMapping("/clients/create")
+    public ResponseEntity<?> createClient(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String img
+    ){
+        if(clientService.clientFindByEmail(email) != null){
+            return new ResponseEntity<>("Email in use",HttpStatus.FORBIDDEN);
+
+        }
+
+        if (firstName.isEmpty()){
+            return new ResponseEntity<>("Missing firist name", HttpStatus.FORBIDDEN);
+        }
+        if (lastName.isEmpty()){
+            return new ResponseEntity<>("Missing last name", HttpStatus.FORBIDDEN);
+        }
+        if (email.isEmpty()){
+            return new ResponseEntity<>("Missing email", HttpStatus.FORBIDDEN);
+        }
+        if (password.isEmpty()){
+            return new ResponseEntity<>("Missing password", HttpStatus.FORBIDDEN);
+        }
+
+        if (img.isEmpty()){
+            return new ResponseEntity<>("Missing image", HttpStatus.FORBIDDEN);
+        }
+
+        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),img, true);
+        clientService.saveClient(client);
+
+        return new ResponseEntity<>("Client created", HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/clients/delete")
+    public ResponseEntity<String> deleteClient(@RequestParam String email){
+
+        Client client = clientService.clientFindByEmail(email);
+        clientService.deleteClient(client);
+
+        return new ResponseEntity<>("Delete client",HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/clients/delete")
+    public ResponseEntity<?> disabledClient(@RequestParam String email){
+
+        Client clientCurrent = clientService.clientFindByEmail(email);
+        if(clientCurrent == null){
+            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+        }
+        if(email.isEmpty()){
+            return new ResponseEntity<>("Missing email", HttpStatus.FORBIDDEN);
+        }
+        clientCurrent.setActive(false);
+        clientService.saveClient(clientCurrent);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping("/clients/current")
+    public ClientDTO getAuthenticationClient(Authentication authentication){
+        return  new ClientDTO(clientService.clientFindByEmail(authentication.getName()));
+    }
+
+
+    @PatchMapping("/clients/current/changepassword")
+    public ResponseEntity<?> changePassword(Authentication authentication, @RequestParam String password){
+        Client clientcurrent = clientService.clientFindByEmail(authentication.getName());
+        clientcurrent.setPassword(passwordEncoder.encode(password));
+        clientService.saveClient(clientcurrent);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
 

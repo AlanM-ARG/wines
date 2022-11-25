@@ -14,5 +14,7 @@ public interface ClientService {
 
     public void saveClient(Client client);
 
+    public void deleteClient(Client client);
+
 
 }

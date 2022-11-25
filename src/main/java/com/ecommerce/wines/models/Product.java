@@ -34,11 +34,16 @@ public class Product {
 
     private String temperature;
 
+    private boolean active;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="purchaseOrder_id")
     private PurchaseOrder purchaseOrder;
 
-    public Product(Category category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, String temperature) {
+    public Product() {
+    }
+
+    public Product(Category category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, String temperature, boolean active) {
         this.category = category;
         this.name = name;
         this.description = description;
@@ -49,6 +54,11 @@ public class Product {
         this.variety = variety;
         this.tastingNote = tastingNote;
         this.temperature = temperature;
+        this.active = active;
+    }
+
+    public PurchaseOrder getPurchaseOrder() {
+        return purchaseOrder;
     }
 
     public long getId() {
@@ -135,6 +145,13 @@ public class Product {
         this.temperature = temperature;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     @Override
     public String toString() {
