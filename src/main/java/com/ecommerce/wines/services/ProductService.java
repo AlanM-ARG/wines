@@ -18,4 +18,6 @@ public interface ProductService {
     public Product findByName(String name);
 
     public void deleteProduct(Product product);
+
+    public List<Product> getAllProducts();
 }
