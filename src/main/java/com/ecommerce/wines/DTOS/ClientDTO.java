@@ -22,6 +22,8 @@ public class ClientDTO {
 
     private String image;
 
+    private boolean active;
+
     private Set<PurchaseOrder> purchaseOrders;
 
     private Set<Moment> moments;
@@ -36,6 +38,7 @@ public class ClientDTO {
         this.email = client.getEmail();
         this.password = client.getPassword();
         this.image = client.getImage();
+        this.active = client.isActive();
         this.purchaseOrders = client.getPurchaseOrders();
         this.moments = client.getMoments();
     }
@@ -87,6 +90,10 @@ public class ClientDTO {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     public Set<PurchaseOrder> getPurchaseOrders() {

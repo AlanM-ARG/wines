@@ -69,13 +69,13 @@ public class ProductController {
         }
 
 
-        Product product = new Product(category, name, description, stock,price , discount, img, variety, tastingNote,temperature);
+        Product product = new Product(category, name, description, stock,price , discount, img, variety, tastingNote,temperature, true);
         productService.saveProduct(product);
         return new ResponseEntity<>("Create", HttpStatus.CREATED);
     }
 
     @PatchMapping("/products/stock")
-    ResponseEntity<?> changeStock(@RequestParam int stock, @RequestParam String name){
+    public ResponseEntity<?> changeStock(@RequestParam int stock, @RequestParam String name){
 
         if(name.isEmpty()){
             return new ResponseEntity<>("name is missing",HttpStatus.FORBIDDEN);
@@ -84,17 +84,30 @@ public class ProductController {
 
         productService.changeStock(stock, name);
         return new ResponseEntity<>("Stock changed", HttpStatus.CREATED);
-
-
     }
 
     @DeleteMapping("/products/delete")
-    ResponseEntity<String> deleteProduct(@RequestParam String name){
+    public ResponseEntity<String> deleteProduct(@RequestParam String name){
         Product product = productService.findByName(name);
         productService.deleteProduct(product);
         return new ResponseEntity<>("Product delete",HttpStatus.CREATED);
-
     }
+
+    @PatchMapping("/products/delete")
+    public ResponseEntity<?> disabledProduct(@RequestParam String name){
+        Product product = productService.findByName(name);
+        if(product == null){
+            return new ResponseEntity<>("Product not found",HttpStatus.FORBIDDEN);
+        }
+        if(name.isEmpty()){
+            return new ResponseEntity<>("Missing name",HttpStatus.FORBIDDEN);
+        }
+        product.setActive(false);
+        productService.saveProduct(product);
+        return new ResponseEntity<>("Product delete",HttpStatus.CREATED);
+    }
+
+
 
 
 

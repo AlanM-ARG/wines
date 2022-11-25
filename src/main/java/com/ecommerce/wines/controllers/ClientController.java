@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public class ClientController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/clients")
     public List<ClientDTO> getClientsDTO() {
@@ -58,7 +62,7 @@ public class ClientController {
             return new ResponseEntity<>("Missing image", HttpStatus.FORBIDDEN);
         }
 
-        Client client = new Client(firstName,lastName,email,password,img);
+        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),img, true);
         clientService.saveClient(client);
 
         return new ResponseEntity<>("Client created", HttpStatus.CREATED);
@@ -71,14 +75,38 @@ public class ClientController {
         clientService.deleteClient(client);
 
         return new ResponseEntity<>("Delete client",HttpStatus.CREATED);
+    }
 
+    @PatchMapping("/clients/delete")
+    public ResponseEntity<?> disabledClient(@RequestParam String email){
+
+        Client clientCurrent = clientService.clientFindByEmail(email);
+        if(clientCurrent == null){
+            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+        }
+        if(email.isEmpty()){
+            return new ResponseEntity<>("Missing email", HttpStatus.FORBIDDEN);
+        }
+        clientCurrent.setActive(false);
+        clientService.saveClient(clientCurrent);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping("/clients/current")
     public ClientDTO getAuthenticationClient(Authentication authentication){
         return  new ClientDTO(clientService.clientFindByEmail(authentication.getName()));
-
     }
+
+
+    @PatchMapping("/clients/current/changepassword")
+    public ResponseEntity<?> changePassword(Authentication authentication, @RequestParam String password){
+        Client clientcurrent = clientService.clientFindByEmail(authentication.getName());
+        clientcurrent.setPassword(passwordEncoder.encode(password));
+        clientService.saveClient(clientcurrent);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
 
