@@ -52,4 +52,9 @@ public class ProductServiceImplement implements ProductService {
     public void deleteProduct(Product product) {
         productRepository.delete(product);
     }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 }
