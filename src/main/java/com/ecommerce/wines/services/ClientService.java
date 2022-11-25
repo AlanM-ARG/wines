@@ -16,5 +16,7 @@ public interface ClientService {
 
     public void deleteClient(Client client);
 
+    Client findByToken(String token);
+
 
 }
