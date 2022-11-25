@@ -27,16 +27,19 @@ public class Client {
 
     private String image;
 
+    private boolean active;
+
 
     public Client() {
     }
 
-    public Client(String firstName, String lastName, String email, String password, String image) {
+    public Client(String firstName, String lastName, String email, String password, String image, boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.image = image;
+        this.active = active;
     }
 
     public long getId() {
@@ -71,6 +74,10 @@ public class Client {
         return moments;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -90,6 +97,10 @@ public class Client {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public void addMoment(Moment moment) {

@@ -31,6 +31,8 @@ public class ProductDTO {
 
     private PurchaseOrder purchaseOrder;
 
+    private boolean active;
+
     public ProductDTO() {
     }
 
@@ -49,6 +51,7 @@ public class ProductDTO {
         this.tastingNote = product.getTastingNote();
         this.temperature = product.getTemperature();
         this.purchaseOrder = product.getPurchaseOrder();
+        this.active = product.isActive();
     }
 
     public long getId() {
@@ -141,6 +144,10 @@ public class ProductDTO {
 
     public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
         this.purchaseOrder = purchaseOrder;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 
     @Override
