@@ -13,16 +13,27 @@
     
 }
 
-.border-default{
-    border-top: 1px solid #000;
-    
-}
+
 
 .bgYellow{
     background-color: rgb(242, 213, 86);
 }
 
 
+/* Borders */
+.border-default{
+    border-top: 1px solid #000;
+    
+}
+.border-down{
+    border-bottom: 1px solid #000;
+}
+.btn-left{
+    border-right: 1px solid #000!important;
+}
+.border-right{
+    border-left: 1px solid #000!important;
+}
 
 /* Bars */
 
@@ -48,9 +59,14 @@ button{
     border-bottom: 0!important;
 }
 
-.btn-left{
-    border-right: 1px solid #000!important;
+.btnClick2{
+    background-color: rgb(242, 213, 86);
+    height: 66%!important;
+    border-right: 0!important;
+    
 }
+
+
 
 .active-button{
     background-color: rgb(242, 213, 86);
@@ -67,38 +83,6 @@ button{
     color: #E4E1DB;
 }
 
-
-
-/* Forms */
-.input-container{
-	position:relative;
-	margin-bottom:25px;
-}
-.input-container label{
-	position:absolute;
-	top:0px;
-	left:0px;
-	font-size:16px;
-    font-style: italic;
-	color:rgb(39, 39, 38);	
-    pointer-event:none;
-	transition: all 0.2s ease-in-out;
-}
-.input-container input{ 
-  border:0;
-  border-bottom:1px solid #555;  
-  background:transparent;
-  width:100%;
-  padding:8px 0 5px 0;
-  font-size:16px;
-  font-style: italic;
-  color:rgb(39, 39, 38);
-}
-.input-container input:focus{ 
- border:none;	
- outline:none;
- border-bottom:1px solid #000000;	
-}
 .btn{
 	color:rgb(39, 39, 38);
 	background-color:#000000;
@@ -119,11 +103,35 @@ button{
 	
 }
 
+/* Titles */
+.font-italic{
+    font-style: italic;
+    
+}
+.main-title{
+    border-bottom: 1px solid #000000;
+    display: flex;
+    transition: 0.5s;
+    
+}
+.link{
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+
+
+
 /* Display None */
 .left-bar{
     display: none;
 }
 .right-bar{
+    display: none;
+}
+.map{
     display: none;
 }
 
@@ -133,7 +141,7 @@ button{
 
     .left-bar{
         display: flex;
-        border-right: 1px solid #000000;
+        /* border-right: 1px solid #000000; */
         border-top: 1px solid #000000;
         border-bottom: 1px solid #000000;
         width: 20%!important;
@@ -144,6 +152,11 @@ button{
         max-width:80%;
         border-bottom: 1px solid #000000;
     }
+    .border-default{
+        border-top:1px solid #000000;
+    }
+    
+    
     /* Header */
     .left-header{
         width: 20%;
@@ -160,6 +173,14 @@ button{
         width: 70vw;
         
     }
+    .button{
+        border-bottom: 0!important ;
+        
+    }
+    /* Display None */
+    .top-nav{
+        display: none!important;
+    }
 }
 
 /* Responsive 1440 */
@@ -170,19 +191,22 @@ button{
         border-left: 1px solid #000000;
         border-top: 1px solid #000000;
         border-bottom: 1px solid #000000;
-        width: 35%!important;
+        width: 40%!important;
         height: 80vh;
 
     }
     .center-bar{
-        max-width: 45%!important;
+        max-width: 50%!important;
         
     }
     .left-bar{
-        width: 20%!important;
+        width: 10%!important;
     }
     .aligner-1440{
         justify-content: center!important;
+    }
+    .height-contact{
+        max-height: 71.4vh;
     }
     /* Forms */
     .input-container{
@@ -198,14 +222,14 @@ button{
     }
     /* Header */
     .right-header{
-        width: 35%;
+        width: 40%;
         border-left: 1px solid #000000;
     }
     .center-header{
-        width: 45%;
+        width: 50%;
     }
     .left-header{
-        width: 20%;
+        width: 10%;
     }
     /* Button */
     .submit-btn{
@@ -213,59 +237,27 @@ button{
         display: flex;
         justify-content: center;
     }
-    /* Squares */
-    .square{
-        width: 50%;
-        height: 33.3%;
-        background-color: rgb(242, 213, 86);
-        transition: 1s;
-        transform: translate(0px, 0, 0px);
+    /* Maps */
+    .map {
+        display: flex;
+        -webkit-filter: grayscale(100%);
+    }
+    /* Titles */
+    .titleLeft{
+        justify-content: start!important;
         
     }
-    .rectangle{
-        width: 50%;
-        height: 66.6!important;
-        
+    .titleCenter{
+        justify-content: center!important;
     }
-    .square-1{
-        
-        border-right: 1px solid #000000;
-        border-bottom: 1px solid #000000;
-        background-image: url(https://images.squarespace-cdn.com/content/v1/5333c4eae4b0ecb20d5b5ce0/1551219286542-8A40BQ28N46SAAFFVFI9/Bennett+Lane-42+copy.jpg?format=1500w);
-        background-size: cover;
+    .titleRight{
+        justify-content: end!important;
     }
-    .square-2{
-       
-        border-bottom: 1px solid #000000;
-        background-image: url(https://cdn.sanity.io/images/tduq6a61/production/fa13285a37c6d16ce8ba569d9789f033d6fd6b2a-1980x1320.jpg?w=800&q=80&fit=max&auto=format);
-        background-position: 50% 50%;
-        background-size: cover;
-    }
-    .square-3{
-        background-image: url(https://cdn.sanity.io/images/tduq6a61/production/70fe0090b7e20a5965177d73fa13d7025877113a-912x904.png?w=1000&fit=max&auto=format);
-        background-size: cover;
-        background-position: 0%;
-        border-right: 1px solid #000000;
-        border-bottom: 1px solid #000000;
-    }
-    .square-4{
-        height: 66.6%;
-        background-image: url(https://i.ibb.co/MMVr5rx/gaudila-2013.png);
-        background-position: 0% 85%;
-        background-size: cover;
-    }
-    .square-5{
-        background-image: url(https://cdn.sanity.io/images/tduq6a61/production/6827d7123fa0a3fa67395ec3ba5cc0be7900992c-1281x1920.jpg?rect=28,197,1253,1422&w=1000&fit=max&auto=format);
-        background-size: cover;
-        background-position: 0%;
-        border-right: 1px solid #000000;
-    }
+    
+    
+    
 
-    /* Hover */
-    .square:hover{
-        transform:  translate3d(0px, 0, 0px) ;
-        transform: rotateY(32deg);
-    }
+   
     
     
     
@@ -273,18 +265,13 @@ button{
 @media screen and (min-width : 1920px){
 
     .bgYellow{
-        height: 75.5vh!important;
-    }
-    .square{
-        height: 33.4%;
+        height: 8.4vh;
     }
 
 }
 
 @media screen and (min-width : 2560px){
-    .bgYellow{
-        height: 74.6vh!important;
-    }
+    
 
 }
 
