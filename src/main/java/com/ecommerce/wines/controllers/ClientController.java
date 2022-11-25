@@ -82,7 +82,7 @@ public class ClientController {
         return new ResponseEntity<>("Client created", HttpStatus.CREATED);
     }
 
-    @GetMapping("/api/clients/confirm/{token}")
+    @GetMapping("/clients/confirm/{token}")
     public ResponseEntity<?> confirmClient (@PathVariable String token, HttpServletResponse response) throws IOException {
 
         Client client = clientService.findByToken(token);
@@ -91,18 +91,9 @@ public class ClientController {
 
         clientService.saveClient(client);
 
-        response.sendRedirect("/web/pages/login-register.html?confirmed");
+        response.sendRedirect("/web/pages/login-register.html?confirmed=true");
 
         return new ResponseEntity<>("confirmed", HttpStatus.OK);
-    }
-
-    @DeleteMapping("/clients/delete")
-    public ResponseEntity<String> deleteClient(@RequestParam String email){
-
-        Client client = clientService.clientFindByEmail(email);
-        clientService.deleteClient(client);
-
-        return new ResponseEntity<>("Delete client",HttpStatus.CREATED);
     }
 
     @PatchMapping("/clients/delete")

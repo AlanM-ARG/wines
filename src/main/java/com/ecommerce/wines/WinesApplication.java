@@ -31,7 +31,7 @@ public class WinesApplication {
 			//Clientes
 
 
-			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", true);
+			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 			clientRepository.save(client1);
 
 
