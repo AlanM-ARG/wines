@@ -31,6 +31,9 @@ public class Client {
 
     private boolean active;
 
+    @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
+    Set<Favs> favss = new HashSet<>();
+
 
     public Client() {
     }
@@ -114,11 +117,22 @@ public class Client {
         this.active = active;
     }
 
+    public Set<Favs> getFavss() {
+        return favss;
+    }
 
+    public void setFavss(Set<Favs> favss) {
+        this.favss = favss;
+    }
 
     public void addMoment(Moment moment) {
         moment.setClient(this);
         moments.add(moment);
+    }
+
+    public void addFavs(Favs favs) {
+        favs.setClient(this);
+        favss.add(favs);
     }
 
     @Override

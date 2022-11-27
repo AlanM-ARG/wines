@@ -19,5 +19,7 @@ public interface ProductService {
 
     public void deleteProduct(Product product);
 
+    public List<Product> getAllProducts();
+
     Product findById(Long id);
 }
