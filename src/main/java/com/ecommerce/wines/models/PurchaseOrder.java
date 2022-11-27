@@ -5,7 +5,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,7 +24,7 @@ public class PurchaseOrder {
     private double mount;
 
     @OneToMany(mappedBy="purchaseOrder", fetch= FetchType.EAGER)
-    Set<Product> products = new HashSet<>();
+    List<Product> products = new ArrayList<>();
 
     private LocalDateTime localDateTime;
 
@@ -39,7 +41,7 @@ public class PurchaseOrder {
     }
 
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
@@ -78,6 +80,10 @@ public class PurchaseOrder {
 
     public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override

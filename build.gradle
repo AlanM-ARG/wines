@@ -8,8 +8,15 @@ group = 'com.ecommerce'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+
 repositories {
 	mavenCentral()
+}
+
+bootRun {
+
+	sourceResources sourceSets.main
+
 }
 
 dependencies {
@@ -19,7 +26,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-mail:1.2.0.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.5'
 	implementation 'com.itextpdf:itextpdf:5.5.13.3'
 	implementation 'com.cloudinary:cloudinary-http44:1.33.0'
 }

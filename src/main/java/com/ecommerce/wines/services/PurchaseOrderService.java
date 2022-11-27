@@ -9,4 +9,6 @@ public interface PurchaseOrderService {
     public List<PurchaseOrderDTO> getPurchaseOrder();
 
     public void savePurchaseOrder(PurchaseOrder purchaseOrder);
+
+    PurchaseOrder findById(Long id);
 }

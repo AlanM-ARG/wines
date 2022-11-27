@@ -49,7 +49,6 @@ public class ClientController {
     ){
         if(clientService.clientFindByEmail(email) != null){
             return new ResponseEntity<>("Email in use",HttpStatus.FORBIDDEN);
-
         }
 
         if (firstName.isEmpty()){
@@ -116,17 +115,12 @@ public class ClientController {
         return  new ClientDTO(clientService.clientFindByEmail(authentication.getName()));
     }
 
-
-    @PatchMapping("/clients/current/changepassword")
+    @PatchMapping("/clients/current/changePassword")
     public ResponseEntity<?> changePassword(Authentication authentication, @RequestParam String password){
-        Client clientcurrent = clientService.clientFindByEmail(authentication.getName());
-        clientcurrent.setPassword(passwordEncoder.encode(password));
-        clientService.saveClient(clientcurrent);
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        clientCurrent.setPassword(passwordEncoder.encode(password));
+        clientService.saveClient(clientCurrent);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-
-
 
 }
