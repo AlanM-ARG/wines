@@ -52,4 +52,9 @@ public class ProductServiceImplement implements ProductService {
     public void deleteProduct(Product product) {
         productRepository.delete(product);
     }
+
+    @Override
+    public Product findById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
 }

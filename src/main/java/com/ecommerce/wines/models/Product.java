@@ -36,7 +36,7 @@ public class Product {
 
     private boolean active;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "products",fetch = FetchType.EAGER)
     @JoinColumn(name="purchaseOrder_id")
     private PurchaseOrder purchaseOrder;
 

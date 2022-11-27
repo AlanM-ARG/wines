@@ -7,6 +7,7 @@ import com.ecommerce.wines.models.PurchaseOrder;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public class PurchaseOrderDTO {
@@ -21,7 +22,7 @@ public class PurchaseOrderDTO {
 
     private PaymentMethod paymentMethod;
 
-    private Set<Product> products;
+    private List<Product> products;
 
     public PurchaseOrderDTO() {
     }
@@ -72,11 +73,8 @@ public class PurchaseOrderDTO {
         this.paymentMethod = paymentMethod;
     }
 
-    public Set<Product> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
 }
