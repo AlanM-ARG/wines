@@ -33,7 +33,7 @@ public class PurchaseOrderDTO {
         this.amount = purchaseOrder.getAmount();
         this.localDateTime = purchaseOrder.getLocalDateTime();
         this.paymentMethod = purchaseOrder.getPaymentMethod();
-        this.products = purchaseOrder.getProducts();
+
     }
 
     public long getId() {

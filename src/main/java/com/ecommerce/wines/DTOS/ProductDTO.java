@@ -48,7 +48,7 @@ public class ProductDTO {
         this.variety = product.getVariety();
         this.tastingNote = product.getTastingNote();
         this.temperature = product.getTemperature();
-        this.purchaseOrder = product.getPurchaseOrder();
+
         this.active = product.isActive();
     }
 

@@ -12,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -46,9 +44,6 @@ public class ProductController {
             @RequestParam String tastingNote,
             @RequestParam String temperature ){
 
-        List<Product> products = productService.getAllProducts();
-
-        // valores vacios
         if(name.isEmpty()){
             return new ResponseEntity<>("Missing name", HttpStatus.FORBIDDEN);
         }
@@ -71,24 +66,6 @@ public class ProductController {
 
         if(temperature.isEmpty()){
             return new ResponseEntity<>("Missing temperature", HttpStatus.FORBIDDEN);
-        }
-
-        if(stock <=0){
-            return new ResponseEntity<>("Invalid stock", HttpStatus.FORBIDDEN);
-        }
-
-        if(price <= 0){
-            return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
-        }
-
-        if(category.toString().isEmpty()){
-            return new ResponseEntity<>("Missing category", HttpStatus.FORBIDDEN);
-        }
-
-        //demas if
-
-        if(products.stream().map(product -> product.getName()).collect(Collectors.toSet()).contains(name)){
-            return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
         }
 
 
@@ -128,64 +105,6 @@ public class ProductController {
         product.setActive(false);
         productService.saveProduct(product);
         return new ResponseEntity<>("Product delete",HttpStatus.CREATED);
-    }
-
-
-    @PatchMapping("/products/modify")
-    public ResponseEntity<?> modifyProduct(@RequestParam String name, @RequestParam int stock, @RequestParam String newName, @RequestParam double price,@RequestParam String variety,
-                                           @RequestParam String tastingNotes, @RequestParam String temperature, @RequestParam String description, @RequestParam String img){
-
-        Product product = productService.findByName(name);
-        List<Product> products = productService.getAllProducts();
-
-        if (name.isEmpty()){
-            return new ResponseEntity<>("Name is missing",HttpStatus.FORBIDDEN);
-        }
-        if (stock < 0){
-            return new ResponseEntity<>("Invalid Stock",HttpStatus.FORBIDDEN);
-        }
-        if (price <= 0){
-            return new ResponseEntity<>("Invalid Price", HttpStatus.FORBIDDEN);
-        }
-        if (!products.stream().map(product1 -> product1.getName()).collect(Collectors.toSet()).contains(name)){
-            return new ResponseEntity<>("The product does not exist", HttpStatus.FORBIDDEN);
-
-        }
-        if (products.stream().map(product1 -> product1.getName()).collect(Collectors.toSet()).contains(newName)){
-            return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
-        }
-        if (newName.isEmpty()){
-            newName = product.getName();
-        }
-        if (variety.isEmpty()){
-            variety = product.getVariety();
-        }
-        if (tastingNotes.isEmpty()){
-            tastingNotes = product.getTastingNote();
-        }
-        if (temperature.isEmpty()){
-            temperature = product.getTemperature();
-        }
-        if (description.isEmpty()){
-            description = product.getDescription();
-        }
-        if (img.isEmpty()){
-            img = product.getImg();
-        }
-
-
-        product.setName(newName);
-        product.setStock(stock);
-        product.setPrice(price);
-        product.setVariety(variety);
-        product.setTastingNote(tastingNotes);
-        product.setTemperature(temperature);
-        product.setDescription(description);
-        product.setImg(img);
-        productService.saveProduct(product);
-
-
-        return new ResponseEntity<>("Change saved", HttpStatus.CREATED);
     }
 
 

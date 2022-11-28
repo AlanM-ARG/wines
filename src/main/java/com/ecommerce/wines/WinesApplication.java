@@ -151,11 +151,6 @@ public class WinesApplication {
 			productRepository.save(product22);
 			productRepository.save(product23);
 
-
-			PurchaseOrder purchaseOrder = new PurchaseOrder(client1, 100, LocalDateTime.now(), PaymentMethod.CASH);
-			purchaseOrderRepository.save(purchaseOrder);
-
-			System.out.println(purchaseOrder.getProducts());
 		};
 	}
 
