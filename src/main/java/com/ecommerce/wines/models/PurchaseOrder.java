@@ -21,10 +21,9 @@ public class PurchaseOrder {
     @JoinColumn(name="client_id")
     private Client client;
 
-    private double mount;
+    private double amount;
 
-    @OneToMany(mappedBy="purchaseOrder", fetch= FetchType.EAGER)
-    List<Product> products = new ArrayList<>();
+
 
     private LocalDateTime localDateTime;
 
@@ -33,17 +32,15 @@ public class PurchaseOrder {
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(Client client, double mount, LocalDateTime localDateTime, PaymentMethod paymentMethod) {
+    public PurchaseOrder(Client client, double amount, LocalDateTime localDateTime, PaymentMethod paymentMethod) {
         this.client = client;
-        this.mount = mount;
+        this.amount = amount;
         this.localDateTime = localDateTime;
         this.paymentMethod = paymentMethod;
     }
 
 
-    public List<Product> getProducts() {
-        return products;
-    }
+
 
     public long getId() {
         return id;
@@ -57,12 +54,12 @@ public class PurchaseOrder {
         this.client = client;
     }
 
-    public double getMount() {
-        return mount;
+    public double getAmount() {
+        return amount;
     }
 
     public void setMount(double mount) {
-        this.mount = mount;
+        this.amount = mount;
     }
 
 
@@ -82,17 +79,15 @@ public class PurchaseOrder {
         this.paymentMethod = paymentMethod;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+
 
     @Override
     public String toString() {
         return "PurchaseOrder{" +
                 "id=" + id +
                 ", client=" + client +
-                ", mount=" + mount +
-                ", products=" + products +
+                ", amount=" + amount +
+
                 ", localDateTime=" + localDateTime +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 '}';

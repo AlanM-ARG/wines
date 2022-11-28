@@ -12,7 +12,7 @@ public class Moment {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    private String img;
+    private String image;
 
     private String title;
 
@@ -25,15 +25,15 @@ public class Moment {
     public Moment() {
     }
 
-    public Moment(String img, String title, String description, Client client) {
-        this.img = img;
+    public Moment(String image, String title, String description, Client client) {
+        this.image = image;
         this.title = title;
         this.description = description;
         this.client = client;
     }
 
-    public Moment(String img, String title, String description) {
-        this.img = img;
+    public Moment(String image, String title, String description) {
+        this.image = image;
         this.title = title;
         this.description = description;
     }
@@ -42,12 +42,12 @@ public class Moment {
         return id;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTitle() {
@@ -78,7 +78,7 @@ public class Moment {
     public String toString() {
         return "Moment{" +
                 "id=" + id +
-                ", img='" + img + '\'' +
+                ", image='" + image + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", client=" + client +

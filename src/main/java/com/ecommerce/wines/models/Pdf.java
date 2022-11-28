@@ -23,15 +23,15 @@ public class Pdf {
         document.open();
     }
 
-    public void addTitle(String text) throws DocumentException {
+    public void addTitle(String text) throws DocumentException, IOException {
         PdfPTable table = new PdfPTable(1);
         PdfPCell cell = new PdfPCell(new Phrase(text, titleSource));
         cell.setColspan(5);
         cell.setBorderColor(BaseColor.WHITE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
-//        Image image = Image.getInstance("F:/Modulo 3 - MindHub/homebanking/src/main/resources/static/web/assets/img/LB-final - copia.png");
-//        document.add(image);
+        Image image = Image.getInstance("https://i.ibb.co/Sxsq08Q/logo1-timeforwine.png");
+        document.add(image);
         document.add(table);
 
     }
