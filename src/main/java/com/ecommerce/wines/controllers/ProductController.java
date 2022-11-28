@@ -170,7 +170,7 @@ public class ProductController {
             description = product.getDescription();
         }
         if (img.isEmpty()){
-            img = product.getImg();
+            img = product.getImage();
         }
 
 
@@ -181,7 +181,7 @@ public class ProductController {
         product.setTastingNote(tastingNotes);
         product.setTemperature(temperature);
         product.setDescription(description);
-        product.setImg(img);
+        product.setImage(img);
         productService.saveProduct(product);
 
 

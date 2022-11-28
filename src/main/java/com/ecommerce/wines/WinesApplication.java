@@ -149,10 +149,14 @@ public class WinesApplication {
 			productRepository.save(product23);
 
 			PurchaseOrder purchaseOrder = new PurchaseOrder(client1,5000,LocalDateTime.now(),PaymentMethod.CASH);
-			ProductOrder productOrder = new ProductOrder(3,product1,purchaseOrder);
+			ProductOrder productOrder = new ProductOrder(3,product4,purchaseOrder);
+			ProductOrder productOrder2 = new ProductOrder(2,product2,purchaseOrder);
 
+			purchaseOrder.addProductOrder(productOrder);
+			purchaseOrder.addProductOrder(productOrder2);
 			purchaseOrderRepository.save(purchaseOrder);
 			productOrderRepository.save(productOrder);
+			productOrderRepository.save(productOrder2);
 
 		};
 	}

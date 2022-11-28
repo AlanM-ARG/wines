@@ -57,4 +57,11 @@ public class ProductServiceImplement implements ProductService {
     public Product findById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
+
 }
