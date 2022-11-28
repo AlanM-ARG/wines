@@ -90,7 +90,7 @@ public class PurchaseOrderController {
         pdf.addLineJumps();
         pdf.addProductsTable(products);
         pdf.addLineJumps();
-        pdf.addParagraph("TOTAL: " + purchaseOrder.getMount());
+        pdf.addParagraph("TOTAL: " + purchaseOrder.getAmount());
         pdf.closeDocument();
 
     }
