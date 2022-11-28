@@ -52,7 +52,7 @@ public class ClientController {
         }
 
         if (firstName.isEmpty()){
-            return new ResponseEntity<>("Missing firist name", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Missing first name", HttpStatus.FORBIDDEN);
         }
         if (lastName.isEmpty()){
             return new ResponseEntity<>("Missing last name", HttpStatus.FORBIDDEN);

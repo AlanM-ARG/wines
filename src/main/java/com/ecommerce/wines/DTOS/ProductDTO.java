@@ -36,8 +36,6 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-
-
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.category = product.getCategory();
@@ -62,109 +60,48 @@ public class ProductDTO {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getStock() {
         return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public double getDiscount() {
         return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
     }
 
     public String getImg() {
         return img;
     }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
     public String getVariety() {
         return variety;
-    }
-
-    public void setVariety(String variety) {
-        this.variety = variety;
     }
 
     public String getTastingNote() {
         return tastingNote;
     }
 
-    public void setTastingNote(String tastingNote) {
-        this.tastingNote = tastingNote;
-    }
-
     public String getTemperature() {
         return temperature;
-    }
-
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
     }
 
     public PurchaseOrder getPurchaseOrder() {
         return purchaseOrder;
     }
 
-    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
-        this.purchaseOrder = purchaseOrder;
-    }
-
     public boolean isActive() {
         return active;
     }
 
-    @Override
-    public String toString() {
-        return "ProductDTO{" +
-                "id=" + id +
-                ", category=" + category +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", stock=" + stock +
-                ", price=" + price +
-                ", discount=" + discount +
-                ", img='" + img + '\'' +
-                ", variety='" + variety + '\'' +
-                ", tastingNote='" + tastingNote + '\'' +
-                ", temperature='" + temperature + '\'' +
-                ", purchaseOrder=" + purchaseOrder +
-                '}';
-    }
 }
