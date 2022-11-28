@@ -31,7 +31,7 @@ public class PurchaseOrderController {
     @Autowired
     ClientService clientService;
 
-    @GetMapping("/purchaseOrder")
+    @GetMapping("/purchaseorder")
     public List<PurchaseOrderDTO> getPurchaseOrder() {
         return purchaseOrderService.getPurchaseOrder();
     }
@@ -94,4 +94,10 @@ public class PurchaseOrderController {
         pdf.closeDocument();
 
     }
+
+
+
+//    @PostMapping("/purchase")
+//    public ResponseEntity<?> createPurchase(@ResponseBody)
+
 }

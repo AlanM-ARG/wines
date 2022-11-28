@@ -24,7 +24,7 @@ public class PurchaseOrder {
     private double amount;
 
     @OneToMany(mappedBy="purchaseOrder", fetch= FetchType.EAGER)
-    List<ProductOrder> productOrders = new ArrayList<>();
+    private List<ProductOrder> productOrders = new ArrayList<>();
 
     private LocalDateTime localDateTime;
 
@@ -85,6 +85,14 @@ public class PurchaseOrder {
     }
     public void setProducts(List<ProductOrder> products) {
         this.productOrders = products;
+    }
+
+    public List<ProductOrder> getProductOrders() {
+        return productOrders;
+    }
+
+    public void setProductOrders(List<ProductOrder> productOrders) {
+        this.productOrders = productOrders;
     }
 
     public void addProductOrder(ProductOrder productOrder) {
