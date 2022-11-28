@@ -16,7 +16,7 @@ public class PurchaseOrderDTO {
 
     private Client client;
 
-    private double mount;
+    private double amount;
 
     private LocalDateTime localDateTime;
 
@@ -30,7 +30,7 @@ public class PurchaseOrderDTO {
     public PurchaseOrderDTO(PurchaseOrder purchaseOrder) {
         this.id = purchaseOrder.getId();
         this.client = purchaseOrder.getClient();
-        this.mount = purchaseOrder.getMount();
+        this.amount = purchaseOrder.getAmount();
         this.localDateTime = purchaseOrder.getLocalDateTime();
         this.paymentMethod = purchaseOrder.getPaymentMethod();
         this.products = purchaseOrder.getProducts();
@@ -45,8 +45,8 @@ public class PurchaseOrderDTO {
         return client;
     }
 
-    public double getMount() {
-        return mount;
+    public double getAmount() {
+        return amount;
     }
 
     public LocalDateTime getLocalDateTime() {

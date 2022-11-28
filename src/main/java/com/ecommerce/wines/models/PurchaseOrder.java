@@ -21,7 +21,7 @@ public class PurchaseOrder {
     @JoinColumn(name="client_id")
     private Client client;
 
-    private double mount;
+    private double amount;
 
     @OneToMany(mappedBy="purchaseOrder", fetch= FetchType.EAGER)
     List<Product> products = new ArrayList<>();
@@ -33,9 +33,9 @@ public class PurchaseOrder {
     public PurchaseOrder() {
     }
 
-    public PurchaseOrder(Client client, double mount, LocalDateTime localDateTime, PaymentMethod paymentMethod) {
+    public PurchaseOrder(Client client, double amount, LocalDateTime localDateTime, PaymentMethod paymentMethod) {
         this.client = client;
-        this.mount = mount;
+        this.amount = amount;
         this.localDateTime = localDateTime;
         this.paymentMethod = paymentMethod;
     }
@@ -57,12 +57,12 @@ public class PurchaseOrder {
         this.client = client;
     }
 
-    public double getMount() {
-        return mount;
+    public double getAmount() {
+        return amount;
     }
 
     public void setMount(double mount) {
-        this.mount = mount;
+        this.amount = mount;
     }
 
 
@@ -91,7 +91,7 @@ public class PurchaseOrder {
         return "PurchaseOrder{" +
                 "id=" + id +
                 ", client=" + client +
-                ", mount=" + mount +
+                ", amount=" + amount +
                 ", products=" + products +
                 ", localDateTime=" + localDateTime +
                 ", paymentMethod='" + paymentMethod + '\'' +

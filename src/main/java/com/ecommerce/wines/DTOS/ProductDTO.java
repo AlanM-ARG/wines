@@ -21,7 +21,7 @@ public class ProductDTO {
 
     private double discount;
 
-    private String img;
+    private String image;
 
     private String variety;
 
@@ -44,7 +44,7 @@ public class ProductDTO {
         this.stock = product.getStock();
         this.price = product.getPrice();
         this.discount = product.getDiscount();
-        this.img = product.getImg();
+        this.image = product.getImage();
         this.variety = product.getVariety();
         this.tastingNote = product.getTastingNote();
         this.temperature = product.getTemperature();
@@ -80,8 +80,8 @@ public class ProductDTO {
         return discount;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
     public String getVariety() {
