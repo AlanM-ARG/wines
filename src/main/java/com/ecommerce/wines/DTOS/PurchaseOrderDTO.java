@@ -1,12 +1,10 @@
 package com.ecommerce.wines.DTOS;
 
-import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.PaymentMethod;
-import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.models.PurchaseOrder;
+import com.ecommerce.wines.models.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public class PurchaseOrderDTO {
@@ -15,13 +13,13 @@ public class PurchaseOrderDTO {
 
     private Client client;
 
-    private double mount;
+    private double amount;
 
     private LocalDateTime localDateTime;
 
     private PaymentMethod paymentMethod;
 
-    private Set<Product> products;
+    private List<ProductOrder> productOrders;
 
     public PurchaseOrderDTO() {
     }
@@ -29,10 +27,10 @@ public class PurchaseOrderDTO {
     public PurchaseOrderDTO(PurchaseOrder purchaseOrder) {
         this.id = purchaseOrder.getId();
         this.client = purchaseOrder.getClient();
-        this.mount = purchaseOrder.getMount();
+        this.amount = purchaseOrder.getAmount();
         this.localDateTime = purchaseOrder.getLocalDateTime();
         this.paymentMethod = purchaseOrder.getPaymentMethod();
-        this.products = purchaseOrder.getProducts();
+        this.productOrders = purchaseOrder.getProducts();
     }
 
     public long getId() {
@@ -44,39 +42,19 @@ public class PurchaseOrderDTO {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public double getMount() {
-        return mount;
-    }
-
-    public void setMount(double mount) {
-        this.mount = mount;
+    public double getAmount() {
+        return amount;
     }
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
-
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public List<ProductOrder> getProducts() {
+        return productOrders;
     }
 }

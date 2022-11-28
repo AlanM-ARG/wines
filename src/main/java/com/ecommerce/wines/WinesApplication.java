@@ -1,11 +1,7 @@
 package com.ecommerce.wines;
 
-import com.ecommerce.wines.models.Category;
-import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.repositories.ClientRepository;
-import com.ecommerce.wines.repositories.MomentRepository;
-import com.ecommerce.wines.repositories.ProductRepository;
+import com.ecommerce.wines.models.*;
+import com.ecommerce.wines.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,19 +9,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Collectors;
+
 @SpringBootApplication
 public class WinesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WinesApplication.class, args);
-		System.out.println(" 123");
+
 	}
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
 	@Bean
-	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository){
+	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository, PurchaseOrderRepository purchaseOrderRepository, ProductOrderRepository productOrderRepository){
 		return args ->{
 
 			//Clientes
@@ -33,7 +33,6 @@ public class WinesApplication {
 
 			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 			clientRepository.save(client1);
-
 
 
 			//PRODUCTOS
@@ -149,10 +148,11 @@ public class WinesApplication {
 			productRepository.save(product22);
 			productRepository.save(product23);
 
+			PurchaseOrder purchaseOrder = new PurchaseOrder(client1,5000,LocalDateTime.now(),PaymentMethod.CASH);
+			ProductOrder productOrder = new ProductOrder(3,product1,purchaseOrder);
 
-
-
-
+			purchaseOrderRepository.save(purchaseOrder);
+			productOrderRepository.save(productOrder);
 
 		};
 	}
