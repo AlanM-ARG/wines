@@ -45,36 +45,19 @@ public class PurchaseOrderDTO {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public double getMount() {
         return mount;
-    }
-
-    public void setMount(double mount) {
-        this.mount = mount;
     }
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
-
     public PaymentMethod getPaymentMethod() {
         return paymentMethod;
-    }
-
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 
     public List<Product> getProducts() {
         return products;
     }
-
 }
