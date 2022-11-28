@@ -26,7 +26,7 @@ public class Product {
 
     private double discount;
 
-    private String img;
+    private String image;
 
     private String variety;
 
@@ -46,14 +46,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(Category category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, String temperature, boolean active) {
+    public Product(Category category, String name, String description, int stock, double price, double discount, String image, String variety, String tastingNote, String temperature, boolean active) {
         this.category = category;
         this.name = name;
         this.description = description;
         this.stock = stock;
         this.price = price;
         this.discount = discount;
-        this.img = img;
+        this.image = image;
         this.variety = variety;
         this.tastingNote = tastingNote;
         this.temperature = temperature;
@@ -116,12 +116,12 @@ public class Product {
         this.discount = discount;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getVariety() {
@@ -174,7 +174,7 @@ public class Product {
                 ", stock=" + stock +
                 ", price=" + price +
                 ", discount=" + discount +
-                ", img='" + img + '\'' +
+                ", image='" + image + '\'' +
                 ", variety='" + variety + '\'' +
                 ", tastingNote='" + tastingNote + '\'' +
                 ", temperature=" + temperature +
