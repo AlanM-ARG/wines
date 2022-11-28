@@ -24,7 +24,7 @@ public class PurchaseOrder {
     private double amount;
 
     @OneToMany(mappedBy="purchaseOrder", fetch= FetchType.EAGER)
-    List<Product> products = new ArrayList<>();
+    List<ProductOrder> productOrders = new ArrayList<>();
 
     private LocalDateTime localDateTime;
 
@@ -41,9 +41,7 @@ public class PurchaseOrder {
     }
 
 
-    public List<Product> getProducts() {
-        return products;
-    }
+
 
     public long getId() {
         return id;
@@ -82,19 +80,15 @@ public class PurchaseOrder {
         this.paymentMethod = paymentMethod;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public List<ProductOrder> getProducts() {
+        return productOrders;
+    }
+    public void setProducts(List<ProductOrder> products) {
+        this.productOrders = products;
     }
 
-    @Override
-    public String toString() {
-        return "PurchaseOrder{" +
-                "id=" + id +
-                ", client=" + client +
-                ", amount=" + amount +
-                ", products=" + products +
-                ", localDateTime=" + localDateTime +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                '}';
+    public void addProductOrder(ProductOrder productOrder) {
+        productOrder.setPurchaseOrder(this);
+        productOrders.add(productOrder);
     }
 }

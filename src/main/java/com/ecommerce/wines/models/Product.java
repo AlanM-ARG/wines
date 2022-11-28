@@ -36,9 +36,8 @@ public class Product {
 
     private boolean active;
 
-    @OneToMany(mappedBy = "products",fetch = FetchType.EAGER)
-    @JoinColumn(name="purchaseOrder_id")
-    private PurchaseOrder purchaseOrder;
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    private Set<ProductOrder> productOrder = new HashSet<>();
 
     public Product() {
     }
@@ -57,9 +56,7 @@ public class Product {
         this.active = active;
     }
 
-    public PurchaseOrder getPurchaseOrder() {
-        return purchaseOrder;
-    }
+
 
     public long getId() {
         return id;
@@ -153,20 +150,11 @@ public class Product {
         this.active = active;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", category='" + category + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", stock=" + stock +
-                ", price=" + price +
-                ", discount=" + discount +
-                ", image='" + image + '\'' +
-                ", variety='" + variety + '\'' +
-                ", tastingNote='" + tastingNote + '\'' +
-                ", temperature=" + temperature +
-                '}';
+    public Set<ProductOrder> getProductOrder() {
+        return productOrder;
+    }
+
+    public void setProductOrder(Set<ProductOrder> productOrder) {
+        this.productOrder = productOrder;
     }
 }
