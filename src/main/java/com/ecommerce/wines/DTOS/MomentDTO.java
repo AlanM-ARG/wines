@@ -8,7 +8,7 @@ public class MomentDTO {
 
     private long id;
 
-    private String img;
+    private String image;
 
     private String title;
 
@@ -22,7 +22,7 @@ public class MomentDTO {
 
     public MomentDTO(Moment moment) {
         this.id = moment.getId();
-        this.img = moment.getImg();
+        this.image = moment.getImage();
         this.title = moment.getTitle();
         this.description = moment.getDescription();
         this.client = moment.getClient();
@@ -37,8 +37,8 @@ public class MomentDTO {
         return id;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
     public String getTitle() {
