@@ -1,9 +1,6 @@
 package com.ecommerce.wines.DTOS;
 
-import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.PaymentMethod;
-import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.models.PurchaseOrder;
+import com.ecommerce.wines.models.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDateTime;
@@ -22,7 +19,7 @@ public class PurchaseOrderDTO {
 
     private PaymentMethod paymentMethod;
 
-    private List<Product> products;
+    private List<ProductOrderDTO> productOrders;
 
     public PurchaseOrderDTO() {
     }
@@ -33,7 +30,7 @@ public class PurchaseOrderDTO {
         this.amount = purchaseOrder.getAmount();
         this.localDateTime = purchaseOrder.getLocalDateTime();
         this.paymentMethod = purchaseOrder.getPaymentMethod();
-
+        this.productOrders = purchaseOrder.getProductOrders().stream().map(productOrder -> new ProductOrderDTO(productOrder)).collect(Collectors.toList());
     }
 
     public long getId() {
@@ -57,7 +54,7 @@ public class PurchaseOrderDTO {
         return paymentMethod;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<ProductOrderDTO> getProductOrders() {
+        return productOrders;
     }
 }

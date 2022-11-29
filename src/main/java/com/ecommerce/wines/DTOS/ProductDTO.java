@@ -29,7 +29,6 @@ public class ProductDTO {
 
     private String temperature;
 
-    private PurchaseOrder purchaseOrder;
 
     private boolean active;
 
@@ -48,7 +47,6 @@ public class ProductDTO {
         this.variety = product.getVariety();
         this.tastingNote = product.getTastingNote();
         this.temperature = product.getTemperature();
-
         this.active = product.isActive();
     }
 
@@ -96,9 +94,6 @@ public class ProductDTO {
         return temperature;
     }
 
-    public PurchaseOrder getPurchaseOrder() {
-        return purchaseOrder;
-    }
 
     public boolean isActive() {
         return active;
