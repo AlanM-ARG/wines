@@ -1,7 +1,10 @@
 package com.ecommerce.wines.controllers;
 
+import com.ecommerce.wines.DTOS.ProductOrderDTO;
+import com.ecommerce.wines.DTOS.PurchaseDTO;
 import com.ecommerce.wines.DTOS.PurchaseOrderDTO;
 import com.ecommerce.wines.models.*;
+import com.ecommerce.wines.repositories.ProductOrderRepository;
 import com.ecommerce.wines.services.ClientService;
 import com.ecommerce.wines.services.ProductService;
 import com.ecommerce.wines.services.PurchaseOrderService;
@@ -16,7 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -29,6 +35,9 @@ public class PurchaseOrderController {
     ProductService productService;
 
     @Autowired
+    ProductOrderRepository productOrderRepository;
+
+    @Autowired
     ClientService clientService;
 
     @GetMapping("/purchaseorder")
@@ -38,14 +47,28 @@ public class PurchaseOrderController {
 
 
     @PostMapping("/purchaseOrder/create")
-    public ResponseEntity<?> createPurchaseOrder(Authentication authentication,
-                                                 @RequestParam double mount,
-                                                 @RequestParam LocalDateTime date,
-                                                 @RequestParam PaymentMethod method) {
+    public ResponseEntity<?> createPurchaseOrder(Authentication authentication, @RequestBody PurchaseDTO purchaseDTO) {
 
-        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
-        PurchaseOrder purchaseOrder = new PurchaseOrder(clientCurrent, mount, date, method);
-        purchaseOrderService.savePurchaseOrder(purchaseOrder);
+        Client client = clientService.clientFindByEmail(authentication.getName());
+        List<ProductOrderDTO> productOrderDTOS = purchaseDTO.getProductOrderDTOS().stream().collect(Collectors.toList());
+        List<Double> amountTotal = new ArrayList<>();
+        PurchaseOrder purchaseOrder1 = new PurchaseOrder(client,0.0,LocalDateTime.now(),purchaseDTO.getPaymentMethod());
+        productOrderDTOS.forEach(productOrderDTO -> {
+            Product product = productService.findById(productOrderDTO.getProductId());
+            product.setStock(product.getStock() - productOrderDTO.getQuantity());
+            productService.saveProduct(product);
+            amountTotal.add(productOrderDTO.getAmount());
+            ProductOrder productOrder = new ProductOrder(productOrderDTO.getQuantity(),product,purchaseOrder1);
+            purchaseOrder1.addProductOrder(productOrder);
+            purchaseOrderService.savePurchaseOrder(purchaseOrder1);
+            productOrderRepository.save(productOrder);
+        });
+
+        Double amountFinal = amountTotal.stream().reduce(Double::sum).orElse(null);
+
+        purchaseOrder1.setMount(Math.round(amountFinal * 100.0) / 100.0);
+
+        purchaseOrderService.savePurchaseOrder(purchaseOrder1);
 
         return new ResponseEntity<>("Purchase order create", HttpStatus.CREATED);
 
@@ -77,18 +100,8 @@ public class PurchaseOrderController {
         pdf.addTitle("Purchase Order");
         pdf.addLineJumps();
         pdf.addPurchaseOrderTable(purchaseOrder, purchaseOrderClient);
-        List<Product> products = new ArrayList<>();
-        Product product1 = productService.findById(1L);
-        Product product2 = productService.findById(2L);
-        Product product3 = productService.findById(3L);
-        Product product4 = productService.findById(4L);
-        products.add(product1);
-        products.add(product1);
-        products.add(product2);
-        products.add(product3);
-        products.add(product4);
         pdf.addLineJumps();
-        pdf.addProductsTable(products);
+        pdf.addProductsTable(purchaseOrder.getProductOrders());
         pdf.addLineJumps();
         pdf.addParagraph("TOTAL: " + purchaseOrder.getAmount());
         pdf.closeDocument();

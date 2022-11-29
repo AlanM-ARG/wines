@@ -123,4 +123,15 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/clients/current/uploadImage")
+    public void saveImage(@RequestParam String image,Authentication authentication) {
+
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+
+        clientCurrent.setImage(image);
+
+        clientService.saveClient(clientCurrent);
+
+    }
+
 }
