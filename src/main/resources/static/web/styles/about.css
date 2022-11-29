@@ -55,14 +55,14 @@ button{
 }
 
 .btnClick{
-    background-color: rgb(149, 45, 63);
-    width: 80%!important;
+    background-color: rgb(242, 213, 86);
+    width: 14.3%!important;
     border-bottom: 0!important;
 }
 
 .btnClick2{
-    background-color: rgb(149, 45, 63);
-    height: 66%!important;
+    background-color: rgb(242, 213, 86);
+    height: 14.3%!important;
     border-right: 0!important;
     
 }
@@ -70,7 +70,7 @@ button{
 
 
 .active-button{
-    background-color: rgb(149, 45, 63);
+    background-color: rgb(242, 213, 86);
 }
 
 .submit-btn{
@@ -85,11 +85,11 @@ button{
 }
 
 .btn{
-	color:rgb(39, 39, 38);
+	color:rgb(255, 255, 255);
 	background-color:#fff;
 	outline: none;
     border: 0;
-    color: rgb(39, 39, 38);
+    color: rgb(255, 255, 255);
 	padding:10px 20px;
 	text-transform:uppercase;
 	margin-top:50px;
@@ -120,24 +120,70 @@ button{
     text-decoration: none;
 }
 
-/* Maps On Button */
-.argentina-map{
-    background-image: url(../assets/mapa-Argentina.png);
-    background-size: cover;
+
+
+/* Nav */
+.top-nav{
+    /* background-image: url(../assets/user.png);
+    background-position: 50%;
+    background-size: contain;
+    background-repeat: no-repeat; */
 }
-.italy-map{
-    background-image: url(../assets/mapa-Italia.png);
-    background-size: cover;
+.nav-center{
+    display: flex;
 }
-.usa-map{
-    background-image: url(../assets/mapa-Usa.png);
-    background-size: cover;
+.swiper-pagination {
+	position:fixed!important;
+	top: 90px!important;
+	left: 0px!important;
+	width: 100vw!important;
+	margin: 0;
 }
+.swiper-pagination-bullet {
+	width: 15.5vw!important;
+    height: 5rem!important;
+    border-radius: 0%!important;
+    opacity: 100!important;
+    background-color: rgb(39, 39, 38)!important;
+    background-image: url(../assets/user.png)!important;
+    background-size: contain!important;
+    background-position: 50%!important;
+    background-repeat: no-repeat!important;
+    border-right: 1px solid #fff!important;
+}
+.swiper-pagination-bullet-active {
+	color:#fff;
+	background: rgb(149, 45, 63)!important;
+    background-image: url(../assets/user.png)!important;
+    background-size: contain!important;
+    background-position: 50%!important;
+    background-repeat: no-repeat!important;
+    border-bottom: 0ch!important;
+} 
 
 
+/* Swiper Squad */
+.time4Wine{
 
+}
+.matias{
 
+}
+.alan{
 
+}
+.dario{
+
+}
+.oliver{
+    
+}
+.maximo{
+
+}
+.mario{
+
+}
 /* Display None */
 .left-bar{
     display: none;
@@ -148,6 +194,10 @@ button{
 .map{
     display: none;
 }
+::-webkit-scrollbar{
+    visibility: hidden;
+}
+
 
 
 /* Responsive 1024px */
@@ -162,15 +212,23 @@ button{
         height: 80vh;
     }
     .center-bar{
+        
         max-height: 80vh!important;
         max-width:80%;
         border-bottom: 1px solid #fff;
     }
     .border-default{
-        border-top:1px solid #fff;
+        
+        border-top: 0;
     }
     
-    
+    /* Nav */
+    .nav-left{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 100%!important;
+    }
     /* Header */
     .left-header{
         width: 20%;
@@ -181,6 +239,10 @@ button{
         width: 80%;
         height: 100%;
     }
+    /* Section */
+    .text-section{
+        border-top: 1px solid #fff;
+    }
     /* Button */
     .submit-btn{
         
@@ -188,13 +250,32 @@ button{
         
     }
     .button{
-        border-bottom: 0!important ;
+        
+        height: 14.2%;
         
     }
+
+    /* Swiper  */
+    .swiper-wrapper{
+        height: 100%;
+        width: 100%;
+    }
+    .swiper-container-vertical
+    > .swiper-pagination-bullets
+    .swiper-pagination-bullet {
+        margin: 10px 0;
+        height: 10px;
+        width: 10px;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #fff;
+    }
     /* Display None */
-    .top-nav{
+    .nav-center{
         display: none!important;
     }
+    
 }
 
 /* Responsive 1440 */
@@ -267,6 +348,8 @@ button{
     .titleRight{
         justify-content: end!important;
     }
+    /* Display None */
+
     
     
     
