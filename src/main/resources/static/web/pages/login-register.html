@@ -77,43 +77,53 @@
           <div class="bgYellow d-flex align-items-center aligner-1440" style="height: 74.4vh;">
             <form v-on:submit.prevent="login()" class="pt-5 pb-5 d-flex justify-content-center  flex-wrap all-forms"
               v-if="active == 'Log In'">
-              <div class="input-container animate__animated animate__fadeInDown" style="width: 80%;">
+              <div class="pb-3 d-flex flex-column justify-content-center align-items-center animate__animated animate__fadeIn">
+                <img class="logo-img " src="../assets/time4wine-bordo.jpeg" alt="logo">
+                <h3 class="">Welcome Back</h3>
+                <p class="font-italic text-center">Login and enjoy exclusive features and many more.</p>
+              </div>
+              <div class="input-container animate__animated animate__fadeIn" style="width: 80%;">
                 <input type="email" v-model="email" id="email" required />
                 <label for="email">Email</label>
               </div>
-              <div class="input-container animate__animated animate__fadeInDown" style="width: 80%;">
+              <div class="input-container animate__animated animate__fadeIn" style="width: 80%;">
                 <input type="password" v-model="password" id="password" required />
                 <label for="password">Password</label>
               </div>
-              <!-- <a class="d-flex align-self-start animate__animated animate__fadeInDown text-dark" href="">Forgot
-                Password?</a> -->
+              <a class="d-flex align-self-start animate__animated animate__fadeIn text-light" style="width: 80%;" href="">Forgot
+                Password?</a>
               <div>
                 <button type="submit"
-                  class="mt-4 rounded-0 animate__animated animate__fadeInDown submit-btn">Submit</button>
+                  class="mt-4 rounded-0 animate__animated animate__fadeIn submit-btn">Submit</button>
               </div>
             </form>
 
             <form v-on:submit.prevent="register()" class="pt-5 pb-5 d-flex justify-content-center  flex-wrap all-forms"
               v-if="active == 'Register'">
-              <div class="input-container animate__animated animate__fadeInDown" style="width: 80%;">
+              <div class="pb-3 d-flex welcome-message flex-column justify-content-center align-items-center animate__animated animate__fadeIn">
+                
+                <h3 class="">Welcome</h3>
+                <p class="font-italic text-center">Create an account.</p>
+              </div>
+              <div class="input-container animate__animated animate__fadeIn" style="width: 80%;">
                 <input type="input" v-model="firstName" id="firstName" required />
                 <label for="firstName">First Name</label>
               </div>
-              <div class="input-container animate__animated animate__fadeInDown" style="width: 80%;">
+              <div class="input-container animate__animated animate__fadeIn" style="width: 80%;">
                 <input type="input" v-model="lastName" id="lastName" required />
                 <label for="lastName">Last Name</label>
               </div>
-              <div class="input-container animate__animated animate__fadeInDown" style="width: 80%;">
+              <div class="input-container animate__animated animate__fadeIn" style="width: 80%;">
                 <input type="email" v-model="email" id="email" required />
                 <label for="email">Email</label>
               </div>
-              <div class="input-container animate__animated animate__fadeInDown" style="width: 80%;">
+              <div class="input-container animate__animated animate__fadeIn" style="width: 80%;">
                 <input type="password" v-model="password" id="password" required />
                 <label for="password">Password</label>
               </div>
               <div>
                 <button type="submit"
-                  class="mt-5 rounded-0 animate__animated animate__fadeInDown submit-btn">Submit</button>
+                  class="mt-5 rounded-0 animate__animated animate__fadeIn submit-btn">Submit</button>
               </div>
             </form>
 
