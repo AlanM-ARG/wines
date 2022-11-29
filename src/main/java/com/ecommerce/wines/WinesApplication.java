@@ -1,10 +1,7 @@
 package com.ecommerce.wines;
 
 import com.ecommerce.wines.models.*;
-import com.ecommerce.wines.repositories.ClientRepository;
-import com.ecommerce.wines.repositories.MomentRepository;
-import com.ecommerce.wines.repositories.ProductRepository;
-import com.ecommerce.wines.repositories.PurchaseOrderRepository;
+import com.ecommerce.wines.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,7 +25,7 @@ public class WinesApplication {
 	PasswordEncoder passwordEncoder;
 
 	@Bean
-	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository, PurchaseOrderRepository purchaseOrderRepository){
+	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository, PurchaseOrderRepository purchaseOrderRepository, ProductOrderRepository productOrderRepository){
 		return args ->{
 
 			//Clientes
@@ -150,6 +147,16 @@ public class WinesApplication {
 			productRepository.save(product21);
 			productRepository.save(product22);
 			productRepository.save(product23);
+
+			PurchaseOrder purchaseOrder = new PurchaseOrder(client1,5000,LocalDateTime.now(),PaymentMethod.CASH);
+			ProductOrder productOrder = new ProductOrder(3,product4,purchaseOrder);
+			ProductOrder productOrder2 = new ProductOrder(2,product2,purchaseOrder);
+
+			purchaseOrder.addProductOrder(productOrder);
+			purchaseOrder.addProductOrder(productOrder2);
+			purchaseOrderRepository.save(purchaseOrder);
+			productOrderRepository.save(productOrder);
+			productOrderRepository.save(productOrder2);
 
 		};
 	}
