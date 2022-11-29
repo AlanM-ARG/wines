@@ -10,5 +10,10 @@ public interface FavsService {
     public List<FavsDTO> getAllFavsDTO();
 
 
+
     public void saveFavs(Favs favs);
+
+    public void deleteFavs(Favs favs);
+
+    public Favs getFavById(long id);
 }

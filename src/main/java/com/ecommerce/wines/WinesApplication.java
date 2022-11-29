@@ -31,6 +31,7 @@ public class WinesApplication {
 			//Clientes
 
 
+
 			Client client = new Client("Admin", "Admin", "winesadmin@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 			Client client2= new Client("Marta", "Lorenzo", "marta@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
@@ -149,6 +150,27 @@ public class WinesApplication {
 					" 1.5 hectares, with yields per hectare of 50 quintals and a total production of 4,000 bottles.", 10, 31.23, 1.0, "https://i.ibb.co/tztsVkM/ducco-brut.png", "100% Chardonnay",
 					"Of a bright straw yellow color. Fine and persistent wine. The fresh and floral aroma of Chardonnay joins the " +
 							" notes given by the light touch of madora, the taste with a good acid structure favors a structured and elegant body.", "10-12 °C", true);
+			Product product24 = new Product(Category.GIN, "Eclipse", "More than 30 botanicals, inspired in its aromatic notes and chords by the mediterrean, which takes always a glance towards the east.",
+					15, 56.0, 1.0, "https://i.ibb.co/k4Wtwm5/eclipse.webp", "100% Eclipse", "Its floral softness captures the mouth, like diving in fresh petals bathed in the essence of roots, leaves and " +
+					"berries of the warm sun.", "8-10 °C", true);
+			Product product25 = new Product(Category.WHITE, "Comet", "Original white wine based bitter, elegant and rich in mediterranean citrus flavors.", 15, 41.0, 1.0, "https://i.ibb.co/hVRp3js/comet.webp",
+					"100% Comet", "Consisting of oriental aromatic accords, concentrated and very persistent, it has an original spicy note, coming from selected oriental peppers, which extends the delicate " +
+					"bitter note with a long spicy finish.", "8-10 °C", true);
+			Product product26 = new Product(Category.VERMOUTH, "Capricorn", "The 6 different types of citrus in its recipe are the cutting edge of this vermouth, excellent for both mixing and consumption alone.",
+					15, 41.0, 1.0, "https://i.ibb.co/6ZzHPjs/capricorn.webp", "100% Vermouth", "The pure expression of the Mediterranean sea, from the wine base, an excellent Sicilian Grillo, to the 22 botanicals within it.",
+					"8-10 °C", true);
+			Product product27 = new Product(Category.GIN, "Last Colony", "A walk through an exotic garden in springtime, with Buddha's hand fruit trees, kumquats, and then coriander, ginger and basil.",
+					15, 56.0, 1.0, "https://i.ibb.co/HGH5yLV/lastcolony.webp", "100% Last Colony", "Gin inspired and produced according to the notes of eau de cologne, created by Giovanni Maria Farina in the 18th century. Composed of 25 botanicals, " +
+					"it is a perfume to wear on the palate, with great character and personality.", "8-10 °C", true);
+			Product product28 = new Product(Category.VODKA, "Votiva", "The purity of resurgence water of inalienable purity, magnificent delicate, barely citrusy grafts of lime and grapefruit peel, and balsamic echoes of lemon balm, sage and chervil.",
+					15, 92.0, 1.0, "https://i.ibb.co/R7Yvv8j/votiva.webp", "100% Vodka","Vodka Votiva is one of a kind, the first in the world to express the essence of the Mediterranean Sea. It is silk to be worn on the palate and expresses itself like the best perfumes in head, heart and base notes.",
+					"8-10 °C", true);
+			Product product29 = new Product(Category.GIN, "Fuoridimé", "An elixir with an explicit territoriality, the central Apennines, Abruzzi and Molise, present in the notes of bitter orange, emphasised in the bitter verve by the gentian and the skilful mortar of " +
+					"medicinal herbs with their proven digestive action.", 15, 37.0, 1.0, "https://i.ibb.co/xG8c0Yw/fuoridim.webp", "100% Fuoridimé", "Its floral softness catches the mouth, like immersing yourself in fresh petals bathed in the " +
+					"scent of roots, leaves and berries from the warm sun.", "8-10 °C", true);
+			Product product30 = new Product(Category.WHISKEYS, "Jack Daniel's", "Whiskey Jack Daniel's is a recognized brand of whiskey of American origin. It is a Tennessee whiskey, and this type of distillate differs in that its production is filtered through maple " +
+					"wood carbon.", 15, 90.0, 1.0, "https://i.ibb.co/yW536pB/jackdaniels.png", "100% Whisky", "Taste powerful, fatty, after the impact, then softer, with burnt notes of licorice and sugar syrup, sweet and full.",
+					"8-10 °C", true);
 
 			productRepository.save(product1);
 			productRepository.save(product2);
@@ -173,6 +195,13 @@ public class WinesApplication {
 			productRepository.save(product21);
 			productRepository.save(product22);
 			productRepository.save(product23);
+			productRepository.save(product24);
+			productRepository.save(product25);
+			productRepository.save(product26);
+			productRepository.save(product27);
+			productRepository.save(product28);
+			productRepository.save(product29);
+			productRepository.save(product30);
 
 			PurchaseOrder purchaseOrder = new PurchaseOrder(client1,5000,LocalDateTime.now(),PaymentMethod.CASH);
 			ProductOrder productOrder = new ProductOrder(3,product4,purchaseOrder);
