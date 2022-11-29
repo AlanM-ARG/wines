@@ -20,16 +20,20 @@ public class Client {
     private  String password;
 
     @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
-    Set<PurchaseOrder> purchaseOrders = new HashSet<>();
+    private Set<PurchaseOrder> purchaseOrders = new HashSet<>();
 
     @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
-    Set<Moment> moments = new HashSet<>();
+    private Set<Moment> moments = new HashSet<>();
+
+    @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
+    private Set<Favs> favss = new HashSet<>();
 
     private String image;
 
     private String token;
 
     private boolean active;
+
 
 
     public Client() {
@@ -114,11 +118,22 @@ public class Client {
         this.active = active;
     }
 
+    public Set<Favs> getFavss() {
+        return favss;
+    }
 
+    public void setFavss(Set<Favs> favss) {
+        this.favss = favss;
+    }
 
     public void addMoment(Moment moment) {
         moment.setClient(this);
         moments.add(moment);
+    }
+
+    public void addFavs(Favs favs) {
+        favs.setClient(this);
+        favss.add(favs);
     }
 
     @Override
