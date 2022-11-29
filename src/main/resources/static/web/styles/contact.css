@@ -2,10 +2,11 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: #fff;
 }
 
 .bg-wine{
-    background-color: #E4E1DB;
+    background-color: rgb(36, 36, 36);
 }
 
 .header-logo{
@@ -16,23 +17,23 @@
 
 
 .bgYellow{
-    background-color: rgb(242, 213, 86);
+    background-color: rgb(149, 45, 63);
 }
 
 
 /* Borders */
 .border-default{
-    border-top: 1px solid #000;
+    border-top: 1px solid #fff;
     
 }
 .border-down{
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #fff;
 }
 .btn-left{
-    border-right: 1px solid #000!important;
+    border-right: 1px solid #fff!important;
 }
 .border-right{
-    border-left: 1px solid #000!important;
+    border-left: 1px solid #fff!important;
 }
 
 /* Bars */
@@ -49,27 +50,28 @@ button{
 .button{
     padding: .5rem;
     border: 0;
-    border-bottom: 1px solid #000!important;
+    border-bottom: 1px solid #fff!important;
     transition:  .5s;
 }
 
 .btnClick{
-    background-color: rgb(242, 213, 86);
+    background-color: rgb(149, 45, 63);
     width: 80%!important;
     border-bottom: 0!important;
 }
 
 .btnClick2{
-    background-color: rgb(242, 213, 86);
+    background-color: rgb(149, 45, 63);
     height: 66%!important;
     border-right: 0!important;
+    background-position: 40%!important;
     
 }
 
 
 
 .active-button{
-    background-color: rgb(242, 213, 86);
+    background-color: rgb(149, 45, 63);
 }
 
 .submit-btn{
@@ -85,7 +87,7 @@ button{
 
 .btn{
 	color:rgb(39, 39, 38);
-	background-color:#000000;
+	background-color:#fff;
 	outline: none;
     border: 0;
     color: rgb(39, 39, 38);
@@ -109,16 +111,29 @@ button{
     
 }
 .main-title{
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid #fff;
     display: flex;
     transition: 0.5s;
     
 }
 .link{
-    color: #000;
+    color: #fff;
     text-decoration: none;
 }
 
+/* Maps On Button */
+.argentina-map{
+    background-image: url(../assets/mapa-Argentina.png);
+    background-size: cover;
+}
+.italy-map{
+    background-image: url(../assets/mapa-Italia.png);
+    background-size: cover;
+}
+.usa-map{
+    background-image: url(../assets/mapa-Usa.png);
+    background-size: cover;
+}
 
 
 
@@ -134,6 +149,9 @@ button{
 .map{
     display: none;
 }
+.pagination-left{
+    display: none!important;
+}
 
 
 /* Responsive 1024px */
@@ -141,26 +159,29 @@ button{
 
     .left-bar{
         display: flex;
-        /* border-right: 1px solid #000000; */
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+        /* border-right: 1px solid #fff; */
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
         width: 20%!important;
         height: 80vh;
     }
     .center-bar{
         max-height: 80vh!important;
         max-width:80%;
-        border-bottom: 1px solid #000000;
+        border-bottom: 1px solid #fff;
     }
     .border-default{
-        border-top:1px solid #000000;
+        border-top:1px solid #fff;
     }
-    
+    /* Pagination */
+    .pagination-left{
+        display: flex!important;
+    }
     
     /* Header */
     .left-header{
         width: 20%;
-        border-right: 1px solid #000000;
+        border-right: 1px solid #fff;
         height: 100%;
     }
     .center-header{
@@ -188,9 +209,9 @@ button{
 
     .right-bar{
         display: flex;
-        border-left: 1px solid #000000;
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+        border-left: 1px solid #fff;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
         width: 40%!important;
         height: 80vh;
 
@@ -223,7 +244,7 @@ button{
     /* Header */
     .right-header{
         width: 40%;
-        border-left: 1px solid #000000;
+        border-left: 1px solid #fff;
     }
     .center-header{
         width: 50%;
