@@ -31,9 +31,35 @@ public class WinesApplication {
 			//Clientes
 
 
+			Client client = new Client("Admin", "Admin", "winesadmin@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
-			clientRepository.save(client1);
+			Client client2= new Client("Marta", "Lorenzo", "marta@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+			Client client3 = new Client("Axel", "Pedraza", "axel@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+			Client client4 = new Client("Esteban", "Mendoza", "esteban@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 
+			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "vino y pasión", "disgustando un pajaro loco mencía");
+			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Compartiendo con la familia", "Cena familiar y compartiendo un vino");
+			Moment moment3 = new Moment("https://i.ibb.co/d77ftRL/moment2.webp", "descanso de la rutina", "despues de una larga semana laboral, nos juntamos el sabado con amigos");
+			Moment moment4 = new Moment("https://i.ibb.co/CKF3mT9/moment3.webp", "con mi amigo julian", "invitando al colo a probar este fantastico vino");
+			Moment moment5 = new Moment("https://i.ibb.co/5Grb7KN/moment5.webp", "tarde de calor", "con calor pero siempre con la compañia de un buen vino");
+
+			client1.addMoment(moment1);
+			client2.addMoment(moment2);
+			client1.addMoment(moment3);
+			client3.addMoment(moment4);
+			client4.addMoment(moment5);
+
+			clientRepository.save(client);
+			clientRepository.save(client1);
+			clientRepository.save(client2);
+			clientRepository.save(client3);
+			clientRepository.save(client4);
+
+			momentRepository.save(moment1);
+			momentRepository.save(moment2);
+			momentRepository.save(moment3);
+			momentRepository.save(moment4);
+			momentRepository.save(moment5);
 
 			//PRODUCTOS
 
