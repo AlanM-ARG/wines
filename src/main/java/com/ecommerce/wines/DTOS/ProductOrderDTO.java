@@ -3,6 +3,7 @@ package com.ecommerce.wines.DTOS;
 import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.models.ProductOrder;
 import com.ecommerce.wines.models.PurchaseOrder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ProductOrderDTO {
 

@@ -16,10 +16,6 @@ public class MomentDTO {
 
     private Client client;
 
-
-    public MomentDTO() {
-    }
-
     public MomentDTO(Moment moment) {
         this.id = moment.getId();
         this.image = moment.getImage();
