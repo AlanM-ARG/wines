@@ -22,9 +22,6 @@ public class PurchaseOrderDTO {
 
     private List<ProductOrderDTO> productOrders;
 
-    public PurchaseOrderDTO() {
-    }
-
     public PurchaseOrderDTO(PurchaseOrder purchaseOrder) {
         this.id = purchaseOrder.getId();
         this.client = purchaseOrder.getClient();
