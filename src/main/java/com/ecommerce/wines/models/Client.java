@@ -20,10 +20,13 @@ public class Client {
     private  String password;
 
     @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
-    Set<PurchaseOrder> purchaseOrders = new HashSet<>();
+    private Set<PurchaseOrder> purchaseOrders = new HashSet<>();
 
     @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
-    Set<Moment> moments = new HashSet<>();
+    private Set<Moment> moments = new HashSet<>();
+
+    @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
+    private Set<Favs> favss = new HashSet<>();
 
     private String image;
 
@@ -31,8 +34,6 @@ public class Client {
 
     private boolean active;
 
-    @OneToMany(mappedBy="client", fetch= FetchType.EAGER)
-    Set<Favs> favss = new HashSet<>();
 
 
     public Client() {

@@ -1,11 +1,7 @@
 package com.ecommerce.wines;
 
-import com.ecommerce.wines.models.Category;
-import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.repositories.ClientRepository;
-import com.ecommerce.wines.repositories.MomentRepository;
-import com.ecommerce.wines.repositories.ProductRepository;
+import com.ecommerce.wines.models.*;
+import com.ecommerce.wines.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,28 +9,57 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.stream.Collectors;
+
 @SpringBootApplication
 public class WinesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WinesApplication.class, args);
-		System.out.println(" 123");
+
 	}
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
 	@Bean
-	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository){
+	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository, PurchaseOrderRepository purchaseOrderRepository, ProductOrderRepository productOrderRepository){
 		return args ->{
 
 			//Clientes
 
 
+			Client client = new Client("Admin", "Admin", "winesadmin@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
 			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+			Client client2= new Client("Marta", "Lorenzo", "marta@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+			Client client3 = new Client("Axel", "Pedraza", "axel@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+			Client client4 = new Client("Esteban", "Mendoza", "esteban@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+
+			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "vino y pasión", "disgustando un pajaro loco mencía");
+			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Compartiendo con la familia", "Cena familiar y compartiendo un vino");
+			Moment moment3 = new Moment("https://i.ibb.co/d77ftRL/moment2.webp", "descanso de la rutina", "despues de una larga semana laboral, nos juntamos el sabado con amigos");
+			Moment moment4 = new Moment("https://i.ibb.co/CKF3mT9/moment3.webp", "con mi amigo julian", "invitando al colo a probar este fantastico vino");
+			Moment moment5 = new Moment("https://i.ibb.co/5Grb7KN/moment5.webp", "tarde de calor", "con calor pero siempre con la compañia de un buen vino");
+
+			client1.addMoment(moment1);
+			client2.addMoment(moment2);
+			client1.addMoment(moment3);
+			client3.addMoment(moment4);
+			client4.addMoment(moment5);
+
+			clientRepository.save(client);
 			clientRepository.save(client1);
+			clientRepository.save(client2);
+			clientRepository.save(client3);
+			clientRepository.save(client4);
 
-
+			momentRepository.save(moment1);
+			momentRepository.save(moment2);
+			momentRepository.save(moment3);
+			momentRepository.save(moment4);
+			momentRepository.save(moment5);
 
 			//PRODUCTOS
 
@@ -149,10 +174,15 @@ public class WinesApplication {
 			productRepository.save(product22);
 			productRepository.save(product23);
 
+			PurchaseOrder purchaseOrder = new PurchaseOrder(client1,5000,LocalDateTime.now(),PaymentMethod.CASH);
+			ProductOrder productOrder = new ProductOrder(3,product4,purchaseOrder);
+			ProductOrder productOrder2 = new ProductOrder(2,product2,purchaseOrder);
 
-
-
-
+			purchaseOrder.addProductOrder(productOrder);
+			purchaseOrder.addProductOrder(productOrder2);
+			purchaseOrderRepository.save(purchaseOrder);
+			productOrderRepository.save(productOrder);
+			productOrderRepository.save(productOrder2);
 
 		};
 	}

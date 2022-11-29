@@ -30,9 +30,8 @@ let app = createApp({
             let value = urlParams.get('confirmed')
             if (value == 'true') {
                 Swal.fire('Email Confirmed!', '', 'success')
-                .then(()=> window.location.search(''))
             }
-        }
+        },
     },
     computed: {
     },

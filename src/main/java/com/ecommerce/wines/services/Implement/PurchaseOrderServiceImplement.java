@@ -30,4 +30,9 @@ public class PurchaseOrderServiceImplement implements PurchaseOrderService {
 
     }
 
+    @Override
+    public PurchaseOrder findById(Long id) {
+        return purchaseOrderRepository.findById(id).orElse(null);
+    }
+
 }

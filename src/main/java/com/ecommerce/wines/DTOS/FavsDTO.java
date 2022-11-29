@@ -10,6 +10,7 @@ public class FavsDTO {
     private String imagen;
 
 
+
     public FavsDTO(Favs favs) {
         this.id = favs.getId();
         this.name = favs.getName();

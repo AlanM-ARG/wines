@@ -22,6 +22,7 @@ public class FavsServiceImplement implements FavsService {
         return favsRepository.findAll().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
     }
 
+
     @Override
     public void saveFavs(Favs favs) {
         favsRepository.save(favs);

@@ -1,11 +1,14 @@
 package com.ecommerce.wines.controllers;
 
+
 import com.ecommerce.wines.DTOS.FavsDTO;
 import com.ecommerce.wines.models.Client;
+
 import com.ecommerce.wines.models.Favs;
 import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.repositories.FavsRepository;
+
 import com.ecommerce.wines.services.ClientService;
+
 import com.ecommerce.wines.services.FavsService;
 import com.ecommerce.wines.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +53,7 @@ public class FavsController {
             return new ResponseEntity<>("You already own this favorite", HttpStatus.FORBIDDEN);
         }
 
-        Favs favs = new Favs(product, clientCurrent, product.getName(), product.getImg());
+        Favs favs = new Favs(product, clientCurrent, product.getName(), product.getImage());
         favsService.saveFavs(favs);
         clientCurrent.addFavs(favs);
         clientService.saveClient(clientCurrent);
@@ -59,9 +62,12 @@ public class FavsController {
     }
 
     @GetMapping("/favs")
-    public List<FavsDTO> getAll(){
-        return favsService.getAllFavsDTO();
+    public List<FavsDTO> getAll(Authentication authentication){
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        return clientCurrent.getFavss().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
     }
+
+
 
 
 }

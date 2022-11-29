@@ -49,11 +49,10 @@ public class ClientController {
     ){
         if(clientService.clientFindByEmail(email) != null){
             return new ResponseEntity<>("Email in use",HttpStatus.FORBIDDEN);
-
         }
 
         if (firstName.isEmpty()){
-            return new ResponseEntity<>("Missing firist name", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Missing first name", HttpStatus.FORBIDDEN);
         }
         if (lastName.isEmpty()){
             return new ResponseEntity<>("Missing last name", HttpStatus.FORBIDDEN);
@@ -116,17 +115,23 @@ public class ClientController {
         return  new ClientDTO(clientService.clientFindByEmail(authentication.getName()));
     }
 
-
-    @PatchMapping("/clients/current/changepassword")
+    @PatchMapping("/clients/current/changePassword")
     public ResponseEntity<?> changePassword(Authentication authentication, @RequestParam String password){
-        Client clientcurrent = clientService.clientFindByEmail(authentication.getName());
-        clientcurrent.setPassword(passwordEncoder.encode(password));
-        clientService.saveClient(clientcurrent);
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        clientCurrent.setPassword(passwordEncoder.encode(password));
+        clientService.saveClient(clientCurrent);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PostMapping("/clients/current/uploadImage")
+    public void saveImage(@RequestParam String image,Authentication authentication) {
 
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
 
+        clientCurrent.setImage(image);
 
+        clientService.saveClient(clientCurrent);
+
+    }
 
 }

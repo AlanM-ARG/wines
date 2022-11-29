@@ -26,7 +26,7 @@ public class Product {
 
     private double discount;
 
-    private String img;
+    private String image;
 
     private String variety;
 
@@ -36,33 +36,27 @@ public class Product {
 
     private boolean active;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="purchaseOrder_id")
-    private PurchaseOrder purchaseOrder;
-
-    @OneToMany(mappedBy="product", fetch= FetchType.EAGER)
-    Set<Favs> favss = new HashSet<>();
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    private Set<ProductOrder> productOrder = new HashSet<>();
 
     public Product() {
     }
 
-    public Product(Category category, String name, String description, int stock, double price, double discount, String img, String variety, String tastingNote, String temperature, boolean active) {
+    public Product(Category category, String name, String description, int stock, double price, double discount, String image, String variety, String tastingNote, String temperature, boolean active) {
         this.category = category;
         this.name = name;
         this.description = description;
         this.stock = stock;
         this.price = price;
         this.discount = discount;
-        this.img = img;
+        this.image = image;
         this.variety = variety;
         this.tastingNote = tastingNote;
         this.temperature = temperature;
         this.active = active;
     }
 
-    public PurchaseOrder getPurchaseOrder() {
-        return purchaseOrder;
-    }
+
 
     public long getId() {
         return id;
@@ -116,12 +110,12 @@ public class Product {
         this.discount = discount;
     }
 
-    public String getImg() {
-        return img;
+    public String getImage() {
+        return image;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getVariety() {
@@ -156,28 +150,11 @@ public class Product {
         this.active = active;
     }
 
-    public Set<Favs> getFavss() {
-        return favss;
+    public Set<ProductOrder> getProductOrder() {
+        return productOrder;
     }
 
-    public void setFavss(Set<Favs> favss) {
-        this.favss = favss;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", category='" + category + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", stock=" + stock +
-                ", price=" + price +
-                ", discount=" + discount +
-                ", img='" + img + '\'' +
-                ", variety='" + variety + '\'' +
-                ", tastingNote='" + tastingNote + '\'' +
-                ", temperature=" + temperature +
-                '}';
+    public void setProductOrder(Set<ProductOrder> productOrder) {
+        this.productOrder = productOrder;
     }
 }

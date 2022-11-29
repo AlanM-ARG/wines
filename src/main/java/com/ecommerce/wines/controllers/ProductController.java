@@ -33,7 +33,7 @@ public class ProductController {
     }
 
 
-    @PostMapping("/products/create")
+    @PostMapping("/admin/products/create")
     public ResponseEntity<?> createProduct(
             @RequestParam Category category,
             @RequestParam String name,
@@ -97,7 +97,7 @@ public class ProductController {
         return new ResponseEntity<>("Create", HttpStatus.CREATED);
     }
 
-    @PatchMapping("/products/stock")
+    @PatchMapping("/admin/products/stock")
     public ResponseEntity<?> changeStock(@RequestParam int stock, @RequestParam String name){
 
         if(name.isEmpty()){
@@ -109,14 +109,14 @@ public class ProductController {
         return new ResponseEntity<>("Stock changed", HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/products/delete")
+    @DeleteMapping("/admin/products/delete")
     public ResponseEntity<String> deleteProduct(@RequestParam String name){
         Product product = productService.findByName(name);
         productService.deleteProduct(product);
         return new ResponseEntity<>("Product delete",HttpStatus.CREATED);
     }
 
-    @PatchMapping("/products/delete")
+    @PatchMapping("/admin/products/delete")
     public ResponseEntity<?> disabledProduct(@RequestParam String name){
         Product product = productService.findByName(name);
         if(product == null){
@@ -131,7 +131,7 @@ public class ProductController {
     }
 
 
-    @PatchMapping("/products/modify")
+    @PatchMapping("/admin/products/modify")
     public ResponseEntity<?> modifyProduct(@RequestParam String name, @RequestParam int stock, @RequestParam String newName, @RequestParam double price,@RequestParam String variety,
                                            @RequestParam String tastingNotes, @RequestParam String temperature, @RequestParam String description, @RequestParam String img){
 
@@ -170,7 +170,7 @@ public class ProductController {
             description = product.getDescription();
         }
         if (img.isEmpty()){
-            img = product.getImg();
+            img = product.getImage();
         }
 
 
@@ -181,7 +181,7 @@ public class ProductController {
         product.setTastingNote(tastingNotes);
         product.setTemperature(temperature);
         product.setDescription(description);
-        product.setImg(img);
+        product.setImage(img);
         productService.saveProduct(product);
 
 
