@@ -121,6 +121,19 @@ button{
 	font-size:12px;
 	
 }
+/* Imagen */
+.logo-img{
+    width: 8rem;
+    height: 8rem;
+}
+
+/* Text */
+.font-italic{
+    font-style: italic;
+}
+.welcome-message{
+    width: 100%;
+}
 
 /* Display None */
 .left-bar{
@@ -149,6 +162,9 @@ button{
         max-width:80%;
         border-bottom: 1px solid #fff;
     }
+    .welcome-message{
+        width: 100%;
+    }
     /* Header */
     .left-header{
         width: 20%;
@@ -165,6 +181,7 @@ button{
         width: 70vw;
         
     }
+
 }
 
 /* Responsive 1440 */
