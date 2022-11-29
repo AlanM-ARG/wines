@@ -64,6 +64,7 @@ button{
     background-color: rgb(149, 45, 63);
     height: 66%!important;
     border-right: 0!important;
+    background-position: 40%!important;
     
 }
 
@@ -148,6 +149,9 @@ button{
 .map{
     display: none;
 }
+.pagination-left{
+    display: none!important;
+}
 
 
 /* Responsive 1024px */
@@ -169,7 +173,10 @@ button{
     .border-default{
         border-top:1px solid #fff;
     }
-    
+    /* Pagination */
+    .pagination-left{
+        display: flex!important;
+    }
     
     /* Header */
     .left-header{

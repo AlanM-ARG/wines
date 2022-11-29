@@ -60,11 +60,12 @@ button{
 .submit-btn{
     background-color: #E4E1DB;
     width: 80vw;
+    color: rgb(36, 36, 36);
     
 }
 
 .submit-btn:hover{
-    background-color: rgb(39, 39, 38);
+    background-color: rgb(36, 36, 36);
     color: #E4E1DB;
     font-style: italic;
 }
@@ -102,11 +103,11 @@ button{
  border-bottom:1px solid #fff;	
 }
 .btn{
-	color:rgb(255, 255, 255);
+	color:rgb(36, 36, 36);
 	background-color:#fff;
 	outline: none;
     border: 0;
-    color: rgb(255, 255, 255);
+    color: rgb(36, 36, 36);
 	padding:10px 20px;
 	text-transform:uppercase;
 	margin-top:50px;
