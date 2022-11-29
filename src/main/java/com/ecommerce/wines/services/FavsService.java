@@ -11,4 +11,8 @@ public interface FavsService {
 
 
     public void saveFavs(Favs favs);
+
+    public void deleteFavs(Favs favs);
+
+    public Favs getFavById(long id);
 }

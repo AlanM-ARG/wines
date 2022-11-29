@@ -27,4 +27,14 @@ public class FavsServiceImplement implements FavsService {
     public void saveFavs(Favs favs) {
         favsRepository.save(favs);
     }
+
+    @Override
+    public void deleteFavs(Favs favs) {
+        favsRepository.delete(favs);
+    }
+
+    @Override
+    public Favs getFavById(long id) {
+        return favsRepository.findById(id).orElse(null);
+    }
 }

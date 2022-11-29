@@ -11,10 +11,9 @@ public class ProductOrderDTO {
     private Integer quantity;
     private double amount;
 
-    public ProductOrderDTO(Long productId, Integer quantity, double amount) {
+    public ProductOrderDTO(Long productId, Integer quantity) {
         this.productId = productId;
         this.quantity = quantity;
-        this.amount = amount;
     }
 
     public ProductOrderDTO(ProductOrder productOrder) {

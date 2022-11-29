@@ -67,6 +67,16 @@ public class FavsController {
         return clientCurrent.getFavss().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/clients/favs/delete")
+    public ResponseEntity<?> deleteFav(Authentication authentication, @RequestParam int id){
+        Favs favs = favsService.getFavById(id);
+        if(id <= 0){
+            return new ResponseEntity<>("Missing id", HttpStatus.FORBIDDEN);
+        }
+        favsService.deleteFavs(favs);
+        return new ResponseEntity<>("Favourite deleted", HttpStatus.ACCEPTED);
+    }
+
 
 
 
