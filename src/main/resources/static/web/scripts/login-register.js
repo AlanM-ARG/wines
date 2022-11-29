@@ -31,7 +31,7 @@ let app = createApp({
             if (value == 'true') {
                 Swal.fire('Email Confirmed!', '', 'success')
             }
-        }
+        },
     },
     computed: {
     },

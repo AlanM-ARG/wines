@@ -32,6 +32,10 @@ public class Pdf {
         table.addCell(cell);
         Image image = Image.getInstance("https://i.ibb.co/Sxsq08Q/logo1-timeforwine.png");
         document.add(image);
+        Paragraph lineJumps = new Paragraph();
+        lineJumps.add(new Phrase(Chunk.NEWLINE));
+        lineJumps.add(new Phrase(Chunk.NEWLINE));
+        document.add(lineJumps);
         document.add(table);
 
     }
@@ -64,13 +68,15 @@ public class Pdf {
         document.add(table);
     }
 
-    public void addProductsTable(List<Product> products) throws DocumentException {
-        PdfPTable table = new PdfPTable(2);
+    public void addProductsTable(List<ProductOrder> productOrders) throws DocumentException {
+        PdfPTable table = new PdfPTable(3);
         table.addCell("Products");
+        table.addCell("Quantity");
         table.addCell("Amount");
-        products.stream().sorted(Comparator.comparing(Product::getId)).forEach(product -> {
-            table.addCell(product.getName());
-            table.addCell(product.getPrice() + "");
+        productOrders.stream().sorted(Comparator.comparing(ProductOrder::getId)).forEach(productOrder -> {
+            table.addCell(productOrder.getProduct().getName());
+            table.addCell(productOrder.getQuantity() + "");
+            table.addCell(productOrder.getAmount() + "");
                 });
         table.setHorizontalAlignment(Element.ALIGN_CENTER);
         document.add(table);
