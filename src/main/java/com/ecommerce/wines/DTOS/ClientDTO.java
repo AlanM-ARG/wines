@@ -7,6 +7,7 @@ import com.ecommerce.wines.models.PurchaseOrder;
 
 import java.awt.*;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ClientDTO {
 
@@ -26,13 +27,9 @@ public class ClientDTO {
 
     private boolean active;
 
-    private Set<PurchaseOrder> purchaseOrders;
+    private Set<PurchaseOrderDTO> purchaseOrders;
 
-    private Set<Moment> moments;
-
-
-    public ClientDTO() {
-    }
+    private Set<MomentDTO> moments;
 
     public ClientDTO(Client client) {
         this.firstName = client.getFirstName();
@@ -41,8 +38,8 @@ public class ClientDTO {
         this.password = client.getPassword();
         this.image = client.getImage();
         this.active = client.isActive();
-        this.purchaseOrders = client.getPurchaseOrders();
-        this.moments = client.getMoments();
+        this.purchaseOrders = client.getPurchaseOrders().stream().map(purchaseOrder -> new PurchaseOrderDTO(purchaseOrder)).collect(Collectors.toSet());
+        this.moments = client.getMoments().stream().map(moment -> new MomentDTO(moment)).collect(Collectors.toSet());
         this.token = client.getToken();
     }
 
@@ -78,11 +75,11 @@ public class ClientDTO {
         return active;
     }
 
-    public Set<PurchaseOrder> getPurchaseOrders() {
+    public Set<PurchaseOrderDTO> getPurchaseOrders() {
         return purchaseOrders;
     }
 
-    public Set<Moment> getMoments() {
+    public Set<MomentDTO> getMoments() {
         return moments;
     }
 }
