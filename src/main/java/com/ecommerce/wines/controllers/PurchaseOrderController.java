@@ -69,6 +69,7 @@ public class PurchaseOrderController {
 
 
 
+
         Double amountFinal = amountTotal.stream().reduce(Double::sum).orElse(null);
 
         purchaseOrder1.setMount(Math.round(amountFinal * 100.0) / 100.0);

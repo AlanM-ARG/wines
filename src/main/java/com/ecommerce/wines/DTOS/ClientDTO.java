@@ -86,4 +86,5 @@ public class ClientDTO {
     public Set<MomentDTO> getMoments() {
         return moments;
     }
+
 }

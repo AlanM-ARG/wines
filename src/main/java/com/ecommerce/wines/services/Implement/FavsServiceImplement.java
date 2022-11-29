@@ -23,6 +23,7 @@ public class FavsServiceImplement implements FavsService {
     }
 
 
+
     @Override
     public void saveFavs(Favs favs) {
         favsRepository.save(favs);
