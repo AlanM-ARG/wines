@@ -24,6 +24,7 @@ public class Favs {
     private String imagen;
 
 
+
     public Favs() {
     }
 
