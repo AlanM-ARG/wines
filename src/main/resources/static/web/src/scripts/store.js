@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             apiProducts: "/api/products",
             products: [],
-            categorys: []
+            categorys: [],
         }
     },created() {
             this.getProducts(this.apiProducts)

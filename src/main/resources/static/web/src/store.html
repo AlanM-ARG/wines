@@ -70,18 +70,13 @@
           <div class="">
             <p class=" text-xl  text-[#b6374c] ">VARIETY</p>
             <div class="categorys pl-6  flex flex-col gap-2 my-3">
-              <label class="text-white flex text-sm  gap-4">
-                <input type="checkbox" name="category"> WINE
+              <template v-for="category of categorys">
+                 <label class="text-white flex text-sm  gap-4">
+                <input type="checkbox" name="category">{{category}}
               </label>
-              <label class="text-white flex text-sm  gap-4">
-                <input type="checkbox" name="category"> WHISKY
-              </label>
-              <label class="text-white flex text-sm  gap-4">
-                <input type="checkbox" name="category"> VODKA
-              </label>
-              <label class="text-white flex text-sm  gap-4">
-                <input type="checkbox" name="category"> BRAND
-              </label>
+              </template>
+             
+             
             </div>
 
           </div>
