@@ -16,7 +16,7 @@ const app = Vue.createApp({
                 console.log(data)
                 this.products = data.data
                 this.getCategorys(this.products)
-                console.log(categorys);
+                console.log(this.categorys);
             })
         },getCategorys(array){
             let categorias = []
