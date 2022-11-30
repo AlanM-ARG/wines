@@ -18,16 +18,14 @@ const app = Vue.createApp({
                 this.products = data.data
             })
         },getCategorys(array){
+
             let categorias = []
 
             array.forEach(element => {
                 categorias.push(element.category)
             });
 
-            let categorias1 = new Set(categorias)
-            let categorias2 = [...categorias1]
-            
-            this.categorys = categorias2
+           
 
         }   
         
