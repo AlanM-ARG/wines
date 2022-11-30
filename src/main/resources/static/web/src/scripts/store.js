@@ -10,7 +10,7 @@ const app = Vue.createApp({
 
         getProducts(api){
             axios.get(api).then(data=>{
-                this.products = data
+                this.products = data.data
             })
         }
         
