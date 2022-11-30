@@ -6,6 +6,7 @@ const app = Vue.createApp({
         }
     },created() {
             this.getProducts(this.apiProducts)
+            console.log("funciona");
     },methods: {
 
         getProducts(api){
