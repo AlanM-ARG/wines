@@ -1,9 +1,5 @@
-
-
 const { createApp } = Vue
-
-
-let app = createApp({
+createApp({
     data() {
         return{
            active: 'Argentina',
@@ -33,4 +29,4 @@ let app = createApp({
 
 })
 
-app.mount('#app')
+.mount('#app')

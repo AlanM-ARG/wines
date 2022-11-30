@@ -44,8 +44,7 @@ public class ClientController {
             @RequestParam String firstName,
             @RequestParam String lastName,
             @RequestParam String email,
-            @RequestParam String password,
-            @RequestParam String img
+            @RequestParam String password
     ){
         if(clientService.clientFindByEmail(email) != null){
             return new ResponseEntity<>("Email in use",HttpStatus.FORBIDDEN);
@@ -64,13 +63,9 @@ public class ClientController {
             return new ResponseEntity<>("Missing password", HttpStatus.FORBIDDEN);
         }
 
-        if (img.isEmpty()){
-            return new ResponseEntity<>("Missing image", HttpStatus.FORBIDDEN);
-        }
-
         String token = UUID.randomUUID().toString();
 
-        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),img,token,false);
+        Client client = new Client(firstName,lastName,email,passwordEncoder.encode(password),token,false);
 
         clientService.saveClient(client);
 

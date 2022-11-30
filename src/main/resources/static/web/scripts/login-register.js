@@ -1,6 +1,5 @@
 const { createApp } = Vue
-
-let app = createApp({
+createApp({
     data() {
         return {
             active: 'Log In',
@@ -21,7 +20,7 @@ let app = createApp({
                 .catch((error) => console.log(error)))
         },
         register() {
-            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}&img=aaa`)
+            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
                 .then(() => Swal.fire('Please confirm your email!', '', 'warning'))
                 .catch(error => console.error(error))
         },
@@ -36,4 +35,4 @@ let app = createApp({
     computed: {
     },
 })
-app.mount('#app')
+.mount('#app')
