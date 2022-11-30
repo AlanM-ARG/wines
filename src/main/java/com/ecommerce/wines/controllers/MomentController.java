@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -26,6 +28,12 @@ public class MomentController {
     @GetMapping("/clients/moments")
     public List<MomentDTO> getAll() {
         return momentService.getAllMomentDTO();
+    }
+
+    @GetMapping("/clients/moments/current")
+    public Set<MomentDTO> getMomentsClientCurrent(Authentication authentication) {
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        return clientCurrent.getMoments().stream().map(MomentDTO::new).collect(Collectors.toSet());
     }
 
     @PostMapping("/clients/moments")
@@ -50,4 +58,5 @@ public class MomentController {
         clientService.saveClient(clientCurrent);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
 }

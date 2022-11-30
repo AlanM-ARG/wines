@@ -9,9 +9,9 @@ public class ProductOrderDTO {
     private long id;
     private Long  productId;
     private Integer quantity;
-    private double amount;
+    private Double amount;
 
-    public ProductOrderDTO(Long productId, Integer quantity, double amount) {
+    public ProductOrderDTO(Long productId, Integer quantity, Double amount) {
         this.productId = productId;
         this.quantity = quantity;
         this.amount = amount;
@@ -36,7 +36,7 @@ public class ProductOrderDTO {
         return quantity;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 }

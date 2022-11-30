@@ -57,7 +57,7 @@ public class PurchaseOrderController {
             Product product = productService.findById(productOrderDTO.getProductId());
             product.setStock(product.getStock() - productOrderDTO.getQuantity());
             productService.saveProduct(product);
-            amountTotal.add(productOrderDTO.getAmount());
+            amountTotal.add(Math.round(productOrderDTO.getAmount() * 100.0) / 100.0);
             ProductOrder productOrder = new ProductOrder(productOrderDTO.getQuantity(),product,purchaseOrder1);
             purchaseOrder1.addProductOrder(productOrder);
             purchaseOrderService.savePurchaseOrder(purchaseOrder1);
@@ -72,6 +72,14 @@ public class PurchaseOrderController {
 
         return new ResponseEntity<>("Purchase order create", HttpStatus.CREATED);
 
+    }
+
+    @GetMapping("/purchaseOrder/client")
+    public Set<PurchaseOrderDTO> getClientPurchaseOrder (Authentication authentication){
+
+        Client client = clientService.clientFindByEmail(authentication.getName());
+
+        return client.getPurchaseOrders().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
     }
 
     Client purchaseOrderClient;
@@ -109,8 +117,5 @@ public class PurchaseOrderController {
     }
 
 
-
-//    @PostMapping("/purchase")
-//    public ResponseEntity<?> createPurchase(@ResponseBody)
 
 }

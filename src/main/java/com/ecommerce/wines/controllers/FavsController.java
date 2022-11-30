@@ -46,10 +46,10 @@ public class FavsController {
         if(name.isEmpty()){
             return new ResponseEntity<>("Missing name", HttpStatus.FORBIDDEN);
         }
-        if(!allProducts.stream().map(product1 -> product1.getName()).collect(Collectors.toList()).contains(name)){
+        if(!allProducts.stream().map(Product::getName).collect(Collectors.toList()).contains(name)){
             return new ResponseEntity<>("The product does not exist", HttpStatus.FORBIDDEN);
         }
-        if(clientCurrent.getFavss().stream().map(favs -> favs.getName()).collect(Collectors.toSet()).contains(name)){
+        if(clientCurrent.getFavss().stream().map(Favs::getName).collect(Collectors.toSet()).contains(name)){
             return new ResponseEntity<>("You already own this favorite", HttpStatus.FORBIDDEN);
         }
 
@@ -62,9 +62,9 @@ public class FavsController {
     }
 
     @GetMapping("/favs")
-    public List<FavsDTO> getAll(Authentication authentication){
+    public List<FavsDTO> getClientFavs(Authentication authentication){
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
-        return clientCurrent.getFavss().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
+        return clientCurrent.getFavss().stream().map(FavsDTO::new).collect(Collectors.toList());
     }
 
 
