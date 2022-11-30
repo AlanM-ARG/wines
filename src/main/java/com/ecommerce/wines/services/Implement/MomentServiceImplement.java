@@ -25,4 +25,14 @@ public class MomentServiceImplement implements MomentService {
     public List<MomentDTO> getAllMomentDTO() {
         return momentRepository.findAll().stream().map(moment -> new MomentDTO(moment)).collect(Collectors.toList());
     }
+
+    @Override
+    public Moment momentFindById(long id) {
+        return momentRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteMoment(Moment moment) {
+        momentRepository.delete(moment);
+    }
 }

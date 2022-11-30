@@ -10,4 +10,8 @@ public interface MomentService {
     public void saveMoment(Moment moment);
 
     public List<MomentDTO> getAllMomentDTO();
+
+    public Moment momentFindById(long id);
+
+    public void deleteMoment(Moment moment);
 }
