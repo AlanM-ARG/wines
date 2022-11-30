@@ -30,7 +30,12 @@ const app = Vue.createApp({
             
             this.categorys = categorias2
 
-        }   
+        },wine(wineCategory){
+            if(wineCategory == "WHITE" || wineCategory == "RED"  || wineCategory == "ROSE"){
+                return wineCategory + " WINE"
+            }
+            else return wineCategory
+        }  
         
     },computed: {
         
