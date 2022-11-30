@@ -51,18 +51,24 @@ public class PurchaseOrderController {
 
         Client client = clientService.clientFindByEmail(authentication.getName());
         List<ProductOrderDTO> productOrderDTOS = purchaseDTO.getProductOrderDTOS().stream().collect(Collectors.toList());
+
         List<Double> amountTotal = new ArrayList<>();
         PurchaseOrder purchaseOrder1 = new PurchaseOrder(client,0.0,LocalDateTime.now(),purchaseDTO.getPaymentMethod());
+
+
         productOrderDTOS.forEach(productOrderDTO -> {
             Product product = productService.findById(productOrderDTO.getProductId());
             product.setStock(product.getStock() - productOrderDTO.getQuantity());
             productService.saveProduct(product);
-            amountTotal.add(Math.round(productOrderDTO.getAmount() * 100.0) / 100.0);
-            ProductOrder productOrder = new ProductOrder(productOrderDTO.getQuantity(),product,purchaseOrder1);
+            amountTotal.add(product.getPrice() * productOrderDTO.getQuantity());
+            ProductOrder productOrder = new ProductOrder(productOrderDTO.getQuantity(), product, purchaseOrder1);
             purchaseOrder1.addProductOrder(productOrder);
             purchaseOrderService.savePurchaseOrder(purchaseOrder1);
             productOrderRepository.save(productOrder);
         });
+
+
+
 
         Double amountFinal = amountTotal.stream().reduce(Double::sum).orElse(null);
 

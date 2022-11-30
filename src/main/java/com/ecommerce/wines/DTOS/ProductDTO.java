@@ -32,9 +32,6 @@ public class ProductDTO {
 
     private boolean active;
 
-    public ProductDTO() {
-    }
-
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.category = product.getCategory();
