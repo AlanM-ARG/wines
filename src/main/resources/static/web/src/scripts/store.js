@@ -11,6 +11,7 @@ const app = Vue.createApp({
 
         getProducts(api){
             axios.get(api).then(data=>{
+                console.log(data)
                 this.products = data.data
             })
         }
@@ -18,4 +19,4 @@ const app = Vue.createApp({
     },computed: {
         
     },
-})
+}).mount("#app")
