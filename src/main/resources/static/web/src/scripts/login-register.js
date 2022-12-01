@@ -18,7 +18,7 @@ let app = createApp({
     methods: {
         login() {
             axios.post(axios.post('/api/login', `email=${this.email}&password=${this.password}`)
-                .then(() => window.location.href = "http://localhost:8080/web/index.html")
+                .then(() => window.location.href = "http://localhost:8080/web/src/index.html")
                 .catch((error) => console.log(error)))
         },
         register() {
