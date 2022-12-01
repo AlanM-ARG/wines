@@ -62,7 +62,7 @@ public class FavsController {
         return new ResponseEntity<>("Added favorite", HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/favs")
+    @GetMapping("/clients/favs")
     public Set<FavsDTO> getClientFavs(Authentication authentication){
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
         return clientCurrent.getFavss().stream().map(FavsDTO::new).collect(Collectors.toSet());

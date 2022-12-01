@@ -25,7 +25,7 @@ public class WinesApplication {
 	PasswordEncoder passwordEncoder;
 
 	@Bean
-	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository, PurchaseOrderRepository purchaseOrderRepository, ProductOrderRepository productOrderRepository){
+	public CommandLineRunner initData(ProductRepository productRepository, ClientRepository clientRepository, MomentRepository momentRepository, PurchaseOrderRepository purchaseOrderRepository, ProductOrderRepository productOrderRepository, FavsRepository favsRepository){
 		return args ->{
 
 			//Clientes
@@ -38,17 +38,19 @@ public class WinesApplication {
 			Client client3 = new Client("Axel", "Pedraza", "axel@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
 			Client client4 = new Client("Esteban", "Mendoza", "esteban@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
 
-			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "vino y pasión", "disgustando un pajaro loco mencía");
-			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Compartiendo con la familia", "Cena familiar y compartiendo un vino");
-			Moment moment3 = new Moment("https://i.ibb.co/d77ftRL/moment2.webp", "descanso de la rutina", "despues de una larga semana laboral, nos juntamos el sabado con amigos");
-			Moment moment4 = new Moment("https://i.ibb.co/CKF3mT9/moment3.webp", "con mi amigo julian", "invitando al colo a probar este fantastico vino");
-			Moment moment5 = new Moment("https://i.ibb.co/5Grb7KN/moment5.webp", "tarde de calor", "con calor pero siempre con la compañia de un buen vino");
+			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "Wine and passion", "Upsetting a pajaro loco mencía. :)");
+			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Sharing with the family", "Family dinner and sharing a good wine.");
+			Moment moment3 = new Moment("https://i.ibb.co/d77ftRL/moment2.webp", "Break from routine", "After a long work week, we got together on Saturday with some friends. ^^");
+			Moment moment4 = new Moment("https://i.ibb.co/CKF3mT9/moment3.webp", "With my friend Chris", "Inviting Chris to taste this fantastic wine, 100% recommended. :D");
+			Moment moment5 = new Moment("https://i.ibb.co/5Grb7KN/moment5.webp", "Hot afternoon", "In the heat but always with the company of a good wine.");
+			Moment moment6 = new Moment("https://i.ibb.co/QHf5CBB/moment6.webp", "Good times", "Sentir el aroma de este vino es sensacional. :)");
 
 			client1.addMoment(moment1);
 			client2.addMoment(moment2);
 			client1.addMoment(moment3);
 			client3.addMoment(moment4);
 			client4.addMoment(moment5);
+			client4.addMoment(moment6);
 
 			clientRepository.save(client);
 			clientRepository.save(client1);
@@ -61,6 +63,7 @@ public class WinesApplication {
 			momentRepository.save(moment3);
 			momentRepository.save(moment4);
 			momentRepository.save(moment5);
+			momentRepository.save(moment6);
 
 			//PRODUCTOS
 
@@ -202,6 +205,22 @@ public class WinesApplication {
 			productRepository.save(product28);
 			productRepository.save(product29);
 			productRepository.save(product30);
+
+			Favs fav1 = new Favs(product1, client1, product1.getName(), product1.getImage());
+			Favs fav2 = new Favs(product5, client1, product5.getName(), product5.getImage());
+			Favs fav3 = new Favs(product28, client1, product28.getName(), product28.getImage());
+			Favs fav4 = new Favs(product30, client1, product30.getName(), product30.getImage());
+			Favs fav5 = new Favs(product15, client1, product15.getName(), product15.getImage());
+			Favs fav6 = new Favs(product19, client1, product19.getName(), product19.getImage());
+
+			favsRepository.save(fav1);
+			favsRepository.save(fav2);
+			favsRepository.save(fav3);
+			favsRepository.save(fav4);
+			favsRepository.save(fav5);
+			favsRepository.save(fav6);
+
+
 
 			PurchaseOrder purchaseOrder = new PurchaseOrder(client1,5000,LocalDateTime.now(),PaymentMethod.CASH);
 			ProductOrder productOrder = new ProductOrder(3,product4,purchaseOrder);
