@@ -702,6 +702,10 @@ video {
   height: 6rem;
 }
 
+.h-2\/4 {
+  height: 50%;
+}
+
 .min-h-\[100vh\] {
   min-height: 100vh;
 }
