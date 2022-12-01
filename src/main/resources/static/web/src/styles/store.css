@@ -1036,6 +1036,11 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1333,6 +1338,11 @@ video {
   .sm\:border-\[\#242424\] {
     --tw-border-opacity: 1;
     border-color: rgb(36 36 36 / var(--tw-border-opacity));
+  }
+
+  .sm\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .sm\:text-\[1\.7rem\] {
