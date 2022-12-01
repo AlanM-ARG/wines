@@ -61,7 +61,7 @@ public class FavsController {
         return new ResponseEntity<>("Add fav", HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/clients/favs")
+    @GetMapping("/favs")
     public List<FavsDTO> getAll(Authentication authentication){
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
         return clientCurrent.getFavss().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
