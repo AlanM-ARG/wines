@@ -690,6 +690,10 @@ video {
   height: 1.25rem;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
 .min-h-\[100vh\] {
   min-height: 100vh;
 }
@@ -744,6 +748,10 @@ video {
 
 .w-5 {
   width: 1.25rem;
+}
+
+.w-2 {
+  width: 0.5rem;
 }
 
 .flex-shrink-0 {
