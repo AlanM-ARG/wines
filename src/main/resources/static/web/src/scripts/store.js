@@ -30,6 +30,18 @@ const app = Vue.createApp({
             
             this.categorys = categorias2
 
+        },getVariertys(array){
+            let categorias = []
+
+            array.forEach(element => {
+                categorias.push(element.category)
+            });
+
+            let categorias1 = new Set(categorias)
+            let categorias2 = [...categorias1]
+            
+            this.categorys = categorias2
+
         },wine(wineCategory){
             if(wineCategory == "WHITE" || wineCategory == "RED"  || wineCategory == "ROSE"){
                 return wineCategory + " WINE"

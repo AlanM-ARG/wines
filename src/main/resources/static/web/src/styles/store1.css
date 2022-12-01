@@ -1,0 +1,65 @@
+
+@media (min-width: 375px) {
+
+    .filters {
+         height: 187.5px;
+     }
+ 
+ 
+   }
+ 
+ 
+   @media (min-width: 425px) {
+
+    
+    .filters {
+        height: 212.5px;
+    }
+ 
+    }
+ 
+ 
+    @media (min-width: 768px) {
+ 
+     
+    .filters {
+        height: 187.5px;
+    }
+      
+  
+    }
+ 
+    
+    @media (min-width: 1024px) {
+ 
+  
+        .filters {
+            height: 250px;
+        }
+      
+  
+    }
+ 
+    @media (min-width: 1440px) {
+ 
+    
+      
+  
+    }
+ 
+    @media (min-width: 1920px) {
+ 
+     
+      
+  
+    }
+ 
+ 
+    @media (min-width: 2560px) {
+ 
+      
+  
+    }
+ 
+    
+ 
