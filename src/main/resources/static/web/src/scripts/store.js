@@ -92,8 +92,10 @@ const app = Vue.createApp({
         
     },filterPrice(array){
         let filteredProducts = []
-        if(this.filterData.priceMax >0){
-            filteredProducts = array.filter( producto => {producto.price >= this.filterData.priceMin && producto.price <= this.filterData.priceMax})
+
+        if(this.filterData.priceMax > 0 ){
+
+            filteredProducts = array.filter( producto =>  producto.price <= this.filterData.priceMax)
 
         }else if(this.filterData.priceMax <=0){
             filteredProducts = array
