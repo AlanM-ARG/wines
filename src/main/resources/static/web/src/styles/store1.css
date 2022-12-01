@@ -10,6 +10,11 @@
     animation: rotate 5s infinite;
 }
 
+.see-more{
+    width: 150px;
+    height: 50px;
+    background-color: #b6374c;
+}
 
 @keyframes rotate {
     from{
