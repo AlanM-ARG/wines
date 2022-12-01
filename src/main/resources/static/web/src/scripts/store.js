@@ -7,9 +7,10 @@ const app = Vue.createApp({
       categorys: [],
       filterData: {
         category: "",
-        name:"",
-        priceMax: 0
-      }
+        name: "",
+        priceMax: 0,
+      },
+      favorites: [],
     };
   },
   created() {
@@ -21,7 +22,7 @@ const app = Vue.createApp({
       axios.get(api).then((data) => {
         console.log(data);
         this.products = data.data;
-        this.filteredProducts = this.products
+        this.filteredProducts = this.products;
         this.getCategorys(this.products);
         console.log(this.categorys);
       });
@@ -58,67 +59,78 @@ const app = Vue.createApp({
       ) {
         return wineCategory + " WINE";
       } else return wineCategory;
-    },filterCategory(array){
+    },
+    filterCategory(array) {
+      let filteredProducts = [];
 
-        let filteredProducts = []
+      if (
+        this.filterData.category.length &&
+        this.filterData.category != "ALL"
+      ) {
+        filteredProducts = array.filter(
+          (product) => product.category == this.filterData.category
+        );
 
-        if(this.filterData.category.length && this.filterData.category != "ALL"){
+        return filteredProducts;
+      } else {
+        filteredProducts = this.products;
+        return filteredProducts;
+      }
+    },
+    filterName(array) {
+      let filteredProducts = [];
 
-           filteredProducts = array.filter( product => product.category == this.filterData.category)
+      if (this.filterData.name.length) {
+        filteredProducts = array.filter((product) =>
+          product.name
+            .toLowerCase()
+            .includes(this.filterData.name.toLowerCase())
+        );
 
-           return filteredProducts
+        return filteredProducts;
+      } else {
+        filteredProducts = array;
+        return filteredProducts;
+      }
+    },
+    filterPrice(array) {
+      let filteredProducts = [];
 
-        }else{
-            filteredProducts = this.products
-            return filteredProducts
-        }
+      if (this.filterData.priceMax > 0) {
+        filteredProducts = array.filter(
+          (producto) => producto.price <= this.filterData.priceMax
+        );
+      } else if (this.filterData.priceMax <= 0) {
+        filteredProducts = array;
+      }
 
-        
+      return filteredProducts;
+    },
+    addFavorite(producto) {
 
-    },filterName(array){
-        let filteredProducts = []
 
-        if(this.filterData.name.length){
+      this.favorites.push(producto);
 
-            filteredProducts = array.filter( product => ( (product.name.toLowerCase()).includes((this.filterData.name.toLowerCase()))  ) )
-
-            return filteredProducts 
-
-        }else{
-            filteredProducts = array
-            return filteredProducts 
-        }
- 
-        
-    },filterPrice(array){
-        let filteredProducts = []
-
-        if(this.filterData.priceMax > 0 ){
-
-            filteredProducts = array.filter( producto =>  producto.price <= this.filterData.priceMax)
-
-        }else if(this.filterData.priceMax <=0){
-            filteredProducts = array
-        }   
-
-        return filteredProducts 
-    }
-
+      Swal.fire(
+        'Added to cart',
+       
+        'success'
+      )
+    },
 
 
   },
   computed: {
-
-    filterFinal(){
-
-        if(this.filterData.category.length || this.filterData.name.length || this.filterData.priceMax.length){
-            
-            this.filteredProducts = this.filterPrice(this.filterName(this.filterCategory(this.products))) 
-        }
-        
-    }
-   
+    filterFinal() {
+      if (
+        this.filterData.category.length ||
+        this.filterData.name.length ||
+        this.filterData.priceMax.length
+      ) {
+        this.filteredProducts = this.filterPrice(
+          this.filterName(this.filterCategory(this.products))
+        );
+      }
+    },
   },
 }).mount("#app");
-
-

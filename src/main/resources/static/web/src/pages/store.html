@@ -206,7 +206,7 @@
                     <button class="see-more text-white">
                       See more
                     </button>
-                    <button>
+                    <button @click="addfavorites(product)">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-12 h-12 text-red-700">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -290,7 +290,7 @@
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../scripts/store.js"></script>
   <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 
