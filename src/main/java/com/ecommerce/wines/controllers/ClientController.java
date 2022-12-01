@@ -98,7 +98,7 @@ public class ClientController {
 
         client.setActive(true);
         clientService.saveClient(client);
-        response.sendRedirect("/web/pages/login-register.html?confirmed=true");
+        response.sendRedirect("/web/src/pages/login-register.html?confirmed=true");
 
         return new ResponseEntity<>("Client Confirmed", HttpStatus.OK);
     }
