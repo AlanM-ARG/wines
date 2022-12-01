@@ -32,7 +32,7 @@
 
 .add-cart img{
 
-    animation: rotate 5s infinite;
+    animation: rotate 5s infinite linear;
 }
 
 .bg-wine{
