@@ -1079,6 +1079,10 @@ video {
     position: static;
   }
 
+  .lg\:sticky {
+    position: sticky;
+  }
+
   .lg\:block {
     display: block;
   }
