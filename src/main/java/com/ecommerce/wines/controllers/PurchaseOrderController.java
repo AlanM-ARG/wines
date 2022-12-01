@@ -1,5 +1,6 @@
 package com.ecommerce.wines.controllers;
 
+import com.ecommerce.wines.DTOS.FavsDTO;
 import com.ecommerce.wines.DTOS.ProductOrderDTO;
 import com.ecommerce.wines.DTOS.PurchaseDTO;
 import com.ecommerce.wines.DTOS.PurchaseOrderDTO;
@@ -43,6 +44,12 @@ public class PurchaseOrderController {
     @GetMapping("/purchaseorder")
     public List<PurchaseOrderDTO> getPurchaseOrder() {
         return purchaseOrderService.getPurchaseOrder();
+    }
+
+    @GetMapping("/clientcurrent/purchaseorder")
+    public List<PurchaseOrderDTO> getPurchaseOrderClient(Authentication authentication) {
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        return clientCurrent.getPurchaseOrders().stream().map(purchaseOrder -> new PurchaseOrderDTO(purchaseOrder)).collect(Collectors.toList());
     }
 
 
