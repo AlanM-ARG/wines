@@ -66,7 +66,7 @@ const app = Vue.createApp({
 
             this.filteredProducts = this.products.filter( product => product.category == this.categoryFilter)
 
-
+            
         }else{
             this.filteredProducts = this.products
         }
