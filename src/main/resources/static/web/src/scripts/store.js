@@ -104,7 +104,11 @@ const app = Vue.createApp({
   computed: {
 
     filterFinal(){
-        filterCategory(this.products)
+        if(this.filterData.category.length || this.filterData.name.length || this.filterData.priceMax.length){
+            
+            this.filteredProducts =  this.filterPrice(this.filterName(this.filterCategory(this.products)))
+        }
+        
     }
    
   },
