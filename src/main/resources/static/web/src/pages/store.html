@@ -34,7 +34,7 @@
       </div>
 
       <div class="cart flex justify-end items-center p-4 cursor-pointer w-[31.3%] bg-[#242424]">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        <svg data-modal-toggle="defaultModal" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
           style="fill: rgba(0, 0, 0, .5);">
           <path
             d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
@@ -53,7 +53,7 @@
       <div class="flex ">
 
         <div
-          class="w-[100vw] min-h-[100vh] absolute p-4  z-20 bg-[#952D3F] hidden lg:w-1/5 lg:block lg:sticky border-white lg:border-r ">
+          class="w-[100vw] min-h-[100vh] absolute p-4  z-20 bg-[#952D3F] hidden lg:w-1/5 lg:block lg:sticky border-white lg:border-r " id="defaultModal" tabindex="-1" aria-hidden="true">
           <div class="">
             <p class=" text-xl  text-black ">CATEGORY'S</p>
             <div class="categorys pl-2  flex flex-col gap-2 my-3">
@@ -230,7 +230,7 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <script src="../scripts/store.js"></script>
-
+  <script src="../path/to/flowbite/dist/flowbite.js"></script>
 
 
 </body>
