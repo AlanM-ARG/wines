@@ -34,8 +34,8 @@ public class ClientDTO {
         this.password = client.getPassword();
         this.image = client.getImage();
         this.active = client.isActive();
-        this.purchaseOrders = client.getPurchaseOrders().stream().map(purchaseOrder -> new PurchaseOrderDTO(purchaseOrder)).collect(Collectors.toSet());
-        this.moments = client.getMoments().stream().map(moment -> new MomentDTO(moment)).collect(Collectors.toSet());
+        this.purchaseOrders = client.getPurchaseOrders().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
+        this.moments = client.getMoments().stream().map(MomentDTO::new).collect(Collectors.toSet());
         this.token = client.getToken();
     }
 

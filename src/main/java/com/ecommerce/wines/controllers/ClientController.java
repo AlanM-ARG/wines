@@ -137,7 +137,7 @@ public class ClientController {
     }
 
     @PatchMapping("/clients/current/changePassword")
-    public ResponseEntity<?> changePassword(Authentication authentication, @RequestParam String password){
+    public ResponseEntity<?> changePassword(Authentication authentication, @RequestParam String password, @RequestParam String oldPassword){
 
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
 
@@ -147,8 +147,11 @@ public class ClientController {
         if (password.isEmpty()){
             return new ResponseEntity<>("Password is empty",HttpStatus.FORBIDDEN);
         }
-        clientCurrent.setPassword(passwordEncoder.encode(password));
+        if (!passwordEncoder.matches(oldPassword, clientCurrent.getPassword())){
+            return new ResponseEntity<>("Wrong Password",HttpStatus.FORBIDDEN);
+        }
 
+        clientCurrent.setPassword(passwordEncoder.encode(password));
         clientService.saveClient(clientCurrent);
 
         return new ResponseEntity<>("Changed password",HttpStatus.OK);
