@@ -38,6 +38,14 @@
     position: relative;
     --color: #5757577e;
 }
+.deleteButton{
+    position: absolute;
+    right: 0;
+    top: 25%;
+    font-size: 1.5rem;
+    padding-right: .5rem;
+    color: black;
+}
 .formInput{
     height: 46.19px;
     border: none;

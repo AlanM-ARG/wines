@@ -7,19 +7,19 @@ import com.ecommerce.wines.models.PurchaseOrder;
 public class ProductOrderDTO {
 
     private long id;
-    private Long  productId;
+    private String productName;
     private Integer quantity;
     private Double amount;
 
 
-    public ProductOrderDTO(Long productId, Integer quantity) {
-        this.productId = productId;
+    public ProductOrderDTO(String productName, Integer quantity) {
+        this.productName = productName;
         this.quantity = quantity;
     }
 
     public ProductOrderDTO(ProductOrder productOrder) {
         this.id = productOrder.getId();
-        this.productId = productOrder.getProduct().getId();
+        this.productName = productOrder.getProduct().getName();
         this.quantity = productOrder.getQuantity();
         this.amount = productOrder.getAmount();
     }
@@ -28,8 +28,8 @@ public class ProductOrderDTO {
         return id;
     }
 
-    public Long getProductId() {
-        return productId;
+    public String getProductName() {
+        return productName;
     }
 
     public Integer getQuantity() {

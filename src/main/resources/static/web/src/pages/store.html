@@ -44,7 +44,7 @@
 </button>
 
 <!-- Main modal -->
-<div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0  right-0  z-50 hidden w-full justify-end p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full md:h-full" style="justify-content:end!important;">
+<div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0  right-0  z-[100] hidden w-full justify-end p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full md:h-full" style="justify-content:end!important;">
     <div class="relative w-full h-full max-w-2xl ">
         <!-- Modal content -->
         <div class="relative bg-[#242424] shadow dark:bg-gray-700 cart h-full">
@@ -63,7 +63,7 @@
               
               <template v-for="product in filteredProducts">
 
-                <div class="w-full h-36 bg-[#952D3F] rounded flex">
+                <div class="w-full h-[11rem] bg-[#952D3F] rounded flex">
                 
                   <div class="border-r border-black w-2/4">
   
@@ -76,7 +76,7 @@
                   </div>
   
                   <div class="w-2/4" >
-                    <img :src="product.image" alt="" class="w-full h-full object-contain" style="transform: rotate(-90deg);">
+                    <img :src="product.image" alt="" class="w-full h-full object-contain md:rotate-[-90] ">
                   </div>
   
                 </div>
