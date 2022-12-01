@@ -8,8 +8,6 @@ let app = createApp({
             password: '',
             firstName: '',
             lastName: '',
-            url: '',
-            title: "",
         }
     },
     created() {
@@ -18,11 +16,11 @@ let app = createApp({
     methods: {
         login() {
             axios.post(axios.post('/api/login', `email=${this.email}&password=${this.password}`)
-                .then(() => window.location.href = "http://localhost:8080/web/index.html")
+                .then(() => window.location.href = "/web/src/index.html")
                 .catch((error) => console.log(error)))
         },
         register() {
-            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}&img=aaa`)
+            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
                 .then(() => Swal.fire('Please confirm your email!', '', 'warning'))
                 .catch(error => console.error(error))
         },
