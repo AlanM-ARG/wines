@@ -8,7 +8,9 @@ let app = createApp({
             password: '',
             firstName: '',
             lastName: '',
-            url: ''
+            url: '',
+            title: "",
+            xd:
         }
     },
     created() {
