@@ -80,7 +80,7 @@
                 <div class="d-flex">
                   
                   <p><span class="fw-bold">Password: </span><span v-if="editMode === false">*******</span> <span
-                      v-if="editMode === true"><input type="text" v-model="oldPassword" placeholder="Old Password"><input class="text-dark" type="input" v-model="newPassword" placeholder="New Password" id="password"
+                      v-if="editMode === true"><input class="text-dark" type="text" v-model="oldPassword" placeholder="Old Password"><input class="text-dark" type="input" v-model="newPassword" placeholder="New Password" id="password"
                         required /> <a @click="changePassword()"><img src="../assets/tickIcon.png"
                           alt="check"></a></span> </p>
                   <a v-if="editMode === false" @click="editMode = true"><img style="height: 2rem; width: 2rem;"
