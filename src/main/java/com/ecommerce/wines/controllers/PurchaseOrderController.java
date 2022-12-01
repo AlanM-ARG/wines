@@ -157,7 +157,6 @@ public class PurchaseOrderController {
         pdf.addLineJumps();
         pdf.addParagraph("TOTAL: $ " + purchaseOrder.getAmount());
         pdf.closeDocument();
-
         return new ResponseEntity<>("Pdf created", HttpStatus.OK);
     }
 

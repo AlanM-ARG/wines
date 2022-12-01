@@ -126,7 +126,12 @@
                   class="mt-5 rounded-0 animate__animated animate__fadeIn submit-btn">Submit</button>
               </div>
             </form>
-
+            <form id="createMoment" enctype="multipart/form-data">
+              <input type="file" name="file">
+              <input type="text" v-model="title">
+              <input type="text" v-model="description">
+            </form>
+            <button @click="createMoment()">prueba</button>
           </div>
 
         </div>

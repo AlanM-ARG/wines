@@ -84,7 +84,7 @@ public class EmailServiceImplement  implements EmailService {
                 "    </tr>\n" +
                 "  </tbody></table>\n" +
                 "                        <div align=\"center\">\n" +
-                "                            <img  src=\"https://i.ibb.co/Sxsq08Q/logo1-timeforwine.png\">\n" +
+                "                            <img style=\"width:50%\" src=\"https://cdn.discordapp.com/attachments/1017325567630118972/1047848908828717096/email-logo2.png\">\n" +
                 "                        </div>\n" +
                 "\n" +
                 "\n" +
