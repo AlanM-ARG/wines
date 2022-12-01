@@ -63,16 +63,16 @@
                
               <template v-for="product in filteredProducts">
                <div class="relative  p-4 overflow-hidden bg-white shadow-lg rounded-2xl w-full">
-  <img alt="moto" :src="product.image" class="absolute object-contain w-40 h-40 mb-4 -right-20 -bottom-8"/>
+  <img alt="moto" :src="product.image" class="absolute object-contain w-40 h-40 mb-4 "/>
   <div class="w-4/6">
       <p class="mb-2 text-lg font-medium text-gray-800">
           {{product.name}}
       </p>
       <p class="text-xs text-gray-400">
-          {{product.stock}}
+         Quantity: {{product.stock}}
       </p>
       <p class="text-xl font-medium text-indigo-500">
-         $ {{product.price}}
+         TOTAL: $ {{product.price}}
       </p>
   </div>
     </div>
