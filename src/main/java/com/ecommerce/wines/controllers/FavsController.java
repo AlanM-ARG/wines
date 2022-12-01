@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -41,10 +42,10 @@ public class FavsController {
         List<Product> allProducts = productService.getAllProducts();
 
         if(clientCurrent == null){
-            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
         }
         if(name.isEmpty()){
-            return new ResponseEntity<>("Missing name", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Name is empty", HttpStatus.FORBIDDEN);
         }
         if(!allProducts.stream().map(Product::getName).collect(Collectors.toList()).contains(name)){
             return new ResponseEntity<>("The product does not exist", HttpStatus.FORBIDDEN);
@@ -58,54 +59,36 @@ public class FavsController {
         clientCurrent.addFavs(favs);
         clientService.saveClient(clientCurrent);
 
-        return new ResponseEntity<>("Add fav", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Added favorite", HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/favs")
-    public List<FavsDTO> getClientFavs(Authentication authentication){
+    public Set<FavsDTO> getClientFavs(Authentication authentication){
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
-        return clientCurrent.getFavss().stream().map(FavsDTO::new).collect(Collectors.toList());
-    }
-
-        if(clientCurrent == null){
-            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
-        }
-        if(name.isEmpty()){
-            return new ResponseEntity<>("Missing name", HttpStatus.FORBIDDEN);
-        }
-        if(!allProducts.stream().map(product1 -> product1.getName()).collect(Collectors.toList()).contains(name)){
-            return new ResponseEntity<>("The product does not exist", HttpStatus.FORBIDDEN);
-        }
-        if(clientCurrent.getFavss().stream().map(favs -> favs.getName()).collect(Collectors.toSet()).contains(name)){
-            return new ResponseEntity<>("You already own this favorite", HttpStatus.FORBIDDEN);
-        }
-
-        Favs favs = new Favs(product, clientCurrent, product.getName(), product.getImage());
-        favsService.saveFavs(favs);
-        clientCurrent.addFavs(favs);
-        clientService.saveClient(clientCurrent);
-
-        return new ResponseEntity<>("Add fav", HttpStatus.ACCEPTED);
-    }
-
-    @GetMapping("/clients/favs")
-    public List<FavsDTO> getAll(Authentication authentication){
-        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
-        return clientCurrent.getFavss().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
+        return clientCurrent.getFavss().stream().map(FavsDTO::new).collect(Collectors.toSet());
     }
 
     @DeleteMapping("/clients/favs/delete")
     public ResponseEntity<?> deleteFav(Authentication authentication, @RequestParam int id){
+
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+
+        if (clientCurrent == null){
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
+        }
+
         Favs favs = favsService.getFavById(id);
+
+        if (!clientCurrent.getFavss().contains(favs)){
+            return new ResponseEntity<>("The favourite to be deleted does not belong to the authenticated client", HttpStatus.FORBIDDEN);
+        }
         if(id <= 0){
             return new ResponseEntity<>("Missing id", HttpStatus.FORBIDDEN);
         }
+
         favsService.deleteFavs(favs);
-        return new ResponseEntity<>("Favourite deleted", HttpStatus.ACCEPTED);
+
+        return new ResponseEntity<>("Favourite deleted", HttpStatus.OK);
     }
-
-
-
-
 
 }

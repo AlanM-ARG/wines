@@ -75,8 +75,8 @@ public class Pdf {
         table.addCell("Amount");
         productOrders.stream().sorted(Comparator.comparing(ProductOrder::getId)).forEach(productOrder -> {
             table.addCell(productOrder.getProduct().getName());
-            table.addCell(productOrder.getQuantity() + "");
-            table.addCell(productOrder.getAmount() + "");
+            table.addCell(productOrder.getQuantity().toString());
+            table.addCell("$ " + productOrder.getAmount());
                 });
         table.setHorizontalAlignment(Element.ALIGN_CENTER);
         document.add(table);

@@ -12,6 +12,7 @@ import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +41,7 @@ public class PurchaseOrderController {
     @Autowired
     ClientService clientService;
 
-    @GetMapping("/purchaseorder")
+    @GetMapping("/purchaseOrder")
     public List<PurchaseOrderDTO> getPurchaseOrder() {
         return purchaseOrderService.getPurchaseOrder();
     }
@@ -50,33 +51,36 @@ public class PurchaseOrderController {
     public ResponseEntity<?> createPurchaseOrder(Authentication authentication, @RequestBody PurchaseDTO purchaseDTO) {
 
         Client client = clientService.clientFindByEmail(authentication.getName());
-        List<ProductOrderDTO> productOrderDTOS = purchaseDTO.getProductOrderDTOS().stream().collect(Collectors.toList());
 
+        if (client == null){
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
+        }
+        if(purchaseDTO == null){
+            return  new ResponseEntity<>("Purchase is empty", HttpStatus.FORBIDDEN);
+        }
+        if (purchaseDTO.getProductOrderDTOS().isEmpty()){
+            return new ResponseEntity<>("Product Order is empty", HttpStatus.FORBIDDEN);
+        }
+        List<ProductOrderDTO> productOrderDTOS = purchaseDTO.getProductOrderDTOS().stream().collect(Collectors.toList());
         List<Double> amountTotal = new ArrayList<>();
         PurchaseOrder purchaseOrder1 = new PurchaseOrder(client,0.0,LocalDateTime.now(),purchaseDTO.getPaymentMethod());
-
 
         productOrderDTOS.forEach(productOrderDTO -> {
             Product product = productService.findById(productOrderDTO.getProductId());
             product.setStock(product.getStock() - productOrderDTO.getQuantity());
             productService.saveProduct(product);
-            amountTotal.add(product.getPrice() * productOrderDTO.getQuantity());
+            amountTotal.add(Math.round((product.getPrice() * productOrderDTO.getQuantity()) * 100.0) / 100.0);
             ProductOrder productOrder = new ProductOrder(productOrderDTO.getQuantity(), product, purchaseOrder1);
             purchaseOrder1.addProductOrder(productOrder);
             purchaseOrderService.savePurchaseOrder(purchaseOrder1);
             productOrderRepository.save(productOrder);
         });
 
-
-
-
         Double amountFinal = amountTotal.stream().reduce(Double::sum).orElse(null);
-
         purchaseOrder1.setMount(Math.round(amountFinal * 100.0) / 100.0);
-
         purchaseOrderService.savePurchaseOrder(purchaseOrder1);
 
-        return new ResponseEntity<>("Purchase order create", HttpStatus.CREATED);
+        return new ResponseEntity<>("Purchase order created", HttpStatus.CREATED);
 
     }
 
@@ -94,16 +98,42 @@ public class PurchaseOrderController {
     @PostMapping("/pdf/request")
     public ResponseEntity<?> requestPDF(Authentication authentication, @RequestParam Long idPurchaseOrder) {
 
+        Client client = clientService.clientFindByEmail(authentication.getName());
+
+        if (client == null){
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
+        }
+        if (idPurchaseOrder <= 0){
+            return new ResponseEntity<>("The id is invalid", HttpStatus.FORBIDDEN);
+        }
 
         purchaseOrder = purchaseOrderService.findById(idPurchaseOrder);
 
+        if (purchaseOrder == null){
+            return new ResponseEntity<>("No purchase orders found", HttpStatus.FORBIDDEN);
+        }
+
         purchaseOrderClient = purchaseOrder.getClient();
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        if (client != purchaseOrderClient){
+            return new ResponseEntity<>("The purchase order does not belong to the authenticated client.", HttpStatus.FORBIDDEN);
+        }
+
+        return new ResponseEntity<>("Data sent",HttpStatus.OK);
     }
 
     @GetMapping("/pdf/create")
-    public void createPurchaseOrderPDF(HttpServletResponse response) throws IOException, DocumentException {
+    public ResponseEntity<?> createPurchaseOrderPDF(Authentication authentication,HttpServletResponse response) throws IOException, DocumentException {
+
+        Client client = clientService.clientFindByEmail(authentication.getName());
+
+        if (client == null){
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
+        }
+        if (purchaseOrder == null){
+            return new ResponseEntity<>("No purchase orders found", HttpStatus.FORBIDDEN);
+        }
+
         response.setContentType("application/pdf");
         LocalDateTime currentDateTime = LocalDateTime.now();
         String headerKey = "Content-Disposition";
@@ -117,11 +147,10 @@ public class PurchaseOrderController {
         pdf.addLineJumps();
         pdf.addProductsTable(purchaseOrder.getProductOrders());
         pdf.addLineJumps();
-        pdf.addParagraph("TOTAL: " + purchaseOrder.getAmount());
+        pdf.addParagraph("TOTAL: $ " + purchaseOrder.getAmount());
         pdf.closeDocument();
 
+        return new ResponseEntity<>("Pdf created", HttpStatus.OK);
     }
-
-
 
 }

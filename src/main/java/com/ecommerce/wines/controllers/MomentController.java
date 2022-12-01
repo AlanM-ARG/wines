@@ -40,23 +40,26 @@ public class MomentController {
     public ResponseEntity<?> newMoment(@RequestParam String img, @RequestParam String title, @RequestParam String description, Authentication authentication){
 
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+
         if(clientCurrent == null){
-            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
         }
         if(img.isEmpty()){
-            return new ResponseEntity<>("Missing img", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Image is empty", HttpStatus.FORBIDDEN);
         }
         if(title.isEmpty()){
-            return new ResponseEntity<>("Missing title", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Title is empty", HttpStatus.FORBIDDEN);
         }
         if(description.isEmpty()){
-            return new ResponseEntity<>("Missing description", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Description is empty", HttpStatus.FORBIDDEN);
         }
+
         Moment newMoment = new Moment(img, title, description, clientCurrent);
         momentService.saveMoment(newMoment);
         clientCurrent.addMoment(newMoment);
         clientService.saveClient(clientCurrent);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+
+        return new ResponseEntity<>("Moment created",HttpStatus.CREATED);
     }
 
 }

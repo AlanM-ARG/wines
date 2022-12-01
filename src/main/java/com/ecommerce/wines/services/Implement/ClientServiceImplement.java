@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,5 +46,10 @@ public class ClientServiceImplement implements ClientService {
     @Override
     public Client findByToken(String token) {
         return clientRepository.findByToken(token);
+    }
+
+    @Override
+    public Set<String> getAllTokens() {
+        return clientRepository.findAll().stream().map(Client::getToken).collect(Collectors.toSet());
     }
 }

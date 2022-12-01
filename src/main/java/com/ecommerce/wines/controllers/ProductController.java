@@ -27,7 +27,7 @@ public class ProductController {
     }
 
 
-    @RequestMapping("/products/{id}")
+    @GetMapping("/products/{id}")
     public ProductDTO getProductDTO(@PathVariable Long id) {
         return productService.getProductDTO(id);
     }
@@ -48,88 +48,81 @@ public class ProductController {
 
         List<Product> products = productService.getAllProducts();
 
-        // valores vacios
+        if(category.toString().isEmpty()){
+            return new ResponseEntity<>("Category is empty", HttpStatus.FORBIDDEN);
+        }
         if(name.isEmpty()){
-            return new ResponseEntity<>("Missing name", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Name is empty", HttpStatus.FORBIDDEN);
         }
-
         if(description.isEmpty()){
-            return new ResponseEntity<>("Missing description", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Description is empty", HttpStatus.FORBIDDEN);
         }
-
-        if(img.isEmpty()){
-            return new ResponseEntity<>("Missing img", HttpStatus.FORBIDDEN);
-        }
-
-        if(variety.isEmpty()){
-            return new ResponseEntity<>("Missing variety", HttpStatus.FORBIDDEN);
-        }
-
-        if(tastingNote.isEmpty()){
-            return new ResponseEntity<>("Missing tasting note", HttpStatus.FORBIDDEN);
-        }
-
-        if(temperature.isEmpty()){
-            return new ResponseEntity<>("Missing temperature", HttpStatus.FORBIDDEN);
-        }
-
         if(stock <=0){
             return new ResponseEntity<>("Invalid stock", HttpStatus.FORBIDDEN);
         }
-
         if(price <= 0){
             return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
         }
-
-        if(category.toString().isEmpty()){
-            return new ResponseEntity<>("Missing category", HttpStatus.FORBIDDEN);
+        if (discount <= 0){
+            return new ResponseEntity<>("Invalid discount", HttpStatus.FORBIDDEN);
         }
-
-        //demas if
-
-        if(products.stream().map(product -> product.getName()).collect(Collectors.toSet()).contains(name)){
+        if(img.isEmpty()){
+            return new ResponseEntity<>("Image is empty", HttpStatus.FORBIDDEN);
+        }
+        if(variety.isEmpty()){
+            return new ResponseEntity<>("Variety is empty", HttpStatus.FORBIDDEN);
+        }
+        if(tastingNote.isEmpty()){
+            return new ResponseEntity<>("Tasting note is empty", HttpStatus.FORBIDDEN);
+        }
+        if(temperature.isEmpty()){
+            return new ResponseEntity<>("Temperature is empty", HttpStatus.FORBIDDEN);
+        }
+        if(products.stream().map(Product::getName).collect(Collectors.toSet()).contains(name)){
             return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
         }
 
-
         Product product = new Product(category, name, description, stock,price , discount, img, variety, tastingNote,temperature, true);
         productService.saveProduct(product);
-        return new ResponseEntity<>("Create", HttpStatus.CREATED);
+
+        return new ResponseEntity<>("Created product", HttpStatus.CREATED);
     }
 
     @PatchMapping("/admin/products/stock")
     public ResponseEntity<?> changeStock(@RequestParam int stock, @RequestParam String name){
 
         if(name.isEmpty()){
-            return new ResponseEntity<>("name is missing",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Name is empty",HttpStatus.FORBIDDEN);
+        }
+        if (stock <= 0){
+            return new ResponseEntity<>("Invalid stock", HttpStatus.FORBIDDEN);
         }
 
-
         productService.changeStock(stock, name);
-        return new ResponseEntity<>("Stock changed", HttpStatus.CREATED);
-    }
 
-    @DeleteMapping("/admin/products/delete")
-    public ResponseEntity<String> deleteProduct(@RequestParam String name){
-        Product product = productService.findByName(name);
-        productService.deleteProduct(product);
-        return new ResponseEntity<>("Product delete",HttpStatus.CREATED);
+        return new ResponseEntity<>("Changed Stock", HttpStatus.OK);
     }
 
     @PatchMapping("/admin/products/delete")
     public ResponseEntity<?> disabledProduct(@RequestParam String name){
+
         Product product = productService.findByName(name);
+
         if(product == null){
             return new ResponseEntity<>("Product not found",HttpStatus.FORBIDDEN);
         }
         if(name.isEmpty()){
-            return new ResponseEntity<>("Missing name",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Name is empty",HttpStatus.FORBIDDEN);
         }
+        if (!product.isActive()){
+            return new ResponseEntity<>("The product is already disabled", HttpStatus.FORBIDDEN);
+        }
+
         product.setActive(false);
         productService.saveProduct(product);
-        return new ResponseEntity<>("Product delete",HttpStatus.CREATED);
-    }
 
+        return new ResponseEntity<>("Product disabled",HttpStatus.OK);
+    }
 
     @PatchMapping("/admin/products/modify")
     public ResponseEntity<?> modifyProduct(@RequestParam String name, @RequestParam int stock, @RequestParam String newName, @RequestParam double price,@RequestParam String variety,
@@ -147,11 +140,11 @@ public class ProductController {
         if (price <= 0){
             return new ResponseEntity<>("Invalid Price", HttpStatus.FORBIDDEN);
         }
-        if (!products.stream().map(product1 -> product1.getName()).collect(Collectors.toSet()).contains(name)){
+        if (!products.stream().map(Product::getName).collect(Collectors.toSet()).contains(name)){
             return new ResponseEntity<>("The product does not exist", HttpStatus.FORBIDDEN);
 
         }
-        if (products.stream().map(product1 -> product1.getName()).collect(Collectors.toSet()).contains(newName)){
+        if (products.stream().map(Product::getName).collect(Collectors.toSet()).contains(newName)){
             return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
         }
         if (newName.isEmpty()){

@@ -56,10 +56,6 @@ public class Product {
         this.active = active;
     }
 
-    public PurchaseOrder getPurchaseOrder() {
-        return purchaseOrder;
-    }
-
     public long getId() {
         return id;
     }
