@@ -63,7 +63,7 @@
               
               <template v-for="product in filteredProducts">
 
-                <div class="w-full h-36 bg-[#952D3F] rounded flex">
+                <div class="w-full md:h-36 h-[11rem] bg-[#952D3F] rounded flex">
                 
                   <div class="border-r border-black w-2/4">
   
@@ -76,7 +76,7 @@
                   </div>
   
                   <div class="w-2/4" >
-                    <img :src="product.image" alt="" class="w-full h-full object-contain" style="transform: rotate(-90deg);">
+                    <img :src="product.image" alt="" class="w-full h-full object-contain md:rotate-[-90] ">
                   </div>
   
                 </div>
