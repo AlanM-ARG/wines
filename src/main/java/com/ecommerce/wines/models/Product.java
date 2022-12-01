@@ -22,7 +22,7 @@ public class Product {
 
     private int stock;
 
-    private double price;
+    private Double price;
 
     private double discount;
 
@@ -42,7 +42,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Category category, String name, String description, int stock, double price, double discount, String image, String variety, String tastingNote, String temperature, boolean active) {
+    public Product(Category category, String name, String description, int stock, Double price, double discount, String image, String variety, String tastingNote, String temperature, boolean active) {
         this.category = category;
         this.name = name;
         this.description = description;
@@ -55,8 +55,6 @@ public class Product {
         this.temperature = temperature;
         this.active = active;
     }
-
-
 
     public long getId() {
         return id;
@@ -94,11 +92,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

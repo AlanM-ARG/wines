@@ -1,6 +1,5 @@
 const { createApp } = Vue
-
-let app = createApp({
+createApp({
     data() {
         return {
             active: 'Log In',
@@ -9,8 +8,8 @@ let app = createApp({
             firstName: '',
             lastName: '',
             url: '',
-            title: "",
-            xd:
+            title: '',
+            description: '',
         }
     },
     created() {
@@ -19,11 +18,11 @@ let app = createApp({
     methods: {
         login() {
             axios.post(axios.post('/api/login', `email=${this.email}&password=${this.password}`)
-                .then(() => window.location.href = "http://localhost:8080/web/index.html")
+                .then(() => console.log("index"))
                 .catch((error) => console.log(error)))
         },
         register() {
-            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}&img=aaa`)
+            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
                 .then(() => Swal.fire('Please confirm your email!', '', 'warning'))
                 .catch(error => console.error(error))
         },
@@ -34,8 +33,19 @@ let app = createApp({
                 Swal.fire('Email Confirmed!', '', 'success')
             }
         },
+        createMoment() {
+            let form = document.querySelector('#createMoment')
+            let formData = new FormData(form)
+            formData.append('upload_preset', 'r16u29xq')
+            axios.post('https://api.cloudinary.com/v1_1/dlfic0owc/image/upload', formData)
+                .then(response => {
+                    axios.post("/api/clients/moments", "img=" + response.data.secure_url + "&title=" + this.title + "&description=" + this.description)
+                        .then(() => Swal.fire('Uploaded!', '', 'success'))
+                })
+                .catch(err => console.error(err))
+        }
     },
     computed: {
     },
 })
-app.mount('#app')
+.mount('#app')

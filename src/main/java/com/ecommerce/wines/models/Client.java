@@ -39,14 +39,14 @@ public class Client {
     public Client() {
     }
 
-    public Client(String firstName, String lastName, String email, String password, String image, String token, boolean active) {
+    public Client(String firstName, String lastName, String email, String password,String image , String token, boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.image = image;
         this.token = token;
         this.active = active;
+        this.image=image;
     }
 
     public long getId() {

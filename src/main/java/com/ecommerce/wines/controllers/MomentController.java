@@ -1,9 +1,7 @@
 package com.ecommerce.wines.controllers;
 
-import com.ecommerce.wines.DTOS.FavsDTO;
 import com.ecommerce.wines.DTOS.MomentDTO;
 import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.Favs;
 import com.ecommerce.wines.models.Moment;
 import com.ecommerce.wines.services.ClientService;
 import com.ecommerce.wines.services.MomentService;
@@ -15,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -31,33 +30,36 @@ public class MomentController {
         return momentService.getAllMomentDTO();
     }
 
+    @GetMapping("/clients/moments/current")
+    public Set<MomentDTO> getMomentsClientCurrent(Authentication authentication) {
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        return clientCurrent.getMoments().stream().map(MomentDTO::new).collect(Collectors.toSet());
+    }
+
     @PostMapping("/clients/moments")
     public ResponseEntity<?> newMoment(@RequestParam String img, @RequestParam String title, @RequestParam String description, Authentication authentication){
 
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+
         if(clientCurrent == null){
-            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
         }
         if(img.isEmpty()){
-            return new ResponseEntity<>("Missing img", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Image is empty", HttpStatus.FORBIDDEN);
         }
         if(title.isEmpty()){
-            return new ResponseEntity<>("Missing title", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Title is empty", HttpStatus.FORBIDDEN);
         }
         if(description.isEmpty()){
-            return new ResponseEntity<>("Missing description", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Description is empty", HttpStatus.FORBIDDEN);
         }
+
         Moment newMoment = new Moment(img, title, description, clientCurrent);
         momentService.saveMoment(newMoment);
         clientCurrent.addMoment(newMoment);
         clientService.saveClient(clientCurrent);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
 
-    @GetMapping("/clients/current/moment")
-    public List<MomentDTO> getMomentsClientCurrent(Authentication authentication){
-        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
-        return clientCurrent.getMoments().stream().map(moment -> new MomentDTO(moment)).collect(Collectors.toList());
+        return new ResponseEntity<>("Moment created",HttpStatus.CREATED);
     }
 
     @DeleteMapping("/clients/moments/delete")
@@ -67,7 +69,7 @@ public class MomentController {
         if (clientCurrent == null){
             return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
         }
-        if (!clientCurrent.getMoments().stream().map(moment1 -> moment1.getId()).collect(Collectors.toSet()).contains(moment.getId())){
+        if (!clientCurrent.getMoments().stream().map(Moment::getId).collect(Collectors.toSet()).contains(moment.getId())){
             return new ResponseEntity<>("this moment does not belong to you", HttpStatus.FORBIDDEN);
         }
         if(id <= 0){

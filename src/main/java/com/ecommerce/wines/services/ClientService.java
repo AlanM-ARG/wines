@@ -4,6 +4,7 @@ import com.ecommerce.wines.DTOS.ClientDTO;
 import com.ecommerce.wines.models.Client;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ClientService {
     public List<ClientDTO> getClientsDTO();
@@ -18,5 +19,5 @@ public interface ClientService {
 
     Client findByToken(String token);
 
-
+    Set<String> getAllTokens ();
 }

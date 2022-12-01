@@ -32,11 +32,11 @@ public class WinesApplication {
 
 
 
-			Client client = new Client("Admin", "Admin", "winesadmin@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
-			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
-			Client client2= new Client("Marta", "Lorenzo", "marta@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
-			Client client3 = new Client("Axel", "Pedraza", "axel@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
-			Client client4 = new Client("Esteban", "Mendoza", "esteban@gmail.com", passwordEncoder.encode("123456"), "abc", "token", true);
+			Client client = new Client("Admin", "Admin", "winesadmin@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
+			Client client1 = new Client("Pablo", "Lopez", "pablo@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
+			Client client2= new Client("Marta", "Lorenzo", "marta@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
+			Client client3 = new Client("Axel", "Pedraza", "axel@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
+			Client client4 = new Client("Esteban", "Mendoza", "esteban@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
 
 			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "vino y pasión", "disgustando un pajaro loco mencía");
 			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Compartiendo con la familia", "Cena familiar y compartiendo un vino");

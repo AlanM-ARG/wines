@@ -29,7 +29,7 @@ public class ProductOrder {
 
     public ProductOrder(Integer quantity, Product product, PurchaseOrder purchaseOrder) {
         this.quantity = quantity;
-        Amount = product.getPrice()*quantity;
+        this.Amount = product.getPrice() * quantity;
         this.product = product;
         this.purchaseOrder = purchaseOrder;
     }

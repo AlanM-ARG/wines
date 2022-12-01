@@ -3,14 +3,13 @@ package com.ecommerce.wines.DTOS;
 import com.ecommerce.wines.models.Client;
 import com.ecommerce.wines.models.ProductOrder;
 import com.ecommerce.wines.models.PurchaseOrder;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ProductOrderDTO {
 
     private long id;
     private Long  productId;
     private Integer quantity;
-    private double amount;
+    private Double amount;
 
 
     public ProductOrderDTO(Long productId, Integer quantity) {
@@ -37,7 +36,7 @@ public class ProductOrderDTO {
         return quantity;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 }

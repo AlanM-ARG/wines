@@ -7,14 +7,14 @@ public class FavsDTO {
 
     private long id;
     private String name;
-    private String imagen;
+    private String image;
 
 
 
     public FavsDTO(Favs favs) {
         this.id = favs.getId();
         this.name = favs.getName();
-        this.imagen = favs.getImagen();
+        this.image = favs.getImage();
     }
 
     public long getId() {
@@ -25,7 +25,7 @@ public class FavsDTO {
         return name;
     }
 
-    public String getImagen() {
-        return imagen;
+    public String getImage() {
+        return image;
     }
 }
