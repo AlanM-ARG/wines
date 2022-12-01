@@ -80,9 +80,17 @@ const app = Vue.createApp({
 
         if(this.filterData.name.length){
 
-            filteredProducts = array.filter( product => (product.name.toLowerCase()).contains(this.filterData.name.toLowerCase()) )
+            filteredProducts = array.filter( product => {
+                
+                let name = product.name.toLowerCase()
+                
+                name.contains(this.filterData.name.toLowerCase())
+            
+            
+            } )
 
             return filteredProducts 
+
         }else{
             filteredProducts = array
             return filteredProducts 
