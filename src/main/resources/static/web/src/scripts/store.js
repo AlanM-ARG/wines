@@ -113,7 +113,7 @@ const app = Vue.createApp({
 
       Swal.fire(
         'Added to cart',
-       
+        ':)',
         'success'
       )
     },
