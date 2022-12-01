@@ -100,11 +100,14 @@
 
 
             <div class="pl-2  flex flex-col gap-2 my-3 w-full h-10  justify-center items-center">
-              <p>Max price</p>
-              <label class="" >
-                <input type="range" min="0" max="200" name=""  v-model="filterData.priceMax">
-              </label>
-              <p>{{filterData.priceMax}}</p>
+              <div class="w-full h-20 flex flex-col">
+                <p>Max price</p>
+                <label class="">
+                  <input type="range" min="0" max="200" name="" v-model="filterData.priceMax">
+                </label>
+                <p>{{filterData.priceMax}}</p>
+              </div>
+
             </div>
 
           </div>
