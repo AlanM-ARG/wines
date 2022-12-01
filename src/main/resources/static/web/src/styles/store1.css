@@ -1,8 +1,15 @@
 .add-cart{
     width: 250px;
     height: 250px;
+    animation: rotate 2s infinite ease-out;
 }
 
+@keyframes rotate {
+    from{
+        transform: rotate(360deg);
+    }
+    
+}
 
 @media (min-width: 375px) {
 
