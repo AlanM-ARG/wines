@@ -138,25 +138,20 @@
 
                   </div>
                   <div style="width: 100%; height: 100%;">
-                    <div style="width: 100%; height: 20vh;" v-for="order of orders" class="border-topDown pb-2 pt-2 d-flex">
+                    <template style="width: 100%; height: 20vh;" v-for="order of orders" class="border-topDown pb-2 pt-2 d-flex">
                       <div style="height: 100%; width: 20%;"  class=" " >
-                        <h5>{{order.name}}</h5>
-                          
+                        
                       </div>
                       <div class="d-flex flex-column" style="width: 80%;"> 
-                          <div>
-                            <p>{{order.amount}}</p>
+                        <div>
+                          
+                          <h5>{{order.amount}}</h5>
                             <p>{{order.paymentMethod}}</p>
                             <p>{{order.localDateTime}}</p>
                           </div>
-                          <div>
-                            <div v-for="order of productOrders">
-                              <p>{{order.amount}}</p>
-                            </div>
-                              
-                          </div>
+                          
                       </div>
-                  </div>
+                  </template>
                     <div class="pt-5" v-if="orders.length === 0" >
                       <h4 class="text-muted text-center d-flex justify-content-center " >You dont have any purchase orders.</h4>
                   </div>
