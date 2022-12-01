@@ -5,7 +5,11 @@ const app = Vue.createApp({
       products: [],
       filteredProducts: [],
       categorys: [],
-      categoryFilter: "",
+      filterData: {
+        category: "",
+        name:"",
+        priceMax: 0
+      }
     };
   },
   created() {
@@ -54,22 +58,54 @@ const app = Vue.createApp({
       ) {
         return wineCategory + " WINE";
       } else return wineCategory;
+    },filterCategory(array){
+
+        let filteredProducts = []
+
+        if(this.filterData.category.length && this.filterData.category != "ALL"){
+
+           filteredProducts = this.array.filter( product => product.category == this.filterData.category)
+
+
+        }else{
+            filteredProducts = this.products
+        }
+
+        return filteredProducts
+
+    },filterName(array){
+        let filteredProducts = []
+
+        if(this.filterData.name.length){
+
+            filteredProducts = this.products.filter( product => product.name == this.filterData.name)
+
+
+        }else{
+            this.filteredProducts = array
+        }
+ 
+        return array    
+    },filterPrice(array){
+        let filteredProducts = []
+        if(filterData.priceMax <=0){
+            filteredProducts = array.filter( producto => {producto.price >= this.filterData.priceMin && producto.price <= this.filterData.priceMax})
+
+        }else{
+            filteredProducts = array
+        }
+
+        return filteredProducts 
     }
 
 
 
   },
   computed: {
-    productFilter(){
 
-        if(this.categoryFilter.length && this.categoryFilter != "ALL"){
-
-            this.filteredProducts = this.products.filter( product => product.category == this.categoryFilter)
-
-            
-        }else{
-            this.filteredProducts = this.products
-        }
-    },
+    filterFinal(){
+        filterCategory(this.products)
+    }
+   
   },
 }).mount("#app");

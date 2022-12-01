@@ -64,7 +64,7 @@
                
 
                   <label class="text-white flex text-sm  gap-4">
-                    <input type="radio" name="category" v-model="categoryFilter" :value="category">{{wine(category)}}
+                    <input type="radio" name="category" v-model="filterData.category" :value="category">{{wine(category)}}
                   </label>
                
                
@@ -80,12 +80,11 @@
           </div>
 
           <div class="">
-            <p class=" text-xl  text-[#b6374c] ">VARIETY</p>
+            <p class=" text-xl  text-[#b6374c] ">BY NAME</p>
             <div class="categorys pl-2  flex flex-col gap-2 my-3">
-              <template v-for="category of categorys">
-                 <label class="text-white flex text-sm  gap-4">
-                <input type="checkbox" name="category">{{wine(category)}}
-              </label>
+                <label>
+                  <input type="text" name="" id="" v-model="filterData.name">
+                </label>
               </template>
              
              
