@@ -68,10 +68,10 @@
                   <div class="border-r border-black w-2/4">
   
                     <div class="h-1/4 text-xl text-center py-2">{{product.name}} </div>
-                    <div class="h-1/4 text-center">Quantity: {{product.stock}} </div>
+                    <div class="h-1/4 text-center">Quantity: 1 </div>
                     
                       <div class="h-1/4 text-center text-xs">UNITARY PRICE: $ {{product.price}} </div>
-                      <div class="h-1/4 text-center text-xs">TOTAL PRICE: $ {{(product.price*3).toFixed(2)}}</div>
+                      <div class="h-1/4 text-center text-xs">TOTAL PRICE: $ {{product.price}}</div>
                     
                   </div>
   
@@ -222,7 +222,7 @@
 
                   <div class="w-full h-3/5 flex justify-center items-center">
 
-                    <button class="add-cart relative flex justify-center items-center">
+                    <button class="add-cart relative flex justify-center items-center" @click="addFavorite">
                       <img src="../assets/Add to cart.png" alt="" class="w-full h-full object-contain">
 
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -278,11 +278,12 @@
     <nav
       class="navegacion uppercase h-12 justify-center sm:justify-start  border-x  lg:px-24 bg-[#952D3F] z-50 text-white flex items-center sticky bottom-0 right-0 left-0 border-t border-b border-white">
       <ul class="flex items-center ">
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">wine</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">spirits</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">brands</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">about</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">news</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">home</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">shop</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">about us</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">contact</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">profile</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">moments</a></li>
       </ul>
     </nav>
   </div>
@@ -290,7 +291,7 @@
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../scripts/store.js"></script>
   <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 
