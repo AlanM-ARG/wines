@@ -1,9 +1,6 @@
 package com.ecommerce.wines.DTOS;
 
-import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.Moment;
-import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.models.PurchaseOrder;
+import com.ecommerce.wines.models.*;
 
 import java.awt.*;
 import java.util.Set;
@@ -31,6 +28,8 @@ public class ClientDTO {
 
     private Set<MomentDTO> moments;
 
+    private Set<FavsDTO> favs;
+
     public ClientDTO(Client client) {
         this.firstName = client.getFirstName();
         this.lastName = client.getLastName();
@@ -40,6 +39,7 @@ public class ClientDTO {
         this.active = client.isActive();
         this.purchaseOrders = client.getPurchaseOrders().stream().map(purchaseOrder -> new PurchaseOrderDTO(purchaseOrder)).collect(Collectors.toSet());
         this.moments = client.getMoments().stream().map(moment -> new MomentDTO(moment)).collect(Collectors.toSet());
+        this.favs = client.getFavss().stream().map(fav -> new FavsDTO(fav)).collect(Collectors.toSet());
         this.token = client.getToken();
     }
 
@@ -81,5 +81,9 @@ public class ClientDTO {
 
     public Set<MomentDTO> getMoments() {
         return moments;
+    }
+
+    public Set<FavsDTO> getFavs() {
+        return favs;
     }
 }
