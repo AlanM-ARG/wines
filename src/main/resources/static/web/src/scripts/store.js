@@ -80,7 +80,7 @@ const app = Vue.createApp({
 
         if(this.filterData.name.length){
 
-            filteredProducts = array.filter( product => product.name.contains(this.filterData.name) )
+            filteredProducts = array.filter( product => (product.name).contains(this.filterData.name) )
 
             return filteredProducts 
         }else{
