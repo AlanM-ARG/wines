@@ -62,7 +62,7 @@ const app = Vue.createApp({
   computed: {
     productFilter(){
 
-        if(categoryFilter.length && categoryFilter != "ALL"){
+        if(this.categoryFilter.length && this.categoryFilter != "ALL"){
 
             this.filteredProducts = this.products.filter( product => product.category == this.categoryFilter)
 
