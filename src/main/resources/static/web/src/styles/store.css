@@ -1136,6 +1136,10 @@ video {
     border-left-width: 1px;
   }
 
+  .lg\:border-r {
+    border-right-width: 1px;
+  }
+
   .lg\:border-white {
     --tw-border-opacity: 1;
     border-color: rgb(255 255 255 / var(--tw-border-opacity));
