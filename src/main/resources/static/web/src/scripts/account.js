@@ -6,9 +6,11 @@ let app = createApp({
         return{
             url:'http://localhost:8080/api/clients/favs',
             url2:'http://localhost:8080/api/clients/current',
+            url3:'http://localhost:8080/api/clientcurrent/purchaseorder',
             active: 'Profile',
             favs: [],
             client: [],
+            orders:[],
             editMode: false,
             newPassword: '',
             changeImage:'',
@@ -18,6 +20,7 @@ let app = createApp({
     created(){
         this.loadData(this.url)
         this.loadData2(this.url2)
+        this.loadData3(this.url3)
     },
     methods:{
         loadData(url){
@@ -32,6 +35,13 @@ let app = createApp({
             .then((data) => {
                 this.client = data.data
                 console.log(this.client);
+            })
+        },
+        loadData3(url){
+            axios.get(url)
+            .then((data) => {
+                this.orders = data.data
+                console.log(this.orders);
             })
         },
         changePassword(){
