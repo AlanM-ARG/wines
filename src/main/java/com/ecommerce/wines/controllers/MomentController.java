@@ -62,4 +62,27 @@ public class MomentController {
         return new ResponseEntity<>("Moment created",HttpStatus.CREATED);
     }
 
+
+    @GetMapping("/clients/current/moment")
+    public List<MomentDTO> getMomentsClientCurrent(Authentication authentication){
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        return clientCurrent.getMoments().stream().map(moment -> new MomentDTO(moment)).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/clients/moments/delete")
+    public ResponseEntity<?> deleteMoment(Authentication authentication, @RequestParam int id){
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        Moment moment = momentService.momentFindById(id);
+        if (clientCurrent == null){
+            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+        }
+        if (!clientCurrent.getMoments().stream().map(moment1 -> moment1.getId()).collect(Collectors.toSet()).contains(moment.getId())){
+            return new ResponseEntity<>("this moment does not belong to you", HttpStatus.FORBIDDEN);
+        }
+        if(id <= 0){
+            return new ResponseEntity<>("Missing id", HttpStatus.FORBIDDEN);
+        }
+        momentService.deleteMoment(moment);
+        return new ResponseEntity<>("Moment deleted", HttpStatus.ACCEPTED);
+    }
 }

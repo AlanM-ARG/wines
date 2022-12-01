@@ -1,0 +1,97 @@
+.add-cart{
+    width: 250px;
+    height: 250px;
+    
+    
+}
+
+.bottle{
+    filter: drop-shadow(12px 7px 20px rgba(112, 107, 107, 0.445));
+}
+
+.add-cart img{
+
+    animation: rotate 5s infinite;
+}
+
+.bg-wine{
+    background-color: #952d3e52;
+}
+
+.see-more{
+    width: 120px;
+    height: 40px;
+    background-color: #B70101;
+}
+
+@keyframes rotate {
+    from{
+        transform: rotate(-360deg);
+    }
+    
+}
+
+@media (min-width: 375px) {
+
+    .filters {
+         height: 187.5px;
+     }
+ 
+ 
+   }
+ 
+ 
+   @media (min-width: 425px) {
+
+    
+    .filters {
+        height: 212.5px;
+    }
+ 
+    }
+ 
+ 
+    @media (min-width: 768px) {
+ 
+     
+    .filters {
+        height: 187.5px;
+    }
+      
+  
+    }
+ 
+    
+    @media (min-width: 1024px) {
+ 
+  
+        .filters {
+            height: 250px;
+        }
+      
+  
+    }
+ 
+    @media (min-width: 1440px) {
+ 
+    
+      
+  
+    }
+ 
+    @media (min-width: 1920px) {
+ 
+     
+      
+  
+    }
+ 
+ 
+    @media (min-width: 2560px) {
+ 
+      
+  
+    }
+ 
+    
+ 
