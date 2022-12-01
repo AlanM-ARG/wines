@@ -99,7 +99,7 @@ const app = Vue.createApp({
 
         }else if(this.filterData.priceMax <=0){
             filteredProducts = array
-        }
+        }   
 
         return filteredProducts 
     }
