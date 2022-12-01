@@ -53,13 +53,13 @@
             <p class=" text-xl  text-[#b6374c] ">CATEGORY'S</p>
             <div class="categorys pl-2  flex flex-col gap-2 my-3">
 
-              <form class="category-form" v-model="categoryFilter">
+              <form class="category-form" >
 
                 <template v-for="category of categorys">
                
 
                   <label class="text-white flex text-sm  gap-4">
-                    <input type="radio" name="category">{{wine(category)}}
+                    <input type="radio" name="category" v-model="categoryFilter" :value="category">{{wine(category)}}
                   </label>
                
                
