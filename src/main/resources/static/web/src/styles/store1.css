@@ -10,6 +10,10 @@
     animation: rotate 5s infinite;
 }
 
+.bg-wine{
+    background-color: #b7010194;
+}
+
 .see-more{
     width: 120px;
     height: 40px;
