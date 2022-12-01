@@ -206,7 +206,7 @@
                     <button class="see-more text-white">
                       See more
                     </button>
-                    <button @click="addfavorites(product)">
+                    <button>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-12 h-12 text-red-700">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -222,7 +222,7 @@
 
                   <div class="w-full h-3/5 flex justify-center items-center">
 
-                    <button class="add-cart relative flex justify-center items-center">
+                    <button class="add-cart relative flex justify-center items-center" @click="addfavorite">
                       <img src="../assets/Add to cart.png" alt="" class="w-full h-full object-contain">
 
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

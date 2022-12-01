@@ -106,10 +106,10 @@ const app = Vue.createApp({
 
       return filteredProducts;
     },
-    addFavorite(producto) {
+    addFavorite() {
 
 
-      this.favorites.push(producto);
+      /* this.favorites.push(producto); */
 
       Swal.fire(
         'Added to cart',
