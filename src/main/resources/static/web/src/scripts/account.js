@@ -10,7 +10,11 @@ let app = createApp({
             active: 'Profile',
             favs: [],
             client: [],
+<<<<<<< Updated upstream
             order: [],
+=======
+            orders: [],
+>>>>>>> Stashed changes
             editMode: false,
             newPassword: '',
             changeImage:'',
@@ -28,6 +32,10 @@ let app = createApp({
         this.loadData(this.url)
         this.loadData2(this.url2)
         this.loadData3(this.url3)
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     },
 
@@ -48,6 +56,15 @@ let app = createApp({
 
                 this.client = data.data
                 console.log(this.client);
+            })
+        },
+        loadData3(url){
+            axios.get(url)
+
+            .then((data) => {
+
+                this.orders = data.data
+                console.log(this.orders);
             })
         },
         changePassword(){
