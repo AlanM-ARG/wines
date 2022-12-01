@@ -1,12 +1,19 @@
 .add-cart{
     width: 250px;
     height: 250px;
-    animation: rotate 2s infinite ease-out;
+    border-radius: 100%;
+    
 }
+
+.add-cart img{
+
+    animation: rotate 2s infinite;
+}
+
 
 @keyframes rotate {
     from{
-        transform: rotate(360deg);
+        transform: rotate(-360deg);
     }
     
 }
