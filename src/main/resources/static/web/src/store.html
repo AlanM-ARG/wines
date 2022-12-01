@@ -100,12 +100,12 @@
 
 
             <div class=" flex flex-col gap-2 my-3 w-full h-10  justify-center items-center">
-              <div class="w-full h-20 flex flex-col items-center">
-                <p>Max price</p>
+              <div class="w-full h-20 flex flex-col items-center bg-white">
+                <p>Max price: $ {{filterData.priceMax}}</p>
                 <label class="w-full">
-                  <input type="range" min="0" max="200" name="" v-model="filterData.priceMax" class="w-full">
+                  <input type="range" min="0" max="100" name="" v-model="filterData.priceMax" class="w-full">
                 </label>
-                <p>{{filterData.priceMax}}</p>
+                <p></p>
               </div>
 
             </div>
@@ -116,7 +116,7 @@
 
         <div class="product-container w-full xl:w-4/5  flex flex-wrap">
           <div
-            class="h-40 w-full filters   border-b border-white flex flex-col justify-center gap-4 py-4  text-white items-center  ">
+            class="h-36 w-full filters   border-b border-white flex flex-col justify-center gap-4 py-4  text-white items-center  ">
 
             <div class="w-4/5 h-full">
               <img src="./assets/shop.png" alt="shop" class="w-full h-full object-contain">
