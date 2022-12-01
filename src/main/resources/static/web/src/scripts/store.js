@@ -4,6 +4,7 @@ const app = Vue.createApp({
             apiProducts: "/api/products",
             products: [],
             categorys: [],
+            categoryFilter: "",
         }
     },created() {
             this.getProducts(this.apiProducts)
