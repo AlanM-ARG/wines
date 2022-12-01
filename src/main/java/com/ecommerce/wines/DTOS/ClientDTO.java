@@ -27,6 +27,8 @@ public class ClientDTO {
 
     private Set<MomentDTO> moments;
 
+    private Set<FavsDTO> favsDTO;
+
     public ClientDTO(Client client) {
         this.firstName = client.getFirstName();
         this.lastName = client.getLastName();
@@ -37,6 +39,7 @@ public class ClientDTO {
         this.purchaseOrders = client.getPurchaseOrders().stream().map(PurchaseOrderDTO::new).collect(Collectors.toSet());
         this.moments = client.getMoments().stream().map(MomentDTO::new).collect(Collectors.toSet());
         this.token = client.getToken();
+        this.favsDTO = client.getFavss().stream().map(FavsDTO::new).collect(Collectors.toSet());
     }
 
     public long getId() {
@@ -77,5 +80,9 @@ public class ClientDTO {
 
     public Set<MomentDTO> getMoments() {
         return moments;
+    }
+
+    public Set<FavsDTO> getFavsDTO() {
+        return favsDTO;
     }
 }

@@ -1,6 +1,6 @@
 const app = Vue.createApp({
-    data(){
-        return{
+    data() {
+        return {
             texto: "hola",
             modal: false,
             email: "",
@@ -27,79 +27,131 @@ const app = Vue.createApp({
             error6: false,
             error7: false,
             error8: false,
-
             cvv: "",
-            cardNumber: "",
-            expire: "",
+            cardNumber: ""
         }
     },
-    created(){
+    created() {
     },
-    methods:{
-        formPayment(){
+    methods: {
+        formPayment() {
             emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
-            if(!emailRegex.test(this.email)){
+            if (!emailRegex.test(this.email)) {
                 this.warningEmail = "Type your e-mail address"
                 this.error1 = true
-            }else{
+            } else {
                 this.warningEmail = ""
                 this.error1 = false
             }
-            if(this.country.length == 0){
+            if (this.country.length == 0) {
                 this.warningCountry = "Type your country"
                 this.error2 = true
-            }else{
+            } else {
                 this.warningCountry = ""
                 this.error2 = false
             }
-            if(this.name.length == 0){
+            if (this.name.length == 0) {
                 this.warningName = "Type your name"
                 this.error3 = true
-            }else{
+            } else {
                 this.warningName = ""
                 this.error3 = false
             }
-            if(this.lastName.length == 0){
+            if (this.lastName.length == 0) {
                 this.warningLastName = "Type your last name"
                 this.error4 = true
-            }else{
+            } else {
                 this.warningLastName = ""
                 this.error4 = false
             }
-            if(this.address.length == 0){
+            if (this.address.length == 0) {
                 this.warningAddress = "Type your address"
                 this.error5 = true
-            }else{
+            } else {
                 this.warningAddress = ""
                 this.error5 = false
             }
-            if(this.zipcode.length == 0){
+            if (this.zipcode.length == 0) {
                 this.warningZipcode = "Type your zip code"
                 this.error6 = true
-            }else{
+            } else {
                 this.warningZipcode = ""
                 this.error6 = false
             }
-            if(this.city.length == 0){
+            if (this.city.length == 0) {
                 this.warningCity = "Type your city"
                 this.error7 = true
-            }else{
+            } else {
                 this.warningCity = ""
                 this.error7 = false
             }
-            if(this.phone.length == 0){
+            if (this.phone.length == 0) {
                 this.warningPhone = "Type your number phone"
                 this.error8 = true
-            }else{
+            } else {
                 this.warningPhone = ""
                 this.error8 = false
             }
-            if(this.country.length > 1 && this.email.length>1 && this.name.length > 1 && this.lastName.length > 1 && this.address.length >1 && this.city.length > 1 && this.zipcode != 0
-                && this.phone != 0){
+            if (this.country.length > 1 && this.email.length > 1 && this.name.length > 1 && this.lastName.length > 1 && this.address.length > 1 && this.city.length > 1 && this.zipcode != 0
+                && this.phone != 0) {
                 this.modal = true
-            }else{
-                this.model = false
+            } else {
+                this.modal = false
             }
+        },
+        deleteCaracter() {
+            let text = this.cardNumber
+            let text2 = text.substring(text.lenght, text.length - 1)
+            this.cardNumber = text2
+        },
+        cardNumberFormat() {
+            let flag1 = true;
+            if (this.cardNumber.length == 4 && flag1) {
+                let first = this.cardNumber + "-"
+                this.cardNumber = first
+                flag1 = true;
+            }
+            else if (this.cardNumber.length == 9 && flag1) {
+                let first = this.cardNumber + "-"
+                this.cardNumber = first
+                flag1 = true;
+            }
+            else if (this.cardNumber.length == 14 && flag1) {
+                let first = this.cardNumber + "-"
+                this.cardNumber = first
+                flag1 = false;
+            }
+        },
+        sendPayment() {
+            axios.post('https://lightbank.up.railway.app/api/cards/pay', {
+                "cardNumber": this.cardNumber,
+                "cardCvv": this.cvv,
+                "amount": 1000,
+                "description": "The Winest Purchase Successful"
+            })
+                .then(() => {
+                    axios.post("/api/purchaseOrder/create", {
+                        "productOrderDTOS": [
+                            {
+                                "productId": 1,
+                                "quantity": 6
+
+                            },
+                            {
+                                "productId": 3,
+                                "quantity": 4
+
+                            },
+                            {
+                                "productId": 2,
+                                "quantity": 6
+                            }
+                        ],
+                        "paymentMethod": "CASH"
+                    })
+                    .then(()=> this.modal = false)
+                })
+                .catch((error) => console.log(error))
         }
     }
 })

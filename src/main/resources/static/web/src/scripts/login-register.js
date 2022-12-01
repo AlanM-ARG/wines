@@ -10,7 +10,6 @@ let app = createApp({
             lastName: '',
             url: '',
             title: "",
-            
         }
     },
     created() {

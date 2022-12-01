@@ -74,7 +74,7 @@ public class PurchaseOrderController {
         PurchaseOrder purchaseOrder1 = new PurchaseOrder(client,0.0,LocalDateTime.now(),purchaseDTO.getPaymentMethod());
 
         productOrderDTOS.forEach(productOrderDTO -> {
-            Product product = productService.findById(productOrderDTO.getProductId());
+            Product product = productService.findByName(productOrderDTO.getProductName());
             product.setStock(product.getStock() - productOrderDTO.getQuantity());
             productService.saveProduct(product);
             amountTotal.add(Math.round((product.getPrice() * productOrderDTO.getQuantity()) * 100.0) / 100.0);
