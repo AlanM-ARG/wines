@@ -1,11 +1,7 @@
 package com.ecommerce.wines.DTOS;
 
 import com.ecommerce.wines.models.Client;
-import com.ecommerce.wines.models.Moment;
-import com.ecommerce.wines.models.Product;
-import com.ecommerce.wines.models.PurchaseOrder;
 
-import java.awt.*;
 import java.util.Set;
 import java.util.stream.Collectors;
 

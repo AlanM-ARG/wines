@@ -30,7 +30,7 @@ public class Pdf {
         cell.setBorderColor(BaseColor.WHITE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
-        Image image = Image.getInstance("https://i.ibb.co/Sxsq08Q/logo1-timeforwine.png");
+        Image image = Image.getInstance("https://media.discordapp.net/attachments/1017325567630118972/1047836625725571072/Modern_Black__Red_Luxury_Wine_Tasting_Instagram_Post.png?width=520&height=120");
         document.add(image);
         Paragraph lineJumps = new Paragraph();
         lineJumps.add(new Phrase(Chunk.NEWLINE));
@@ -75,8 +75,8 @@ public class Pdf {
         table.addCell("Amount");
         productOrders.stream().sorted(Comparator.comparing(ProductOrder::getId)).forEach(productOrder -> {
             table.addCell(productOrder.getProduct().getName());
-            table.addCell(productOrder.getQuantity() + "");
-            table.addCell(productOrder.getAmount() + "");
+            table.addCell(productOrder.getQuantity().toString());
+            table.addCell("$ " + productOrder.getAmount());
                 });
         table.setHorizontalAlignment(Element.ALIGN_CENTER);
         document.add(table);

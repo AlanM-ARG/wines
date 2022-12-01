@@ -28,7 +28,7 @@ public class PurchaseOrderDTO {
         this.amount = purchaseOrder.getAmount();
         this.localDateTime = purchaseOrder.getLocalDateTime();
         this.paymentMethod = purchaseOrder.getPaymentMethod();
-        this.productOrders = purchaseOrder.getProductOrders().stream().map(productOrder -> new ProductOrderDTO(productOrder)).collect(Collectors.toList());
+        this.productOrders = purchaseOrder.getProductOrders().stream().map(ProductOrderDTO::new).collect(Collectors.toList());
     }
 
     public long getId() {

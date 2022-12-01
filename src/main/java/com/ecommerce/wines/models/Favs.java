@@ -21,18 +21,18 @@ public class Favs {
     private Client client;
 
     private String name;
-    private String imagen;
+    private String image;
 
 
 
     public Favs() {
     }
 
-    public Favs(Product product, Client client, String name, String imagen) {
+    public Favs(Product product, Client client, String name, String image) {
         this.product = product;
         this.client = client;
         this.name = name;
-        this.imagen = imagen;
+        this.image = image;
     }
 
     public long getId() {
@@ -63,11 +63,11 @@ public class Favs {
         this.name = name;
     }
 
-    public String getImagen() {
-        return imagen;
+    public String getImage() {
+        return image;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
