@@ -6,15 +6,14 @@ let app = createApp({
         return{
             url:'http://localhost:8080/api/clients/favs',
             url2:'http://localhost:8080/api/clients/current',
+            url3:'http://localhost:8080/api/clientcurrent/purchaseorder',
             active: 'Profile',
             favs: [],
             client: [],
+            order: [],
             editMode: false,
             newPassword: '',
-<<<<<<< HEAD:src/main/resources/static/web/scripts/account.js
-=======
             changeImage:'',
->>>>>>> main:src/main/resources/static/web/src/scripts/account.js
             
             
             
@@ -28,7 +27,7 @@ let app = createApp({
     created(){
         this.loadData(this.url)
         this.loadData2(this.url2)
-
+        this.loadData3(this.url3)
 
     },
 
@@ -54,10 +53,16 @@ let app = createApp({
         changePassword(){
             axios.patch('/api/clients/current/changePassword',`password=${this.newPassword}`).then(this.editMode = false)
         },
-<<<<<<< HEAD:src/main/resources/static/web/scripts/account.js
-=======
+        loadData3(url){
+            axios.get(url)
+
+            .then((data) => {
+
+                this.order = data.data
+                console.log(this.order);
+            })
+        }
         
->>>>>>> main:src/main/resources/static/web/src/scripts/account.js
 
 
 

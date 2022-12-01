@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     color: #fff;
+    font-family: "Neue Haas Grotesk Display Pro", sans-serif;
 }
 
 .bg-wine{
@@ -168,7 +169,8 @@ button{
 
 /* Swiper Squad */
 .time4Wine{
-    background-image: url(../assets/time4winelogo.png)!important;
+    background-image: url(../assets/Winest.png)!important;
+    background-size: contain!important;
 }
 .matias{
     
@@ -279,6 +281,10 @@ button{
     .swiper-pagination-bullet{
         height: 84px!important;
        border-top: 1px solid #fff!important;
+    }
+    .time4Wine{
+        
+        background-size: 100px!important;
     }
     /* Display None */
     /* .nav-center{
