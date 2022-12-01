@@ -64,7 +64,7 @@ const app = Vue.createApp({
 
         if(this.filterData.category.length && this.filterData.category != "ALL"){
 
-           filteredProducts = this.array.filter( product => product.category == this.filterData.category)
+           filteredProducts = array.filter( product => product.category == this.filterData.category)
 
 
         }else{
@@ -78,7 +78,7 @@ const app = Vue.createApp({
 
         if(this.filterData.name.length){
 
-            filteredProducts = this.products.filter( product => product.name == this.filterData.name)
+            filteredProducts = array.filter( product => product.name == this.filterData.name)
 
 
         }else{
