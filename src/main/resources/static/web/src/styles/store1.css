@@ -5,6 +5,10 @@
     
 }
 
+.bottle{
+    filter: drop-shadow(5px 5px 10px #FFFFFF);
+}
+
 .add-cart img{
 
     animation: rotate 5s infinite;
