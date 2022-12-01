@@ -66,12 +66,14 @@ const app = Vue.createApp({
 
            filteredProducts = array.filter( product => product.category == this.filterData.category)
 
+           return filteredProducts
 
         }else{
             filteredProducts = this.products
+            return filteredProducts
         }
 
-        return filteredProducts
+        
 
     },filterName(array){
         let filteredProducts = []
