@@ -82,12 +82,13 @@ const app = Vue.createApp({
 
             filteredProducts = array.filter( product => product.name == this.filterData.name)
 
-
+            return filteredProducts 
         }else{
             filteredProducts = array
+            return filteredProducts 
         }
  
-        return filteredProducts 
+        
     },filterPrice(array){
         let filteredProducts = []
         if(this.filterData.priceMax >0){
@@ -109,7 +110,7 @@ const app = Vue.createApp({
 
         if(this.filterData.category.length || this.filterData.name.length || this.filterData.priceMax.length){
             
-            this.filteredProducts =  this.filterCategory(this.products)
+            this.filteredProducts =  this.filterName(this.filterCategory(this.products))
         }
         
     }
