@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/tailwind.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <!-- npx tailwindcss -i tailwind.css -o ./src/styles/tailwind.css --watch -->
+</head>
+
+<body  class="">
+  <div id="app">
+  <div>
+
+
+
+    <header class="header md:h-10 lg:h-14">
+      <div class="logo ">
+        <img class="w-[150px] opacity-75" src="./assets/Winest.png" alt="logo1-timeforwine"
+          >
+       
+
+      </div> 
+
+      <div class="cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          style="fill: rgba(0, 0, 0, .5);">
+          <path
+            d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z">
+          </path>
+          <circle cx="10.5" cy="19.5" r="1.5"></circle>
+          <circle cx="17.5" cy="19.5" r="1.5"></circle>
+        </svg>
+      </div>
+    </header>
+
+    <main class="main lg:pl-10  ">
+      <div class="box_empty hidden"></div>
+      <div class="box_main w-full lg:border-l lg:border-white">
+        <section class="section_1 md:h-64">
+          <a class="contenedor_video " src="#">
+            <video class="video_seccion_1"
+              src="https://cdn.sanity.io/files/tduq6a61/production/eb1464783807f72a5e8da096e949e5c7ae7de2d3.mp4"
+              autoplay="autoplay" loop="loop" muted="muted" playsinline="true" webkit-playsinline="true">
+            </video>
+          </a>
+
+          <div class="contenedor_info ">
+            <div class=" md:h-2/4  md:flex ">
+              <div class=" item_info flex h-40 md:h-full xl:w-full"> 
+                <div class="z-40 flex flex-col xl:justify-between p-4 text-white md:w-full md:h-full ">
+                  <span class="text-[14px] font-medium self-start pb-4">
+                    NEWS
+                  </span>
+                  <div class="">
+                    <H3 class="text-[1.3rem] sm:text-[1.7rem] font-medium md:text-sm lg:text-2xl ">ECLIPSE promoted among the 10
+                      italian Gins
+                      of
+                      the
+                      Summer
+                    </H3>
+                    <p class="text-[14px] font-medium text-end md:text-xs ">04/08/2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative  md:h-2/4 md:flex  hidden sm:block">
+              <div class=" item_info flex items-center h-40 md:h-full xl:w-full">
+                <div class="z-40 flex flex-col xl:justify-between text-white p-3 md:w-full md:h-full">
+                  <span class="text-[14px]  font-medium self-start pb-4">
+                    NEWS
+                  </span>
+                  <div class=" ">
+                    <H3 class="text-[1.3rem] sm:text-[1.7rem] font-medium md:text-sm lg:text-2xl">ECLIPSE promoted among the
+                      10
+                      italian Gins
+                      of
+                      the
+                      Summer</H3>
+                    <p class="text-[14px] font-medium text-end md:text-xs">04/08/2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="marquee bg-[#242424] h-9 ">
+          <div class="text_marquee flex items-center text-white  gap-[8rem]">
+            <div class="flex gap-2 items-center">
+              
+              <span class="font-medium text-sm xl:text-6xl">
+                THE WORLD IS A PLAYGROUND.
+              </span>
+            </div>
+            <div class="flex gap-2 items-center">
+             
+              <span class=" text-sm xl:text-6xl" >
+
+                WHO DO YOU THINK I AM?
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="flex flex-col columns lg:h-[681px] md:h-[511px] sm:flex-row w-full  border-white md:border-1 md:border-b">
+          
+          <div class="columna1 flex md:flex-col order-1 w-full sm:w-1/3 perspectiv bg-[#952D3F] border-r border-white h-40">
+            
+            
+           
+              <img class="w-2/4 md:border-b md:border-white h-full md:w-full md:h-2/4 object-cover rotate_img"
+              src="https://cdn.sanity.io/images/tduq6a61/production/6827d7123fa0a3fa67395ec3ba5cc0be7900992c-1281x1920.jpg?rect=28,197,1253,1422&w=1000&fit=max&auto=format"
+              alt="">
+              <img class="w-2/4 md:border-b md:border-white h-full md:w-full md:h-2/4 object-cover rotate_img"
+              src="https://cdn.sanity.io/images/tduq6a61/production/70fe0090b7e20a5965177d73fa13d7025877113a-912x904.png?w=1000&fit=max&auto=format"
+              alt="">
+
+           
+            
+            
+          </div>
+          <div class="columna2 order-3 md:flex-col  md:w-1/3 flex w-full sm:w-1/3 perspectiv bg-[#952D3F]">
+            <img class="w-2/4 md:border-b md:border-white h-full md:w-full md:h-2/4 object-cover rotate_img"
+              src="https://cdn.sanity.io/images/tduq6a61/production/96df5f805db9102e67c90e7dc413619e4c817a2c-112x112.svg?w=1000&fit=max&auto=format"
+              alt="">
+            <img class="w-2/4 h-full  md:w-full md:h-2/4 object-cover rotate_img"
+              src="https://cdn.sanity.io/images/tduq6a61/production/736bfa0f4da291f21e665256252a364b64e94403-1281x1920.jpg?rect=0,409,1281,1309&w=1000&fit=max&auto=format"
+              alt="">
+          </div>
+          <div
+            class="columna3 order-2 md:h-full sm:order-3 w-full md:border-l md:border-white relative h-80 flex justify-start bg-[#242424]   px-8  sm:justify-center items-center sm:border-l sm:border-[#242424]">
+            <img class="w-1/4 md:w-3/4   h-[90%] absolute right-8 z-10 justify-end object-contain" 
+              src="https://cdn.shopify.com/s/files/1/0610/2902/3943/products/ancestrale_800x_crop_center.png?v=1659630129"
+              alt="">
+
+              <div class="text-white z-30">
+                  <p>SOLNATO</p>
+                  <h2 class="text-3xl md:text-2xl lg:text-3xl">ROMA DOC/2021</h2>
+                  <p>BIANCO</p>
+              </div> 
+          </div>
+        </div>
+
+        <!-- Caroussel -->
+
+        <div class="swiper mb-12">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+          </div>
+          <div class="swiper-pagination"></div>
+
+        </div>
+      </div>
+    </main>
+    <nav
+      class="navegacion uppercase h-12 bg-[#952D3F] z-50 text-white flex items-center sticky bottom-0 right-0 left-0 border-t border-b border-white">
+      <ul class="flex items-center ">
+        <li class=" item_nav"><a class="text_item" href="#">wine</a></li>
+        <li class=" item_nav"><a class="text_item" href="#">spirits</a></li>
+        <li class=" item_nav"><a class="text_item" href="#">brands</a></li>
+        <li class=" item_nav"><a class="text_item" href="#">about</a></li>
+        <li class=" item_nav"><a class="text_item" href="#">news</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <footer class="flex flex-col p-5">
+    <nav class=" flex justify-between">
+      <ul class="flex flex-col md:flex-row md:justify-around md:gap-10">
+        <li><a class="text-[11px] text-gray-800" href="">PRIVACY POLICY</a></li>
+        <li><a class="text-[11px] text-gray-800" href="">TERMS AND CONDITIONS</a></li>
+        <li><a class="text-[11px] text-gray-800" href="">CONTACT</a></li>
+      </ul>
+      <button class="text-[11px] text-gray-800">ENG</button>
+    </nav>
+
+    <form class="flex flex-wrap gap-[1.5rem] items-center" action="" novalidate="novalidate">
+      <label for="">
+        <p class="font_italic text-[2.8rem] font-medium mt-[3rem]">HEY YOU! JOIN US!</p>
+        <p class="text-[15px] text-gray-800 uppercase">Subscribe & enjoy</p>
+      </label>
+
+      <div class="imput_box pt-10">
+        <input type="email" required="required">
+        <span class="font_italic">Your email </span>
+      </div>
+
+      <button class="flex items-center italic font-medium gap-2 pt-10 text-gray-800 cubic" type="submit">
+        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" class="w-12 md:w-[70px] -RH6H">
+          <path
+            d="M567.294 237.686c-9.92 0-208.32-40.918-223.2-40.918-9.874 0-69.986 17.473-116.56 29.228v-1.947c-7.44-9.923-14.88-19.117-37.2-19.117-.084 0-.164.006-.248.006l.074-1.989c4.688 6.72 2.653-43.383-56.867-45.861-69.555-2.899-94.24 66.96-42.16 94.24 2.199 1.15-58.747-12.524-62 44.64-1.69 29.726 12.377 52.08 62 52.08 0 0-52.08 42.16-9.92 81.84 30.059 28.288 89.28 7.44 101.68-28.986l.093-2.502c4.82.456 9.851.226 15.06-.752 30.48-5.734 29.488-29.76 29.488-29.76v-.631c.844.236 1.676.453 2.48.629 20 4.388 54.56 0 76.88 0 3.096 0 5.926-.074 8.592-.176a23.34 23.34 0 0 0 3.84 2.528l-.032.128c4.96 4.96 11.964 22.32 29.44 24.802 17.479 2.48 37.52 0 49.182-22.32 1.536-2.943 1.834-5.839 1.197-8.672a25.06 25.06 0 0 0 4.307-1.511l.194.261c12.4-4.958 24.8-12.398 24.8-32.24 0-1.822-.596-3.625-1.669-5.4l3.427-1.316c24.8-14.88 17.36-39.68 12.4-44.64-4.3-4.3-56.072-19.78-81.934-27.056l16.678 1.427c18.285 12.188 69.474 19.952 95.738 10.027l-.364-.123c-3.394-.765-5.881-1.56-7.076-2.359l7.076 2.36c17.74 4.002 60.591 7.163 77.244 5.08 19.84-2.478 27.28-31 17.36-31"
+            fill="#E4E1DB"></path>
+          <path
+            d="M175.454 236.45c24.8 0 153.76-39.68 168.64-39.68 14.88 0 213.28 40.92 223.2 40.92 9.92 0 2.48 28.517-17.36 31-19.84 2.478-76.88-2.483-84.32-7.44"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M473.054 263.728c-29.76 11.248-91.549-.213-101.177-15.093" stroke="#242424" stroke-width="9.92"
+            stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M350.812 249.572c18.658 4.96 86.8 24.8 91.76 29.758 4.96 4.961 12.4 29.761-12.4 44.641"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M348.736 288.461c10.238 5.027 79.678 22.387 79.678 42.229 0 19.838-12.4 27.279-24.8 32.24"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M331.694 323.248c19.84 7.44 77.88 27.28 66.222 49.6-11.662 22.32-31.703 24.8-49.18 22.32-17.478-2.48-24.482-19.839-29.442-24.8"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M182.894 340.608c2.48 4.96 29.76 23.471 47.12 27.28 20 4.388 54.56 0 76.88 0 21.099 0 31.117-3.403 46.814 3.631M163.054 353.01c7.44 0 22.591 2.478 30.031-2.482M512.734 229.01c2.48 9.918 14.88 19.838 22.32 22.32 7.44 2.48 21.004 4.72 27.28 4.72"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M227.534 224.049c-7.44-9.92-14.88-19.117-37.2-19.117s-37.2 14.156-47.12 33.997c-7.997 15.995-22.32 57.467-9.92 106.64 9.692 38.433 34.271 57.816 64.751 52.079 30.48-5.735 29.489-29.758 29.489-29.758"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M225.054 224.048c-1.637-2.481-10.646-9.921-19.84-9.921-15.466 0-27.752 10.765-36.668 29.213-7.189 14.872-20.062 53.432-8.917 99.154 8.013 32.874 35.665 55.153 55.505 47.713"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M190.16 202.954c4.689 6.716 2.653-43.383-56.867-45.865-69.555-2.898-94.24 66.961-42.16 94.241 2.199 1.15-58.747-12.522-62 44.64-1.69 29.726 12.377 52.08 62 52.08 0 0-52.08 42.158-9.92 81.839 30.059 28.288 89.28 7.441 101.68-28.986"
+            stroke="#242424" stroke-width="9.92" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M103.014 197.039a4.94 4.94 0 0 0-1.288 1.443 4.948 4.948 0 0 0 .314 5.499l11.94 15.847a4.967 4.967 0 0 0 6.946.979l15.847-11.94a4.962 4.962 0 0 0 .973-6.948l-11.938-15.847a4.962 4.962 0 0 0-6.947-.973l-15.847 11.94Zm-7.186 195.226a4.96 4.96 0 0 0 .364 7.003l14.745 13.276a4.967 4.967 0 0 0 3.579 1.268 4.957 4.957 0 0 0 3.426-1.635l13.276-14.745a4.962 4.962 0 0 0-.366-7.003l-14.747-13.276a4.95 4.95 0 0 0-5.452-.79 4.946 4.946 0 0 0-1.549 1.157l-13.276 14.745Zm-29.58-95.97a4.958 4.958 0 0 0 .365 7.002l14.747 13.276a4.959 4.959 0 0 0 7.004-.366l13.276-14.747a4.96 4.96 0 0 0-.367-7.003l-14.745-13.276a4.946 4.946 0 0 0-3.578-1.267 4.964 4.964 0 0 0-3.425 1.634l-13.276 14.747Z"
+            fill="#242424"></path>
+        </svg>
+        SUBSCRIBE
+      </button>
+    </form>
+  </footer>
+</div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- <script src="./index.js"></script> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+  <script>
+    const swiper = new Swiper(".swiper", {
+      slidesPerView: 3,
+        spaceBetween: 0,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+    });
+  </script>
+
+</body>
+
+
+</html>

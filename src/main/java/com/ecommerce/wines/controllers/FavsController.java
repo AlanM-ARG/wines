@@ -67,6 +67,24 @@ public class FavsController {
         return clientCurrent.getFavss().stream().map(favs -> new FavsDTO(favs)).collect(Collectors.toList());
     }
 
+    @DeleteMapping("/clients/favs/delete")
+    public ResponseEntity<?> deleteFav(Authentication authentication, @RequestParam int id){
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        Favs favs = favsService.getFavById(id);
+        if (clientCurrent == null){
+            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+        }
+        if (!clientCurrent.getFavss().stream().map(favs1 -> favs1.getId()).collect(Collectors.toSet()).contains(favs.getId())){
+            return new ResponseEntity<>("this favourite does not belong to you", HttpStatus.FORBIDDEN);
+        }
+        if(id <= 0){
+            return new ResponseEntity<>("Missing id", HttpStatus.FORBIDDEN);
+        }
+        favsService.deleteFavs(favs);
+        return new ResponseEntity<>("Favourite deleted", HttpStatus.ACCEPTED);
+    }
+
+
 
 
 
