@@ -203,9 +203,10 @@
                 <div class="w-full h-full absolute z-20  opacity-0 hover:opacity-100 bg-wine">
 
                   <div class="w-full h-1/5 flex justify-between items-center px-10">
-                    <button class="see-more text-white">
+                    <a :href="'/web/src/pages/product-details.html?id=' + product.id"><button class="see-more text-white">
                       See more
-                    </button>
+                    </button></a>
+
                     <button>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-12 h-12 text-red-700">
@@ -278,12 +279,12 @@
     <nav
       class="navegacion uppercase h-12 justify-center sm:justify-start  border-x  lg:px-24 bg-[#952D3F] z-50 text-white flex items-center sticky bottom-0 right-0 left-0 border-t border-b border-white">
       <ul class="flex items-center ">
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">home</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="../index.html">home</a></li>
         <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">shop</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">about us</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">contact</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">profile</a></li>
-        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="#">moments</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="./about.html">about us</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="./contact.html">contact</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="./account.html">profile</a></li>
+        <li class=" item_nav px-2 sm:px-5"><a class=" py-1 relative text-sm" href="./moments.html">moments</a></li>
       </ul>
     </nav>
   </div>
