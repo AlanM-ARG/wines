@@ -22,7 +22,7 @@ let app = createApp({
     methods:{
         drinkingAgeYes(){
             
-            window.location.href = "http://localhost:8080/web/src/index.html"
+            window.location.href = "/web/src/index.html"
             
         }
 
