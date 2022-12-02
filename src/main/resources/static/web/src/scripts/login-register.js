@@ -8,6 +8,8 @@ let app = createApp({
             password: '',
             firstName: '',
             lastName: '',
+            url: '',
+            title: "",
         }
     },
     created() {
@@ -20,7 +22,7 @@ let app = createApp({
                 .catch((error) => console.log(error)))
         },
         register() {
-            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
+            axios.post('/api/clients/create', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}&img=aaa`)
                 .then(() => Swal.fire('Please confirm your email!', '', 'warning'))
                 .catch(error => console.error(error))
         },

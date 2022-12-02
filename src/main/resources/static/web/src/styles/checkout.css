@@ -189,6 +189,9 @@ color: #4d4646;
     transform: var(--transform);
     transition: var(--transition);
   }
+  .cerrarModal{
+    cursor: pointer;
+  }
 
 
 
