@@ -50,7 +50,7 @@
 
                             <div
                                 class="pagination flex justify-between h-12 w-full items-center  justify-self-start align-self-start">
-                                <a href="#"
+                                <a :href="'/web/src/pages/product-details.html?id=' + wineBack" v-if="wine.id > 1"
                                     class="text-xl text-extrabold text-start  w-2/4 flex items-center gap-2 animation-btn hover:italic h-full px-12">
                                     <svg style="width: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -59,7 +59,7 @@
                                     </svg>
                                     Back</a>
                                     
-                                <a href="#"
+                                <a :href="'/web/src/pages/product-details.html?id=' + wineNext" v-if="wine.id < 30"
                                     class="text-xl text-extrabold text-end w-2/4 flex justify-end gap-2 items-center  animation-btn hover:italic h-full px-12">
                                     Next <svg style="width: 20px;" xmlns="http://www.w3.org/2000/svg" fill="none"
                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
