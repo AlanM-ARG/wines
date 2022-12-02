@@ -38,4 +38,6 @@ public class FavsServiceImplement implements FavsService {
     public Favs getFavById(long id) {
         return favsRepository.findById(id).orElse(null);
     }
+
+
 }

@@ -9,12 +9,15 @@ public class FavsDTO {
     private String name;
     private String image;
 
+    private boolean active;
+
 
 
     public FavsDTO(Favs favs) {
         this.id = favs.getId();
         this.name = favs.getName();
         this.image = favs.getImage();
+        this.active = favs.isActive();
     }
 
     public long getId() {
@@ -27,5 +30,9 @@ public class FavsDTO {
 
     public String getImage() {
         return image;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }
