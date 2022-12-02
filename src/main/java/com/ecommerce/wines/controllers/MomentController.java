@@ -2,6 +2,7 @@ package com.ecommerce.wines.controllers;
 
 import com.ecommerce.wines.DTOS.MomentDTO;
 import com.ecommerce.wines.models.Client;
+import com.ecommerce.wines.models.Favs;
 import com.ecommerce.wines.models.Moment;
 import com.ecommerce.wines.services.ClientService;
 import com.ecommerce.wines.services.MomentService;
@@ -54,7 +55,7 @@ public class MomentController {
             return new ResponseEntity<>("Description is empty", HttpStatus.FORBIDDEN);
         }
 
-        Moment newMoment = new Moment(img, title, description, clientCurrent);
+        Moment newMoment = new Moment(img, title, description, clientCurrent, true);
         momentService.saveMoment(newMoment);
         clientCurrent.addMoment(newMoment);
         clientService.saveClient(clientCurrent);
@@ -77,5 +78,23 @@ public class MomentController {
         }
         momentService.deleteMoment(moment);
         return new ResponseEntity<>("Moment deleted", HttpStatus.ACCEPTED);
+    }
+
+    @PatchMapping("clients/moments/delete")
+    public ResponseEntity<?> deleteFav(Authentication authentication, @RequestParam int id){
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        Moment moment = momentService.momentFindById(id);
+        if (clientCurrent == null){
+            return new ResponseEntity<>("unauthenticated client", HttpStatus.FORBIDDEN);
+        }
+        if (!clientCurrent.getMoments().stream().map(Moment::getId).collect(Collectors.toSet()).contains(moment.getId())){
+            return new ResponseEntity<>("this moment does not belong to you", HttpStatus.FORBIDDEN);
+        }
+        if(id <= 0){
+            return new ResponseEntity<>("Missing id", HttpStatus.FORBIDDEN);
+        }
+        moment.setActive(false);
+        momentService.saveMoment(moment);
+        return new ResponseEntity<>("moment deleted", HttpStatus.ACCEPTED);
     }
 }

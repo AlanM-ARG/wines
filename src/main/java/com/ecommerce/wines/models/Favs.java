@@ -23,16 +23,19 @@ public class Favs {
     private String name;
     private String image;
 
+    private boolean active;
+
 
 
     public Favs() {
     }
 
-    public Favs(Product product, Client client, String name, String image) {
+    public Favs(Product product, Client client, String name, String image, boolean active) {
         this.product = product;
         this.client = client;
         this.name = name;
         this.image = image;
+        this.active = active;
     }
 
     public long getId() {
@@ -69,5 +72,13 @@ public class Favs {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

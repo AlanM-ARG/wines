@@ -38,12 +38,12 @@ public class WinesApplication {
 			Client client3 = new Client("Axel", "Pedraza", "axel@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
 			Client client4 = new Client("Esteban", "Mendoza", "esteban@gmail.com", passwordEncoder.encode("123456"), "https://i.ibb.co/QDk1L3J/user.png", "token", true);
 
-			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "Wine and passion", "Upsetting a pajaro loco mencía. :)");
-			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Sharing with the family", "Family dinner and sharing a good wine.");
-			Moment moment3 = new Moment("https://i.ibb.co/d77ftRL/moment2.webp", "Break from routine", "After a long work week, we got together on Saturday with some friends. ^^");
-			Moment moment4 = new Moment("https://i.ibb.co/CKF3mT9/moment3.webp", "With my friend Chris", "Inviting Chris to taste this fantastic wine, 100% recommended. :D");
-			Moment moment5 = new Moment("https://i.ibb.co/5Grb7KN/moment5.webp", "Hot afternoon", "In the heat but always with the company of a good wine.");
-			Moment moment6 = new Moment("https://i.ibb.co/QHf5CBB/moment6.webp", "Good times", "Sentir el aroma de este vino es sensacional. :)");
+			Moment moment1= new Moment("https://i.ibb.co/CVWLyfF/moment1.webp", "Wine and passion", "Upsetting a pajaro loco mencía. :)", true);
+			Moment moment2= new Moment("https://i.ibb.co/k2f2DF7/moment4.jpg", "Sharing with the family", "Family dinner and sharing a good wine.", true);
+			Moment moment3 = new Moment("https://i.ibb.co/d77ftRL/moment2.webp", "Break from routine", "After a long work week, we got together on Saturday with some friends. ^^", true);
+			Moment moment4 = new Moment("https://i.ibb.co/CKF3mT9/moment3.webp", "With my friend Chris", "Inviting Chris to taste this fantastic wine, 100% recommended. :D", true);
+			Moment moment5 = new Moment("https://i.ibb.co/5Grb7KN/moment5.webp", "Hot afternoon", "In the heat but always with the company of a good wine.", true);
+			Moment moment6 = new Moment("https://i.ibb.co/QHf5CBB/moment6.webp", "Good times", "Sentir el aroma de este vino es sensacional. :)", true);
 
 			client1.addMoment(moment1);
 			client2.addMoment(moment2);
@@ -206,12 +206,12 @@ public class WinesApplication {
 			productRepository.save(product29);
 			productRepository.save(product30);
 
-			Favs fav1 = new Favs(product1, client1, product1.getName(), product1.getImage());
-			Favs fav2 = new Favs(product5, client1, product5.getName(), product5.getImage());
-			Favs fav3 = new Favs(product28, client1, product28.getName(), product28.getImage());
-			Favs fav4 = new Favs(product30, client1, product30.getName(), product30.getImage());
-			Favs fav5 = new Favs(product15, client1, product15.getName(), product15.getImage());
-			Favs fav6 = new Favs(product19, client1, product19.getName(), product19.getImage());
+			Favs fav1 = new Favs(product1, client1, product1.getName(), product1.getImage(), true);
+			Favs fav2 = new Favs(product5, client1, product5.getName(), product5.getImage(), true);
+			Favs fav3 = new Favs(product28, client1, product28.getName(), product28.getImage(), true);
+			Favs fav4 = new Favs(product30, client1, product30.getName(), product30.getImage(), true);
+			Favs fav5 = new Favs(product15, client1, product15.getName(), product15.getImage(), true);
+			Favs fav6 = new Favs(product19, client1, product19.getName(), product19.getImage(), true);
 
 			favsRepository.save(fav1);
 			favsRepository.save(fav2);
