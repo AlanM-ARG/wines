@@ -34,6 +34,8 @@ const app = Vue.createApp({
             return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(saldo);
         },
 
+    },computed: {
+      
     },
 })
 app.mount("#app")

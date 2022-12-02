@@ -173,6 +173,7 @@ button{
     background-size: contain!important;
 }
 .matias{
+    background-image: url(../assets/yo-modified.png)!important;
     
 }
 .alan{
@@ -188,7 +189,7 @@ button{
     background-image: url(../assets/maxi.png)!important;
 }
 .mario{
-
+    background-image: url(../assets/mario.png)!important;
 }
 /* Display None */
 .left-bar{

@@ -28,8 +28,17 @@ const app = Vue.createApp({
             error6: false,
             error7: false,
             error8: false,
+            date: "",
             cvv: "",
-            cardNumber: ""
+            cardNumber: "",
+            total: 0,
+            purchaseOrder: {
+                productOrderDTOS: [
+
+                ],
+                PaymentMethod: "DEBIT"
+            }
+          
         }
     },
     mounted() {
@@ -41,9 +50,18 @@ const app = Vue.createApp({
  
             this.getCart()
             console.log(this.cart);
-        
+            this.cart.forEach( product =>{
 
-       
+                    this.purchaseOrder.productOrderDTOS.push({
+                        productName: product.name,
+                        quantity: product.quantity
+                    })
+
+            }         
+            )
+            console.log(this.purchaseOrder);
+            this.totalCalc()
+
 
 
     },
@@ -144,33 +162,36 @@ const app = Vue.createApp({
             axios.post('https://lightbank.up.railway.app/api/cards/pay', {
                 "cardNumber": this.cardNumber,
                 "cardCvv": this.cvv,
-                "amount": 1000,
+                "amount": this.total,
                 "description": "The Winest Purchase Successful"
             })
                 .then(() => {
-                    axios.post("/api/purchaseOrder/create", {
-                        "productOrderDTOS": [
-                            {
-                                "productId": 1,
-                                "quantity": 6
-
-                            },
-                            {
-                                "productId": 3,
-                                "quantity": 4
-
-                            },
-                            {
-                                "productId": 2,
-                                "quantity": 6
-                            }
-                        ],
-                        "paymentMethod": "CASH"
+                    axios.post("/api/purchaseOrder/create",this.purchaseOrder)
+                    .then(()=>{ 
+                        
+                        Swal.fire(
+                            'Payment succesful!',
+                            'Check your email for more info about the purchase',
+                            'success'
+                          )
+                        
+                        this.modal = false
                     })
-                    .then(()=> this.modal = false)
                 })
-                .catch((error) => console.log(error))
+                .catch((error) => Swal.fire(
+                    error.response.data,
+                    'Check your email for more info about the purchase',
+                    'success'
+                  ))
+        },totalCalc(){
+            this.cart.forEach(product =>{
+                this.total+= product.quantity * product.price
+            })
+        },purchaseOrder(){
+
         }
-    }
+    },computed: {
+        
+    },
 })
 app.mount("#app")

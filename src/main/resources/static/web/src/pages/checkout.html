@@ -27,7 +27,7 @@
                     aria-controls="collapseExample" class="d-flex justify-content-center verResumen">
                     <div class="resumenContainer d-flex justify-content-between align-items-center p-2">
                         <p class="text-decoration-underline">Show cart</p>
-                        <p>$150</p>
+                        <p>${{(total).toFixed(2)}}</p>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                                 <div class="d-flex justify-content-between p-3">
                                     <div class="d-flex gap-3">
                                         <div class="cartLogoContainer d-flex justify-content-center align-items-center">
-                                            <img :src="product.img" alt="vino" class="cartLogo">
+                                            <img :src="product.image" alt="vino" class="cartLogo">
                                         </div>
                                         <div>
                                             <p>{{product.name}}</p>
@@ -50,12 +50,12 @@
                                 </div>
                             </template>
 
-                            <p>hola</p>
+                            
 
 
                             <div class="d-flex justify-content-between p-3 cartTotal">
                                 <p>Total</p>
-                                <p>$150</p>
+                                <p>${{(total).toFixed(2)}}</p>
                             </div>
                         </div>
                     </div>
@@ -67,29 +67,34 @@
             <div class="carritoDesktop">
                 <div class="collapseContainer d-flex justify-content-center">
                     <div class="cart">
-                        <div class="d-flex justify-content-between p-3">
+
+                        <template v-for="product in cart">
+                            <div class="d-flex justify-content-between p-3">
                             <div class="d-flex gap-3">
                                 <div class="cartLogoContainer d-flex justify-content-center align-items-center">
-                                    <img src="../assets/ContiDuccoBlanc.png" alt="vino" class="cartLogo">
+                                    <img :src="product.image" alt="vino" class="cartLogo">
                                 </div>
                                 <div>
-                                    <p>Conti Ducco</p>
-                                    <p>12</p>
+                                    <p>{{product.name}}</p>
+                                    <p>{{product.quantity}}</p>
                                 </div>
                             </div>
-                            <p>$150</p>
-                        </div>
+                            <p>${{(product.quantity*product.price).toFixed(2)}}</p>
+                         </div>
+                        </template>
+
+                        
 
                         <div class="d-flex justify-content-between p-3 cartTotal">
                             <p>Total</p>
-                            <p>$150</p>
+                            <p>${{total}}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-
+            </p>
 
 
 
@@ -198,7 +203,7 @@
 
 
 
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
