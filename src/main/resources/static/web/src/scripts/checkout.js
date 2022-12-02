@@ -1,6 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
+            cart: [],
             texto: "hola",
             modal: false,
             email: "",
@@ -31,9 +32,26 @@ const app = Vue.createApp({
             cardNumber: ""
         }
     },
+    mounted() {
+
+        
+    },
     created() {
+
+ 
+            this.getCart()
+            console.log(this.cart);
+        
+
+       
+
+
     },
     methods: {
+        getCart(){
+
+            this.cart = JSON.parse(localStorage.getItem('cart'))
+        },
         formPayment() {
             emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
             if (!emailRegex.test(this.email)) {
