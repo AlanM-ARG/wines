@@ -4,7 +4,8 @@ const app = Vue.createApp({
             url: `/api/products/`,
             id: (new URLSearchParams(location.search)).get("id"),
             wine: [],
-            wines: [],
+            wineNext: 0,
+            wineBack: 0,
         }
     },
     created(){
@@ -17,7 +18,9 @@ const app = Vue.createApp({
             axios.get(this.url + this.id)
             .then(data => {
                 this.wine = data.data
-                console.log(this.wine)
+                this.wineNext = this.wine.id +1
+                this.wineBack = this.wine.id -1
+                console.log(this.wine.id)
             })
         },
         allWinesData(){
@@ -30,6 +33,7 @@ const app = Vue.createApp({
         modificarSaldo(saldo){
             return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(saldo);
         },
-    }
+
+    },
 })
 app.mount("#app")
