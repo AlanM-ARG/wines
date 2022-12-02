@@ -9,6 +9,7 @@ let app = createApp({
             url3:'http://localhost:8080/api/clientcurrent/purchaseorder',
             active: 'Profile',
             favs: [],
+            favsActive: [],
             client: [],
             orders:[],
             editMode: false,
@@ -29,7 +30,8 @@ let app = createApp({
             axios.get(url)
             .then((data) => {
                 this.favs = data.data
-                console.log(this.favs);
+                this.favsActive = this.favs
+                console.log(this.favsActive);
             })
         },
         loadData2(url){
@@ -67,8 +69,7 @@ let app = createApp({
                 .catch(err => console.error(err))
         },
         removeFav(id){
-            id = this.idDelete
-            axios.delete('/api/clients/favs/delete',`id=${this.idDelete}`).then(() => (console.log("salio")))
+            axios.patch('/api/clients/favs/delete',`id=${id}`).then(() => (console.log("salio")))
         },
         pdfDownload(id){
             axios.post('/api/pdf/request',`idPurchaseOrder=${id}`).then(() => window.location.href = '/api/pdf/create').then((response) => console.log(response))
@@ -76,9 +77,12 @@ let app = createApp({
 
 
 
+
     },
     computed:{
-        
+        checkActive(){
+            this.favsActive = this.favs.filter(fav => fav.active == true)
+        }
 
     },
 
