@@ -14,6 +14,7 @@
 
 <body>
   <div id="app">
+    {{checkActive}}
     <header>
       <div class="header-logo d-flex justify-between items-center w-full bg-wine w-full ">
         <div class="left-header">
@@ -96,7 +97,7 @@
 
               </div>
               <div style="width: 100%; height: 100%; overflow-y: auto;" class="scrollDIV">
-                <div style="width: 100%; height: 20vh;" v-for="fav of favs" class="border-topDown border pb-2 pt-2 d-flex">
+                <div style="width: 100%; height: 20vh;" v-for="fav of favsActive" class="border-topDown border pb-2 pt-2 d-flex">
                   <div style="height: 100%; width: 20%;" :style="'background-image:url(' + fav.image + ')'"
                     class="bottle ">
 
@@ -105,9 +106,9 @@
                     <div>
                       <h5>{{fav.name}}</h5>
                     </div>
-                    <!-- <div>
-                        <button @click.prevent="removeFav(fav.id)" class="text-dark">Remove</button>
-                    </div> -->
+                    <div>
+                        <button @click="removeFav(fav.id)" class="text-dark">Remove</button>
+                    </div>
                   </div>
                 </div>
                 <div class="pt-5" v-if="favs.length === 0" >

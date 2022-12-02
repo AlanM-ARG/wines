@@ -90,7 +90,7 @@ public class FavsController {
 
         return new ResponseEntity<>("Favourite deleted", HttpStatus.OK);
     }
-    @PatchMapping("clients/favs/delete")
+    @PatchMapping("/clients/favs/delete")
     public ResponseEntity<?> deleteFavs(Authentication authentication, @RequestParam int id){
         Favs deleteFav = favsService.getFavById(id);
         deleteFav.setActive(false);

@@ -35,4 +35,5 @@ public class FavsDTO {
     public boolean isActive() {
         return active;
     }
+
 }
