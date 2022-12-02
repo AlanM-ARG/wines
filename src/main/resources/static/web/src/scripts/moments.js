@@ -5,7 +5,6 @@ const app = Vue.createApp({
       moments: [],
       title: "",
       description: "",
-      img: "",
     };
   },
   created() {

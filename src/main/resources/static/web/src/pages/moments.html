@@ -23,15 +23,13 @@
     <div>
       <header class="header ">
         <div class="logo text-white">
-          <!-- <img class="w-[150px] opacity-75" src="https://i.ibb.co/vsJtMNC/logo2-timeforwine.png" alt="logo1-timeforhttps://images.pexels.com/photos/4586899/pexels-photo-4586899.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=loadwine"
-            border="0"> -->
-          Logo
+          <img class="w-[150px] opacity-75" src="../assets/Winest.png" alt="logo1-timeforhttps://images.pexels.com/photos/4586899/pexels-photo-4586899.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=loadwine"
+            >
+         
 
         </div>
 
-        <div class="cart">
-          <img src="../assets/shopping.png" alt="cart-logo" class=" w-[30px] h-[30px] invert">
-        </div>
+        
       </header>
 
       <main class=" " style="width: 100vw; min-height: 90vh;">
@@ -75,7 +73,7 @@
 
 
 
-                      <form action="" class="mt-6 mb-0 space-y-4 rounded-lg ">
+                      <div  class="mt-6 mb-0 space-y-4 rounded-lg ">
 
 
                         <div>
@@ -84,7 +82,7 @@
                           <div class="relative mt-1">
                             <input type="text" id="title"
                               class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
-                              placeholder="Enter Title" />
+                              placeholder="Enter Title" v-model="title" />
 
 
                           </div>
@@ -96,7 +94,7 @@
                           <div class="relative mt-1">
                             <input type="text" id="description"
                               class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
-                              placeholder="Enter description" />
+                              placeholder="Enter description" v-model="description" />
 
 
                           </div>
@@ -104,22 +102,25 @@
 
                         <div class="text-white">
                           <label for="file" class="text-sm font-medium text-white">Select photo</label>
-
-                          <div class="relative mt-1">
+                          <form @submit.prevent="createMoment()" enctype="multipart/form-data" id="createMoment">
+                            <div class="relative mt-1">
+                           
                             <input type="file" id="file"
-                              class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm text-white" />
+                              class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm text-white" name="file" />
 
 
-                          </div>
-                        </div>
+                            </div>
+                        
 
-                        <button type="submit"
+                        <button  type="submit"
                           class="block w-full rounded-lg bg-[#952D3F] px-5 py-3 text-sm font-medium text-white">
                           Post
                         </button>
+                      </form></div>
+                          
 
 
-                      </form>
+                      </div>
                     </div>
                   </div>
 
@@ -285,13 +286,15 @@
           </ul>
         </div>
       </footer>
-
+      </div>
 
     </div>
+   
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../scripts/moments.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 
 </body>
 
