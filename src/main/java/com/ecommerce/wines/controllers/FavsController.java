@@ -54,6 +54,7 @@ public class FavsController {
             return new ResponseEntity<>("You already own this favorite", HttpStatus.FORBIDDEN);
         }
 
+
         Favs favs = new Favs(product, clientCurrent, product.getName(), product.getImage(), true);
         favsService.saveFavs(favs);
         clientCurrent.addFavs(favs);
@@ -72,12 +73,12 @@ public class FavsController {
     public ResponseEntity<?> deleteFav(Authentication authentication, @RequestParam int id){
 
         Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
+        Favs favs = favsService.getFavById(id);
 
         if (clientCurrent == null){
             return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
         }
 
-        Favs favs = favsService.getFavById(id);
 
         if (!clientCurrent.getFavss().contains(favs)){
             return new ResponseEntity<>("The favourite to be deleted does not belong to the authenticated client", HttpStatus.FORBIDDEN);
@@ -92,7 +93,19 @@ public class FavsController {
     }
     @PatchMapping("clients/favs/delete")
     public ResponseEntity<?> deleteFavs(Authentication authentication, @RequestParam int id){
+        Client clientCurrent = clientService.clientFindByEmail(authentication.getName());
         Favs deleteFav = favsService.getFavById(id);
+
+        if (clientCurrent == null){
+            return new ResponseEntity<>("Client is not authenticated", HttpStatus.FORBIDDEN);
+        }
+        if (!clientCurrent.getFavss().contains(deleteFav)){
+            return new ResponseEntity<>("The favourite to be deleted does not belong to the authenticated client", HttpStatus.FORBIDDEN);
+        }
+        if(id <= 0){
+            return new ResponseEntity<>("Missing id", HttpStatus.FORBIDDEN);
+        }
+        deleteFav.setName("adios");
         deleteFav.setActive(false);
         favsService.saveFavs(deleteFav);
         return new ResponseEntity<>("deleted fav", HttpStatus.ACCEPTED);
