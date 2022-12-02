@@ -74,18 +74,16 @@
 
 
                                 <div class="flex p-10  justify-center flex-col items-center">
-                                    <h1 class="product-title lg:text-8xl 2xl:text-9xl">JACK DANIEL'S</h1>
-                                    <h3 class="text-3xl tracking-[.3em]">WHISKY</h3>
+                                    <h1 class="product-title lg:text-8xl 2xl:text-9xl">{{wine.name}}</h1>
+                                    <h3 class="text-3xl tracking-[.3em]">{{wine.category}}</h3>
                                 </div>
                             </div>
 
                             <div class="flex items-center h-2/5 px-10 border-b justify-center gap-6 border-white flex-col">
                                 
-                                <p class="text-white p-8">
-                                    Whiskey Jack Daniel's is a recognized brand of whiskey of American origin. It is a Tennessee whiskey, and this type of distillate differs in that its production is filtered through maple wood carbon.
-                                </p>
+                                <p class="text-white p-8">{{wine.description}}</p>
                                 <div>
-                                    <h2>PRICE: $90.00</h2>
+                                    <h2>PRICE: {{modificarSaldo(wine.price)}}</h2>
                                 </div>
 
                                 <div class="flex">
@@ -129,7 +127,7 @@
 
                         <div class="w-2/5 h-full">
 
-                            <img src="../assets/whiskey-3805737.jpg" alt="" class="w-full h-full object-cover">
+                            <img :src="wine.image" alt="" class="w-full h-full object-cover" style="width: 18rem;">
                          
                         </div>
 
@@ -141,26 +139,43 @@
 
                          <div class="w-full h-2/6 border-b border-white flex flex-col justify-center gap-4 animation-btn p-2">
                             <h2 class="text-2xl italic">VARIETY</h2>
-                            <p>100% Whisky</p>
+                            <p>{{wine.variety}}</p>
                          </div>
 
                          <div class="w-full h-2/6 flex flex-col justify-center gap-4 animation-btn  p-2">
                             <h2 class="text-2xl italic">TASTING NOTES</h2>
-                            <p>Taste powerful, fatty, after the impact, then softer, with burnt notes of licorice and sugar syrup, sweet and full.</p>
+                            <p>{{wine.tastingNote}}</p>
                          </div>
 
                          <div class="w-full h-2/6 border-y border-white flex flex-col justify-center gap-4 animation-btn  p-2">
                             <h2 class="text-2xl italic">IDEAL TEMPERATURE</h2>
-                            <p> 8 - 10 °C</p>
+                            <p>{{wine.temperature}}</p>
                          </div>
                            
                         </div>
 
-                        <div class="w-2/5 h-full">
-
-                            <img src="../assets/whiskey-3182840_1920.jpg" alt="" class="w-full h-full object-cover">
-
+                        <div class="w-2/5 h-full" v-if="wine.category == 'RED'">
+                            <img src="../assets/vinoTinto.jpg" alt="" class="w-full h-full object-cover">
                         </div>
+                        <div class="w-2/5 h-full" v-if="wine.category == 'WHITE'">
+                            <img src="../assets/vinoBlanco.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/5 h-full" v-if="wine.category == 'ROSE'">
+                            <img src="../assets/vinoRosa.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/5 h-full" v-if="wine.category == 'VODKA'">
+                            <img src="../assets/vodka.png" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/5 h-full" v-if="wine.category == 'VERMOUTH'">
+                            <img src="../assets/vermouth.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/5 h-full" v-if="wine.category == 'GIN'">
+                            <img src="../assets/Gin.webp" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-2/5 h-full" v-if="wine.category == 'WHISKEYS'">
+                            <img src="../assets/whiskey-3182840_1920.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+
                     </div>
                     <div id="recomendation" class="swiper-slide">
                         <div class="w-full h-full bg-wine border-r border-white bg-black1 text-white flex flex-col ">
@@ -168,27 +183,27 @@
                             <div class="h-1/5 w-full flex justify-center items-center border-b border-white"> <p class="text-3xl">You may also be interested in</p> </div>
                             <div class="h-4/5 w-full flex gap-10 p-24 justify-center">
                                <div class="w-1/4 border border-white p-4 flex flex-col justify-center items-center animation-btn gap-3">
-                                <img src="https://i.ibb.co/6ZzHPjs/capricorn.webp" alt="" class="h-4/5 object-contain" style="object-fit: contain;">
+                                <img src="https://i.ibb.co/yW536pB/jackdaniels.png" alt="" class="h-4/5 object-contain" style="object-fit: contain;">
                                 
-                                <div class="flex gap-2"><p>Eclipse</p>
-                                <p>$ 10.00</p></div>
-                                <div class="w-2/4 py-3 bg-pink-900"><p>SEE MORE</p></div>
+                                <div class="flex gap-2"><p>JACK DANIEL'S</p>
+                                <p>$ 90.00</p></div>
+                                <div class="w-2/4 py-3 bg-pink-900"><a href="./product-details.html?id=30"><p>SEE MORE</p></a></div>
                                </div>
 
                                 
                                <div class="w-1/4 border border-white p-4 flex flex-col justify-center items-center animation-btn gap-3">
-                                <img src="https://i.ibb.co/hVRp3js/comet.webp" alt="" class="h-4/5 object-contain" style="object-fit: contain;">
+                                <img src="https://i.ibb.co/R7Yvv8j/votiva.webp" alt="" class="h-4/5 object-contain" style="object-fit: contain;">
                                 
-                                <div class="flex gap-2"><p>GODA</p>
-                                <p>$ 10.00</p></div>
-                                <div class="w-2/4 py-3 bg-pink-900"><p>SEE MORE</p></div>
+                                <div class="flex gap-2"><p>VOTIVA</p>
+                                <p>$ 92.00</p></div>
+                                <div class="w-2/4 py-3 bg-pink-900"><a href="./product-details.html?id=28"><p>SEE MORE</p></a></div>
                                </div>
                                <div class="w-1/4 border border-white p-4 flex flex-col justify-center items-center animation-btn gap-3">
                                 <img src="https://i.ibb.co/k4Wtwm5/eclipse.webp" alt="" class="h-4/5 object-contain" style="object-fit: contain;">
                                 
-                                <div class="flex gap-2"><p>GODA</p>
-                                <p>$ 10.00</p></div>
-                                <div class="w-2/4 py-3 bg-pink-900"><p>SEE MORE</p></div>
+                                <div class="flex gap-2"><p>ECLIPSE</p>
+                                <p>$ 56.00</p></div>
+                                <div class="w-2/4 py-3 bg-pink-900"><a href="./product-details.html?id=24"><p>SEE MORE</p></a></div>
                                </div>
                             </div>
 
@@ -208,8 +223,8 @@
     </div>
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-    <script src="./scripts/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../scripts/product-details.js"></script>
 
     
 
@@ -232,6 +247,8 @@
             },
         });
     </script>
+
+
     
 </body>
 

@@ -203,9 +203,10 @@
                 <div class="w-full h-full absolute z-20  opacity-0 hover:opacity-100 bg-wine">
 
                   <div class="w-full h-1/5 flex justify-between items-center px-10">
-                    <button class="see-more text-white">
+                    <a :href="'/web/src/pages/product-details.html?id=' + product.id"><button class="see-more text-white">
                       See more
-                    </button>
+                    </button></a>
+
                     <button>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-12 h-12 text-red-700">
