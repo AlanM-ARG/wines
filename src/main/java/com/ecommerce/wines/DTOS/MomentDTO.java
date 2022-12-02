@@ -16,12 +16,15 @@ public class MomentDTO {
 
     private Client client;
 
+    private boolean active;
+
     public MomentDTO(Moment moment) {
         this.id = moment.getId();
         this.image = moment.getImage();
         this.title = moment.getTitle();
         this.description = moment.getDescription();
         this.client = moment.getClient();
+        this.active = moment.isActive();
     }
 
     @JsonIgnore
@@ -43,5 +46,9 @@ public class MomentDTO {
 
     public String getDescription() {
         return description;
+    }
+
+    public boolean isActive() {
+        return active;
     }
 }

@@ -22,17 +22,20 @@ public class Moment {
     @JoinColumn(name="client_id")
     private Client client;
 
+    private boolean active = true;
+
     public Moment() {
     }
 
-    public Moment(String image, String title, String description, Client client) {
+    public Moment(String image, String title, String description, Client client, boolean active) {
         this.image = image;
         this.title = title;
         this.description = description;
         this.client = client;
+        this.active = active;
     }
 
-    public Moment(String image, String title, String description) {
+    public Moment(String image, String title, String description, boolean active) {
         this.image = image;
         this.title = title;
         this.description = description;
@@ -72,6 +75,14 @@ public class Moment {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override

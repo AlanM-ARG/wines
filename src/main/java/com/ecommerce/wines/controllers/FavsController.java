@@ -54,7 +54,7 @@ public class FavsController {
             return new ResponseEntity<>("You already own this favorite", HttpStatus.FORBIDDEN);
         }
 
-        Favs favs = new Favs(product, clientCurrent, product.getName(), product.getImage());
+        Favs favs = new Favs(product, clientCurrent, product.getName(), product.getImage(), true);
         favsService.saveFavs(favs);
         clientCurrent.addFavs(favs);
         clientService.saveClient(clientCurrent);
@@ -89,6 +89,13 @@ public class FavsController {
         favsService.deleteFavs(favs);
 
         return new ResponseEntity<>("Favourite deleted", HttpStatus.OK);
+    }
+    @PatchMapping("clients/favs/delete")
+    public ResponseEntity<?> deleteFavs(Authentication authentication, @RequestParam int id){
+        Favs deleteFav = favsService.getFavById(id);
+        deleteFav.setActive(false);
+        favsService.saveFavs(deleteFav);
+        return new ResponseEntity<>("deleted fav", HttpStatus.ACCEPTED);
     }
 
 }
