@@ -1,4 +1,6 @@
-
+.news{
+    font-size: 1rem;
+}
     
   @media (min-width: 375px) {
 
@@ -86,6 +88,9 @@
     .swiper{
         height: 511px;
     }
+    .news{
+        font-size: 0.8rem;
+    }
      
  
    }
@@ -117,7 +122,9 @@
     .swiper{
         height: 511px;
     }
-     
+    .news{
+        font-size: 1.2rem;
+    }
  
    }
 
@@ -184,6 +191,9 @@
 
     .swiper{
         height: 639px;
+    }
+    .news{
+        font-size: 1.6rem;
     }
      
  
