@@ -16,6 +16,7 @@ let app = createApp({
             changeImage:'',
             oldPassword:'',
             idDelete: null,
+            idOrder: null,
         }
     },
     created(){
@@ -68,6 +69,9 @@ let app = createApp({
         removeFav(id){
             id = this.idDelete
             axios.delete('/api/clients/favs/delete',`id=${this.idDelete}`).then(() => (console.log("salio")))
+        },
+        pdfDownload(id){
+            axios.post('/api/pdf/request',`idPurchaseOrder=${id}`).then(() => window.location.href = '/api/pdf/create').then((response) => console.log(response))
         }
 
 

@@ -105,9 +105,9 @@
                     <div>
                       <h5>{{fav.name}}</h5>
                     </div>
-                    <div>
+                    <!-- <div>
                         <button @click.prevent="removeFav(fav.id)" class="text-dark">Remove</button>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <div class="pt-5" v-if="favs.length === 0" >
@@ -133,7 +133,7 @@
                       <h5>Amount: {{order.amount}}</h5>
                       <p>Payment Method: {{order.paymentMethod}}</p>
                       <p>Time: {{order.localDateTime}}</p>
-                      <p v-for="product of productOrders">{{product.quantity}}</p>
+                      <a @click="pdfDownload(order.id)">Download PDF</a>
                     </div>
                     <div>
   
