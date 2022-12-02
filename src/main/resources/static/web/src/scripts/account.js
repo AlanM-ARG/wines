@@ -14,7 +14,8 @@ let app = createApp({
             editMode: false,
             newPassword: '',
             changeImage:'',
-            oldPassword:''
+            oldPassword:'',
+            idDelete: null,
         }
     },
     created(){
@@ -64,6 +65,10 @@ let app = createApp({
                 })
                 .catch(err => console.error(err))
         },
+        removeFav(id){
+            id = this.idDelete
+            axios.delete('/api/clients/favs/delete',`id=${this.idDelete}`).then(() => (console.log("salio")))
+        }
 
 
 

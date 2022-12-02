@@ -28,7 +28,9 @@
     border-bottom: 1px solid #fff;
 }
 
-
+::-webkit-scrollbar {
+    display: none;
+}
 
 /* Bars */
 .center-bar{
